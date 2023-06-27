@@ -68,4 +68,4 @@ export default function PolitykaPrywatnosci() {
     </Page>
 }
 
-export const Head = ({pageContext, location}) => <Seo title={"Polityka prywatności"} description={"Polityka prywatności"} pageContext={pageContext} location={location}/>
+export const Head = ({location}) => <Seo title={"Polityka prywatności"} description={"Polityka prywatności"} addTitleTemplate location={location}/>

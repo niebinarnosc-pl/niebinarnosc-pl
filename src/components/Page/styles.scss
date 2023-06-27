@@ -51,21 +51,23 @@
     color: $purple-60;
     font-weight: 700;
   }
-  hr {
-    border: none;
-    border-bottom: 2px solid $purple-10;
-    margin: 1rem 0;
-    @include for-tablet-portrait-up {
-      margin: 2.5rem 0; 
-    }
-  }
   .text-item {
-    margin-bottom: 0;
-    &:last-child {
-      margin-bottom: 2.5rem;
-    }
     h4 {
       margin-top: 0;
+    }
+    *:last-child {
+      margin-bottom: 0;
+    }
+    border-bottom: 2px solid $purple-10;
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      border: none;
+    }
+    padding: 1rem 0;
+    @include for-tablet-portrait-up {
+      padding: 2.5rem 0; 
     }
   }
 }
