@@ -1,0 +1,11 @@
+@import "breakpoints";
+@import "variables";
+
+@mixin side-padding {
+  padding-left: $side-padding-small;
+  padding-right: $side-padding-small;
+  @include for-tablet-landscape-up {
+    padding-left: $side-padding-big;
+    padding-right: $side-padding-big;
+  }
+}

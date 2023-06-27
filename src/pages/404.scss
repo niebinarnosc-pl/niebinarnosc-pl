@@ -1,0 +1,23 @@
+@import "../scss/mixins";
+
+.e404 {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 0;
+    & > header {
+        max-width: 58rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img {
+          width: 70%;
+          @include for-tablet-portrait-up {
+            width: 50%;
+          }
+        }
+        h1 {
+          font-size: 15rem;
+        }
+    }
+}

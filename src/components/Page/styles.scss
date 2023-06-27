@@ -1,0 +1,71 @@
+@import "../../scss/breakpoints";
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.page {
+  margin: 0 auto;
+  max-width: $page-max-width;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  @include for-tablet-portrait-up {
+    padding-top: 2.88rem;
+    padding-bottom: 2.88rem
+  }
+  @include side-padding;
+  width: 100%;
+  background-color: white;
+  h1 {
+    font-weight: 700;
+    color: $gray-60;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    @include for-tablet-portrait-up {
+      font-size: 2.375rem;
+      margin-bottom: 4rem;
+    }
+    line-height: 1.5;
+  }
+  h4 {
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    @include for-tablet-portrait-up {
+      margin-top: 4rem;
+      font-size: 1.5rem;
+    }
+    font-weight: 700;
+    color: $purple-100;
+    line-height: 1.5;
+  }
+  ul {
+    padding-left: 1.5rem;
+  }
+  p, li {
+    font-size: 1rem;
+    @include for-tablet-portrait-up {
+      font-size: 1.125rem;
+    }
+    line-height: 1.5;
+  }
+  strong {
+    color: $purple-60;
+    font-weight: 700;
+  }
+  hr {
+    border: none;
+    border-bottom: 2px solid $purple-10;
+    margin: 1rem 0;
+    @include for-tablet-portrait-up {
+      margin: 2.5rem 0; 
+    }
+  }
+  .text-item {
+    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 2.5rem;
+    }
+    h4 {
+      margin-top: 0;
+    }
+  }
+}

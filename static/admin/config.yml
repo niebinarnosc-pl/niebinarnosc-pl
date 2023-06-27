@@ -1,0 +1,142 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+media_folder: static/img/common
+public_folder: /img/common
+slug:
+  encoding: "ascii"
+  clean_accents: true
+locale: 'pl'
+
+collections:
+  - name: 'definitions'
+    label: 'Definicje'
+    folder: 'content/definitions/'
+    format: 'frontmatter'
+    create: true
+    identifier_field: 'name'
+    fields:
+      - {label: "Nazwa", name: "name", widget: "string"}
+      - {label: "Treść", name: "body", widget: "markdown"}
+  - name: 'history'
+    label: 'Historia'
+    files:
+      - name: 'history'
+        label: 'Historia'
+        file: 'content/history/history.md'
+        fields:
+          - {label: "Treść", name: "body", widget: "markdown"}
+  # - name: 'config'
+  #   label: 'Konfiguracja'
+  #   files:
+  #     - name: 'categories'
+  #       label: 'Kategorie'
+  #       file: 'config/categories.json'
+  #       fields:
+  #         - name: 'categories'
+  #           label: 'Kategorie'
+  #           widget: 'list'
+  #           collapsed: true
+  #           summary: '{{fields.pl.name}}'
+  #           fields:
+  #             - {label: 'ID', name: 'id', widget: 'number', value_type: 'int', min: 1}
+  #             - label: 'PL'
+  #               name: 'pl'
+  #               widget: 'object'
+  #               collapsed: true
+  #               fields:
+  #                 - {label: 'Nazwa', name: 'name', widget: 'string'}
+  #                 - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+  #             - label: 'EN'
+  #               name: 'en'
+  #               widget: 'object'
+  #               collapsed: true
+  #               fields:
+  #                 - {label: 'Nazwa', name: 'name', widget: 'string'}
+  #                 - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+  #             - {label: 'Kolor', name: 'color', widget: 'string'}
+  #     - name: 'authors'
+  #       label: 'Autorzy'
+  #       file: 'config/authors.json'
+  #       fields:
+  #         - name: 'authors'
+  #           label: 'Autorzy'
+  #           widget: 'list'
+  #           collapsed: true
+  #           summary: '{{fields.name}}'
+  #           fields:
+  #             - {label: 'ID/Slug', name: 'id', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+  #             - {label: 'Nazwa', name: 'name', widget: 'string'}
+  # - name: 'pages'
+  #   label: 'Strony'
+  #   i18n: true
+  #   folder: 'content/pages'
+  #   path: '{{category}}/{{slug}}/index'
+  #   create: true
+  #   view_groups:
+  #     - { label: "Kategoria", field: "category" }
+  #   summary: '{{category}}: {{title}}'
+  #   fields:
+  #     - label: "Kategoria"
+  #       name: "category"
+  #       widget: "relation"
+  #       collection: "config"
+  #       file: "categories"
+  #       search_fields: [ "categories.*.pl.name" ]
+  #       value_field: "categories.*.id"
+  #       display_fields: [ "categories.*.pl.name" ]
+  #       i18n: "duplicate"
+  #     - { label: 'Kolejność', name: 'order', widget: 'number', value_type: "int", i18n: "duplicate" }
+  #     - label: "Autor"
+  #       name: "author"
+  #       widget: "relation"
+  #       collection: "config"
+  #       file: "authors"
+  #       search_fields: [ "authors.*.name" ]
+  #       value_field: "authors.*.id"
+  #       display_fields: [ "authors.*.name" ]
+  #       required: false
+  #       i18n: "duplicate"
+  #     - { label: "Data", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false, picker_utc: true, default: "", required: false, i18n: duplicate }
+  #     - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"], i18n: true }
+  #     - { label: 'Tytuł', name: 'title', widget: 'string', i18n: true }
+  #     - { label: "Szkic", name: "draft", widget: "boolean", default: true, i18n: true }
+  #     - { label: 'Nagłówek', name: 'heading', widget: 'string', i18n: true }
+  #     - { label: 'Treść', name: 'body', widget: 'markdown', i18n: true }
+  # - name: 'misc'
+  #   label: 'Różne'
+  #   i18n:
+  #     structure: "single_file"
+  #   files:
+  #     - name: 'privacy-policy'
+  #       label: 'Polityka prywatności'
+  #       file: 'content/misc/privacy-policy.yaml'
+  #       i18n: true
+  #       fields:
+  #         - { label: 'Tytuł', name: 'title', widget: 'string', i18n: true }
+  #         - { label: 'Treść', name: 'body', widget: 'markdown', i18n: true }
+  # - name: 'blog'
+  #   label: 'Blog'
+  #   folder: 'content/blog/'
+  #   media_folder: '/static/img/blog'
+  #   format: 'frontmatter'
+  #   create: true
+  #   i18n: true
+  #   fields:
+  #     - {label: "Tytuł", name: "title", widget: "string", i18n: true}
+  #     - {label: "Autor", name: "author", widget: "select", options: ['Monika "Pacyfka" Tichy'], i18n: duplicate}
+  #     - {label: "Data", name: "date", widget: "datetime", date_format: true, time_format: false, picker_utc: true, i18n: duplicate}
+  #     - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"], i18n: true}
+  #     - {label: "Treść", name: "body", widget: "markdown", i18n: true}
+  # - name: 'news'
+  #   label: 'Aktualnosci'
+  #   folder: 'content/news/'
+  #   format: 'frontmatter'
+  #   create: true
+  #   i18n: true
+  #   fields:
+  #     - {label: "Tytuł", name: "title", widget: "string", i18n: true}
+  #     - {label: "Data", name: "date", widget: "datetime", date_format: true, time_format: false, picker_utc: true, i18n: duplicate}
+  #     - {label: "Treść", name: "body", widget: "text", i18n: true}

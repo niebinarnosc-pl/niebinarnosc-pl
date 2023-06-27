@@ -1,0 +1,27 @@
+@import "../../scss/mixins";
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1.2rem;
+    &.closed {
+        display: none;
+    }
+    &.success {
+        &, & button {color: get-color("green", 5);}
+        background-color: transparentize(get-color("green"), 0.8);
+    }
+    &.error {
+        &, & button {color: get-color("red", 5);}
+        background-color: transparentize(get-color("red"), 0.8);
+    }
+    button {
+        background: transparent;
+        border: none;
+        margin: 1rem;
+    }
+    & > span {
+        margin: 1rem;
+    }
+}

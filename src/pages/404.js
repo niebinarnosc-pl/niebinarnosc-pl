@@ -1,49 +1,21 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import "./404.scss"
+import Seo from "../components/Seo";
+import Card from "../components/Card";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
+export default function e404() {
+    return (
+        <section className={"e404"}>
+            <header>
+                <h1>404</h1>
+                <h2>Nie znaleziono</h2>
+                <Card>
+                  <blockquote>"Pójdzie do pokoju numer 301, dostanie tam numerek i ustawi się w kolejce do pokoju numer 200, tak? Tam powiedzą co dalej, do widzenia.  ... DRZWI! to jest PRXYCHODNIA nie SUPERMARKET!1"</blockquote>
+                  <cite>Miła pani z pokoju 404 :)</cite>
+                </Card>
+            </header>
+        </section>
+    )
 }
 
-const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
-
-export default NotFoundPage
-
-export const Head = () => <title>Not found</title>
+export const Head = ({pageContext, location}) => <Seo title={"404"} pageContext={pageContext} addTitleTemplate location={location}/>

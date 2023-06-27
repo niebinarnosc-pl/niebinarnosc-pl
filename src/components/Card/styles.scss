@@ -1,0 +1,84 @@
+@import "../../scss/mixins";
+@import "../../scss/breakpoints";
+.card {
+    padding: 0 1rem;
+    font-size: 1rem;
+    position: relative;
+    @include for-tablet-portrait-up {
+        font-size: 1.2rem;
+    }
+    .card-heading {
+        position: relative;
+        transform: translateX(-50%);
+        top: 0;
+        left: 50%;
+        font-size: 2em;
+        display: inline-block;
+        padding: 0.25rem 1rem;
+    }
+    h3 {
+        text-align: center;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.5rem;
+        font-size: 1.9em;
+    }
+    h4 {
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+        font-size: 1.7em;
+    }
+    h5 {
+        letter-spacing: 0.05em;
+        margin: 0 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.4em;
+    }
+    h6 {
+        letter-spacing: 0.04em;
+        margin: 0 2rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.2em;
+    }
+    p {
+        &.bold {
+            font-weight: 700;
+        }
+        &.bolder {
+            font-weight: 900;
+        }
+    }
+    p, blockquote {
+        margin: 1rem 0;
+        line-height: 1.6;
+    }
+    blockquote {
+        font-size: 1.3em;
+        p {
+            font-size: 1em;
+        }
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        border-left: 0.3em solid red;
+    }
+    ul, ol {
+        line-height: 1.6;
+    } 
+    strong {
+        font-weight: 900;
+    }
+    a {
+        color: red;
+        text-decoration: underline;
+    }
+    .right {
+        text-align: right;
+    }
+    .center {
+        text-align: center;
+    }
+    .disabled {
+        color: gray;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
