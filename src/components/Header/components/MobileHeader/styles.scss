@@ -1,38 +1,6 @@
 @import "../../../../scss/variables";
 @import "../../../../scss/mixins";
 
-.mobile-bottom-buttons {
-    background-color: white;
-    display: flex;
-    padding: 0 0.5rem;
-    border-top: 1px solid $purple-60;
-    font-size: 0.75rem;
-    @include for-tablet-portrait-up {
-        font-size: 1.125rem;
-    }
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    nav {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.25em;
-            padding: 0.5em 0.75em;
-            color: $gray-80;
-            line-height: 1.5;
-            &.active {
-                color: $purple-100;
-                background-color: $purple-5;
-                font-weight: 700;
-            }
-        }
-    }
-}
 .mobile-site-header {
     display: flex;
     justify-content: center;

@@ -1,0 +1,22 @@
+@import "../../scss/variables";
+@import "../../scss/breakpoints";
+
+.story-item {
+  h4 {
+    margin-top: 0;
+  }
+  *:last-child {
+    margin-bottom: 0;
+  }
+  border-bottom: 2px solid $purple-10;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    border: none;
+  }
+  padding: 1rem 0;
+  @include for-tablet-portrait-up {
+    padding: 2.5rem 0; 
+  }
+}

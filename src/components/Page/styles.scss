@@ -40,6 +40,18 @@
   ul {
     padding-left: 1.5rem;
   }
+  blockquote {
+    font-size: 1.125rem;
+    @include for-tablet-portrait-up {
+      font-size: 1.5rem;
+    }
+    p {
+        font-size: 1em;
+    }
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    border-left: 0.3em solid $purple-100;
+  }
   p, li, a {
     font-size: 1rem;
     @include for-tablet-portrait-up {
@@ -50,25 +62,6 @@
   strong {
     color: $purple-60;
     font-weight: 700;
-  }
-  .text-item {
-    h4 {
-      margin-top: 0;
-    }
-    *:last-child {
-      margin-bottom: 0;
-    }
-    border-bottom: 2px solid $purple-10;
-    &:first-child {
-      padding-top: 0;
-    }
-    &:last-child {
-      border: none;
-    }
-    padding: 1rem 0;
-    @include for-tablet-portrait-up {
-      padding: 2.5rem 0; 
-    }
   }
   a {
     &.contact-mail {

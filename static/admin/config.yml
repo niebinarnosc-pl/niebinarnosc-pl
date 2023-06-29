@@ -20,6 +20,28 @@ collections:
     fields:
       - {label: "Nazwa", name: "name", widget: "string"}
       - {label: "Treść", name: "body", widget: "markdown"}
+  - name: 'stories'
+    label: 'Opowieści'
+    folder: 'content/stories/'
+    media_folder: 'images'
+    public_folder: 'images'
+    format: 'frontmatter'
+    create: true
+    identifier_field: 'name'
+    fields:
+      - {label: "Miniaturka", name: "thumbnail", widget: "image"}
+      - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image"}
+      - {label: "Imię / pseudonim", name: "name", widget: "string"}
+      - label: "Sociale"
+        name: "socials"
+        widget: "object"
+        fields:
+          - {label: "Facebook", name: "facebook", widget: "string"}
+          - {label: "Twitter", name: "twitter", widget: "string"}
+          - {label: "Instagram", name: "instagram", widget: "string"}
+      - {label: "Definicje", name: "definitions", widget: "list"}
+      - {label: "Triggery", name: "triggers", widget: "list"}
+      - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'history'
     label: 'Historia'
     files:
