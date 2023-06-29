@@ -3,57 +3,20 @@
 @import "mixins";
 
 .button {
-    font-family: 'Ubuntu Mono', sans-serif;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-    @include for-tablet-portrait-up {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-    }
-    border-radius: 0;
+    display: flex;
+    padding: 0.75rem 2rem;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 1rem;
+    color: white;
+    background-color: $purple-100;
+    border-radius: 12px;
     border: none;
-    width: fit-content;
+    &.border {
+        border: 2px solid white;
+    }
     transition: 0.1s ease-in-out;
     cursor: pointer;
-    &.violet {
-        background-color: $pacia;
-        color: white;
-        &:hover:not(:disabled) {
-            background-color: $pacia-light;
-        }
-        &:disabled {
-            opacity: .65;
-        }
-    }
-    &.green {
-        @include solid-text("green");
-    }
-    &.blue {
-        @include solid-text("blue");
-    }
-    &.wide {
-        width: 100%;
-    }
-    &.big {
-        font-size: 1rem;
-        @include for-tablet-portrait-up {
-            font-size: 1.5rem;
-        }
-    }
-    &.very-big {
-        font-size: 1.75rem;
-        @include for-tablet-portrait-up {
-            font-size: 2.25rem;
-        }
-        @include for-desktop-up {
-            font-size: 2.75rem;
-        }
-    }
-    &:disabled {
-        background-color: $light-gray !important;
-        color: white !important;
-    }
-    strong {
-        text-decoration: underline;
-    }
 }

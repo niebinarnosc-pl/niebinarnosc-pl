@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import CookieBanner from "../CookieBanner";
 import Header from "../Header";
 
-export default function Layout({children}) {
+export default function Layout({location, children}) {
     const [areCookiesAllowed, setAreCookiesAllowed] = useState(true)
     useEffect(() => {
         const cookie = ('; ' + document.cookie).split('; allow_cookies=').pop().split(';').shift()
@@ -22,7 +22,7 @@ export default function Layout({children}) {
     }, [areCookiesAllowed])
     return (
         <div className={"site-root"}>
-            <Header/>
+            <Header location={location}/>
             <main className={"site-main"}>
                 {children}
             </main>

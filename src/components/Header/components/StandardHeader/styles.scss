@@ -38,6 +38,11 @@
                 &:not(:last-child) {
                     margin-right: 2rem;
                 }
+                &.active {
+                    text-decoration: underline;
+                    color: $purple-100;
+                    font-weight: 700;
+                }
             }
             & > div{
                 position: relative;
