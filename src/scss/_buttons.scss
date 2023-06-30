@@ -25,3 +25,23 @@
     background: transparent;
     border: none;
 }
+
+.badge-button {
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 100px;
+    border: none;
+    &, &.normal {
+        background-color: $purple-10;
+        color: $purple-100;
+    }
+    &.error {
+        background-color: #ffe6e6;
+        color: #ff2222;
+    }
+}

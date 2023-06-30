@@ -9,10 +9,10 @@
     margin-bottom: 0;
   }
   border-bottom: 2px solid $purple-10;
-  &:first-child {
+  &:first-of-type {
     padding-top: 0;
   }
-  &:last-child {
+  &:last-of-type {
     border: none;
   }
   padding: 1rem 0;

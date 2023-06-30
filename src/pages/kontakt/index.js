@@ -2,6 +2,7 @@ import React from "react";
 import Page from "../../components/Page";
 import ContactCard from "../../components/ContactCard";
 import { IconEmail } from "../../components/Icons";
+import Seo from "../../components/Seo";
 
 export default function Kontakt() {
     return <Page className={"kontakt"} heading={"Kontakt"}>
@@ -15,3 +16,5 @@ export default function Kontakt() {
         </form>
     </Page>
 }
+
+export const Head = ({location}) => <Seo title={"Kontakt"} addTitleTemplate location={location}/>

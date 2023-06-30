@@ -7,8 +7,6 @@ export default function Page({className, heading, heading2, children}) {
             <h1>{heading}</h1>
             {heading2 && <h2>{heading2}</h2>}
         </header>
-        <main>
-            {children}
-        </main>
+        {children}
     </section>
 }

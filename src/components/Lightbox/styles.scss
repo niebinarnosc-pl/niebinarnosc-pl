@@ -1,0 +1,19 @@
+.lightbox {
+    display: flex;
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.6);
+    .gatsby-image-wrapper {
+        max-height: 85%;
+        max-width: 85%;
+        img {
+            object-fit: contain !important;
+        }
+    }
+}

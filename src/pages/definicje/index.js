@@ -6,7 +6,7 @@ import DefinitionItem from "../../components/DefinitionItem";
 
 export default function Definicje({data}) {
     return <Page className={"definicje"} heading={"Definicje"}>
-        {data.allFile.nodes.map(({childMarkdownRemark: {html, frontmatter}}) => <DefinitionItem name={frontmatter.name} html={html}/>)}
+        {data.allFile.nodes.map(({childMarkdownRemark: {html, frontmatter: {name}}}) => <DefinitionItem key={name} name={name} html={html}/>)}
     </Page>
 }
 

@@ -79,6 +79,14 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        "name": "stories",
+        "path": "./content/stories/"
+      },
+      __key: "stories"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         "name": "history",
         "path": "./content/history/"
       },
