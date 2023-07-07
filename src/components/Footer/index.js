@@ -2,21 +2,22 @@ import React from "react"
 import "./styles.scss"
 import love from "../../images/transheart.svg";
 import {Link} from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
+import { IconEmail } from "../Icons";
 
 export default function Footer() {
     return (
         <footer className={"site-footer"}>
             <div className="footer-contents">
-                <div className={"icon-links"}>
-                    {/* <a href={"https://www.facebook.com/nowatecza"}>
-                        <FontAwesomeIcon icon={faFacebook} size={"2x"}/>
-                    </a>
-                    <a href={"https://www.instagram.com/nowatecza"}>
-                        <FontAwesomeIcon icon={faInstagram} size={"2x"}/>
-                    </a> */}
+                <Link to={"/"}>
+                    <StaticImage className="logo" width={400} src={"../../images/logo-white.png"} alt={"niebinarnosc.pl"}/>
+                </Link>
+                <p><strong>niebinarnosc.pl</strong></p>
+                <div className="contact-container">
+                    <a href="#"><strong>Formularz kontaktowy</strong></a>
+                    <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail/>kontakt@niebinarnosc.pl</a>
                 </div>
-                <p>© 2023 Wszelkie prawa zastrzeżone | <Link to={`/polityka-prywatnosci/`}>Polityka Prywatności</Link></p>
-                <p className={"credit"}>Made with <img src={love} alt={"love"}/> by cddlee</p>
+                {/* <p>© 2023 Wszelkie prawa zastrzeżone | <Link to={`/polityka-prywatnosci/`}>Polityka Prywatności</Link></p> */}
             </div>
         </footer>
     )

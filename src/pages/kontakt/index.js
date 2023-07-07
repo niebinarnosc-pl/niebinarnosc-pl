@@ -8,7 +8,7 @@ export default function Kontakt() {
     return <Page className={"kontakt"} heading={"Kontakt"}>
         <ContactCard/>
         <p className="font-weight-500">Masz do nas pytania? Szukasz pomocy? Napisz do nas na maila lub wypełnij formularz.</p>
-        <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail"><IconEmail/>kontakt@niebinarnosc.pl</a>
+        <p><a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail"><IconEmail/>kontakt@niebinarnosc.pl</a></p>
         <form>
             <label><IconEmail/><input type="email" placeholder="E-mail, np. nazwa@gmail.com"/></label>
             <textarea placeholder="Tutaj wpisz swoją wiadomość"/>

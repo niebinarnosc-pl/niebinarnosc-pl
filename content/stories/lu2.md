@@ -1,18 +1,20 @@
 ---
+storyId: lu2
 thumbnail: images/lu-miniaturka.jpg
 fullPhoto: images/lu-miniaturka.jpg
-name: Lu
+title: Lu
+slug: lu2
 socials:
   facebook: lu
   twitter: lu
   instagram: lu
-definitions:
-  - demigender
-  - genderqueer
-  - niebinarność
+definitionIds:
+  - demiplciowosc
+  - niebinarnosc
 triggers:
-  - przemoc
-  - wulgaryzmy
+  - Przemoc seksualna
+  - Wulgaryzmy
+draft: false
 ---
 Kiedy rozkminiałam swoją płeć, termin niebinarność nawet jeszcze nie istniał. Kiedy zapytałam siebie, czy przypadkiem nie jestem trans-dziewczyną, odpowiedź oczywiście przyszła, że nie. Uznałam więc, że jestem cis-facetem i tak żyłam swoje życie.
 

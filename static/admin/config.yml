@@ -16,9 +16,14 @@ collections:
     folder: 'content/definitions/'
     format: 'frontmatter'
     create: true
-    identifier_field: 'name'
+    slug: '{{definitionId}}'
     fields:
-      - {label: "Nazwa", name: "name", widget: "string"}
+      - {label: "ID", name: "definitionId", widget: "string"}
+      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+      - {label: "Nazwa", name: "title", widget: "string"}
+      - {label: "Nagłówek na stronie", name: "heading", widget: "string"}
+      - {label: "Priorytet", name: "priority", widget: "number", default: 0}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'stories'
     label: 'Opowieści'
@@ -27,20 +32,39 @@ collections:
     public_folder: 'images'
     format: 'frontmatter'
     create: true
-    identifier_field: 'name'
+    slug: '{{storyId}}'
     fields:
+      - {label: "ID", name: "storyId", widget: "string"}
       - {label: "Miniaturka", name: "thumbnail", widget: "image"}
       - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image"}
-      - {label: "Imię / pseudonim", name: "name", widget: "string"}
+      - {label: "Imię / pseudonim", name: "title", widget: "string"}
+      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
       - label: "Sociale"
         name: "socials"
         widget: "object"
+        required: false
         fields:
           - {label: "Facebook", name: "facebook", widget: "string"}
           - {label: "Twitter", name: "twitter", widget: "string"}
           - {label: "Instagram", name: "instagram", widget: "string"}
-      - {label: "Definicje", name: "definitions", widget: "list"}
-      - {label: "Triggery", name: "triggers", widget: "list"}
+      - label: "Definicje"
+        name: "definitionIds"
+        widget: "list"
+        summary: "{{fields.definitionId}}"
+        field:
+          label: "Definicje"
+          name: "definitionId"
+          widget: "relation"
+          collection: "definitions"
+          value_field: "definitionId"
+          search_fields: ["heading", "definitionId", "title"]
+          display_fields: ["title"]
+      - label: "Triggery"
+        name: "triggers"
+        widget: "list"
+        summary: "{{fields.trigger}}"
+        field: {label: "Trigger", name: "trigger", widget: "string"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'history'
     label: 'Historia'

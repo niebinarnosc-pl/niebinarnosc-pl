@@ -6,7 +6,8 @@ import DefinitionItem from "../../components/DefinitionItem";
 
 export default function Definicje({data}) {
     return <Page className={"definicje"} heading={"Definicje"}>
-        {data.allFile.nodes.map(({childMarkdownRemark: {html, frontmatter: {name}}}) => <DefinitionItem key={name} name={name} html={html}/>)}
+        {data.allMarkdownRemark.nodes
+            .map(({html, frontmatter}, index) => <DefinitionItem key={index} {...frontmatter} html={html}/>)}
     </Page>
 }
 
@@ -14,13 +15,15 @@ export const Head = ({location}) => <Seo title={"Definicje"} addTitleTemplate lo
 
 export const query = graphql`
 {
-  allFile(filter: {sourceInstanceName: {eq: "definitions"}}) {
+  allMarkdownRemark(
+    filter: {fields: {sourceName: {eq: "definitions"}}, frontmatter: {draft: {eq: false}}},
+    sort: [{frontmatter: {priority: DESC}}, {frontmatter: {heading: ASC}}]
+  ) {
     nodes {
-      childMarkdownRemark {
-        html
-        frontmatter {
-          name
-        }
+      html
+      frontmatter {
+        heading
+        slug
       }
     }
   }

@@ -1,10 +1,10 @@
 @import "../../scss/breakpoints";
 @import "../../scss/variables";
 @import "../../scss/mixins";
-@import "~@fontsource/spartan/400.css";
-@import "~@fontsource/spartan/500.css";
-@import "~@fontsource/spartan/700.css";
-@import "~@fontsource/spartan/800.css";
+@import "~@fontsource/noto-sans/400.css";
+@import "~@fontsource/noto-sans/500.css";
+@import "~@fontsource/noto-sans/700.css";
+@import "~@fontsource/noto-sans/800.css";
 
 html {
     @include for-phone-only {
@@ -13,7 +13,7 @@ html {
     body {
         margin: 0;
     }
-    font-family: 'Spartan', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     background-color: $purple-5;
     color: $black;
     -webkit-box-sizing: border-box;
@@ -22,7 +22,7 @@ html {
 }
 
 *, *:before, *:after {
-    font-family: 'Spartan', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;

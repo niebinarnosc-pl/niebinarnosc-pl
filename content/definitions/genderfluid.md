@@ -1,5 +1,10 @@
 ---
-name: Genderfluid
+heading: Płynnopłciowość (genderfluid)
+title: Płynnopłciowość
+definitionId: plynnoplciowosc
+slug: plynnoplciowosc
+priority: 0
+draft: false
 ---
 Tożsamość płciowa charakteryzująca się zmiennością identyfikacji płciowej w czasie. Niekiedy to, z jaką tożsamością dana osoba się utożsamia, może być zależne od czynników zewnętrznych czy wewnętrznych. Natomiast nie zawsze tak jest i bywa to również losowe. 
 

@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 
 export default function Historia({data}) {
     return <Page className={"historia"} heading={"Historia"}>
-        <div dangerouslySetInnerHTML={{__html: data.file.childMarkdownRemark.html}}/>
+        <div dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}/>
     </Page>
 }
 
@@ -13,10 +13,8 @@ export const Head = ({location}) => <Seo title={"Historia"} addTitleTemplate loc
 
 export const query = graphql`
 {
-  file(sourceInstanceName: {eq: "history"}) {
-    childMarkdownRemark {
-      html
-    }
+  markdownRemark(fields: {sourceName: {eq: "history"}}) {
+    html
   }
 }
 `

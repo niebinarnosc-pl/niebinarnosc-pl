@@ -5,51 +5,32 @@
 
 .site-footer {
     display: flex;
-    flex-direction: column;
     height: 100%;
     background-color: $purple-dark-2;
     color: $purple-5;
-    text-align: center;
+    justify-content: center;
     .footer-contents {
-        padding: 1rem;
-        .icon-links {
-            margin-bottom: 1rem;
-            & > * {
-                margin: 0 0.5rem;
-            }
+        height: fit-content;
+        width: 100%;
+        max-width: 59.75rem;
+        padding: 1.5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo {
+            width: 13rem;
         }
-        p {
-            text-align: center;
-            margin: 0.25rem 0;
-        }
-        .langs {
-            margin: 1rem 0;
-            & > a {
-                padding: 0 0.5em;
-            }
-        }
-        .margin {
-            margin: 1rem 0;
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
         a {
             color: white;
-        }
-        .credit {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            img {
-                transition: 200ms ease-in-out;
-                opacity: 0.7;
-                margin: 0 0.25em;
-                height: 1.5em;
-                &:hover {
-                    opacity: 1;
-                    transform: scale(1.5);
-                    margin: 0 0.6rem;
-                }
+            &.contact-mail {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
             }
         }
     }
