@@ -4,18 +4,23 @@
 
 .story-item {
   margin-bottom: 2.5rem;
+  &:last-of-type {
+    margin-bottom: 1.5rem;
+  }
   @include for-tablet-landscape-up {
     padding: 1.5rem 0;
   }
   display: flex;
   gap: 1.25rem;
   & > aside, & > article {
-    .thumbnail-button {
-       border: none;
-       background: transparent;
-       padding: 0;
-       cursor: pointer;
-      .gatsby-image-wrapper {
+    .thumbnail {
+      button {
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+      }
+      img, .gatsby-image-wrapper {
         border-radius: 12px;
         width: 6.25rem;
         height: 6.25rem;
@@ -87,8 +92,8 @@
       }
     }
     & > div {
-      *:first-child {
-        margin-top: 0;
+      *:last-child {
+        margin-bottom: 0;
       }
     }
   }

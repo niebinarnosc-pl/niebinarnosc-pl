@@ -10,7 +10,8 @@
     white-space: nowrap;
     font-weight: 800;
     font-size: 1rem;
-    color: white;
+    color: white !important;
+    &, &:hover {text-decoration: none;}
     background-color: $purple-100;
     border-radius: 12px;
     border: none;
@@ -19,11 +20,24 @@
     }
     transition: 0.1s ease-in-out;
     cursor: pointer;
+    @include for-tablet-portrait-up {
+        align-self: flex-end;
+        margin-left: auto;
+        width: fit-content;
+    }
 }
 
 .clear-button {
     background: transparent;
     border: none;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    padding: 0;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .badge-button {

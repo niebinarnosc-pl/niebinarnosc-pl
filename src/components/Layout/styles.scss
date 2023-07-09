@@ -47,8 +47,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    .site-footer {
+    .site-main {
         flex: 1;
+        display: flex;
     }
 }
 

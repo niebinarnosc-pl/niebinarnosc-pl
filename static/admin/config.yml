@@ -35,8 +35,8 @@ collections:
     slug: '{{storyId}}'
     fields:
       - {label: "ID", name: "storyId", widget: "string"}
-      - {label: "Miniaturka", name: "thumbnail", widget: "image"}
-      - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image"}
+      - {label: "Miniaturka", name: "thumbnail", widget: "image", required: false}
+      - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image", required: false}
       - {label: "Imię / pseudonim", name: "title", widget: "string"}
       - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
       - label: "Sociale"
@@ -44,12 +44,13 @@ collections:
         widget: "object"
         required: false
         fields:
-          - {label: "Facebook", name: "facebook", widget: "string"}
-          - {label: "Twitter", name: "twitter", widget: "string"}
-          - {label: "Instagram", name: "instagram", widget: "string"}
+          - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - {label: "Twitter", name: "twitter", widget: "string", required: false}
+          - {label: "Instagram", name: "instagram", widget: "string", required: false}
       - label: "Definicje"
         name: "definitionIds"
         widget: "list"
+        default: ["niebinarnosc"]
         summary: "{{fields.definitionId}}"
         field:
           label: "Definicje"
@@ -62,18 +63,24 @@ collections:
       - label: "Triggery"
         name: "triggers"
         widget: "list"
+        required: false
         summary: "{{fields.trigger}}"
         field: {label: "Trigger", name: "trigger", widget: "string"}
       - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'history'
     label: 'Historia'
-    files:
-      - name: 'history'
-        label: 'Historia'
-        file: 'content/history/history.md'
-        fields:
-          - {label: "Treść", name: "body", widget: "markdown"}
+    folder: 'content/history/'
+    format: 'frontmatter'
+    create: true
+    slug: '{{historyId}}'
+    fields:
+      - {label: "ID", name: "historyId", widget: "string"}
+      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+      - {label: "Nazwa", name: "title", widget: "string"}
+      - {label: "Priorytet", name: "priority", widget: "number", default: 0}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Treść", name: "body", widget: "markdown"}
   # - name: 'config'
   #   label: 'Konfiguracja'
   #   files:

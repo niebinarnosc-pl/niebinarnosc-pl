@@ -4,7 +4,10 @@
 @import "../../scss/mixins";
 
 .site-footer {
-    display: flex;
+    display: none;
+    @include for-tablet-landscape-up {
+        display: flex;
+    }
     height: 100%;
     background-color: $purple-dark-2;
     color: $purple-5;
@@ -14,6 +17,7 @@
         width: 100%;
         max-width: 59.75rem;
         padding: 1.5rem 0;
+        margin: 0 2.5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;

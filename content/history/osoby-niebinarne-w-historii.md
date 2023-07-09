@@ -1,13 +1,10 @@
-#### Termin “niebinarność”
-
-Termin “niebinarność” (ang. non-binary) pojawił się w języku stosunkowo niedawno, bo prawdopodobnie około roku 2000. Kiedy w latach 90’ narodziła się potrzeba nazwania zjawiska niebinarności w kulturze zachodniej, najpierw określano je jako genderqueer. 
-
-Genderqueer szczególnie kojarzone jest z Riki Anne Wilchins, która użyła tego terminu w swojej broszurze In Your Face już w 1995 roku, gdzie odnosiła go do osób o złożonych lub nienazwanych ekspresjach płci.
-
-Dzięki rozwojowi technologii i szybszemu przepływowi informacji, zarówno niebinarność jak i genderqueer to terminy coraz szerzej znane i używane zarówno w publikacjach naukowych jak i w kulturowym mainstreamie. W ostatnich latach słowo “niebinarność” zostało spopularyzowane również dzięki celebrytom dokonującym coming outów jako osoby niebinarne (np. Sam Smith czy Ruby Rose).
-
-#### Osoby niebinarne w historii
-
+---
+historyId: osoby-niebinarne-w-historii
+slug: osoby-niebinarne-w-historii
+title: Osoby niebinarne w historii
+priority: 990
+draft: false
+---
 Istnienie osób wymykających się binarnemu konceptowi płci było od zawsze dobrze znanym i szanowanym faktem w wielu kulturach. Pierwsze wzmianki o osobach niebędących kobietami ani mężczyznami można znaleźć już w starożytnej Mezopotamii i Egipcie. 
 
 Wiele z tych tożsamości jest silnie zakorzenione i uznawane do dziś w swoich kulturach. Mianem two-spirit określa się tożsamości płciowe istniejące w kulturach rdzenno amerykańskich, które istnieją poza binarnymi płciami określonymi w kulturze zachodniej. 

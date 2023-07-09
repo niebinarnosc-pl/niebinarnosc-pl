@@ -4,10 +4,12 @@ import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
 import DefinitionItem from "../../components/DefinitionItem";
 
-export default function Definicje({data}) {
+export default function Definicje({data: {definitions}}) {
     return <Page className={"definicje"} heading={"Definicje"}>
-        {data.allMarkdownRemark.nodes
-            .map(({html, frontmatter}, index) => <DefinitionItem key={index} {...frontmatter} html={html}/>)}
+        {definitions.nodes.map((definition, index, nodes) => <React.Fragment key={index}>
+            <DefinitionItem {...definition}/>
+            {index !== nodes.length - 1 && <hr/>}
+        </React.Fragment>)}
     </Page>
 }
 
@@ -15,16 +17,12 @@ export const Head = ({location}) => <Seo title={"Definicje"} addTitleTemplate lo
 
 export const query = graphql`
 {
-  allMarkdownRemark(
+  definitions: allMarkdownRemark(
     filter: {fields: {sourceName: {eq: "definitions"}}, frontmatter: {draft: {eq: false}}},
     sort: [{frontmatter: {priority: DESC}}, {frontmatter: {heading: ASC}}]
   ) {
     nodes {
-      html
-      frontmatter {
-        heading
-        slug
-      }
+      ...Definition
     }
   }
 }

@@ -4,16 +4,9 @@ thumbnail: images/lu-miniaturka.jpg
 fullPhoto: images/lu-pelne.jpg
 title: Lu
 slug: lu
-socials:
-  facebook: lu
-  twitter: lu
-  instagram: lu
 definitionIds:
   - demiplciowosc
   - niebinarnosc
-triggers:
-  - Przemoc seksualna
-  - Wulgaryzmy
 draft: false
 ---
 Kiedy rozkminiałam swoją płeć, termin niebinarność nawet jeszcze nie istniał. Kiedy zapytałam siebie, czy przypadkiem nie jestem trans-dziewczyną, odpowiedź oczywiście przyszła, że nie. Uznałam więc, że jestem cis-facetem i tak żyłam swoje życie.

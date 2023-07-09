@@ -8,7 +8,7 @@ import StoryItem from "../../components/StoryItem";
 export default function Opowiesci({data}) {
     return <Page className={"opowiesci"} heading={"Opowieści"}>
         <ContactCard/>
-        {data.allMarkdownRemark.nodes.map(({html, frontmatter}, index) => <StoryItem key={index} html={html} {...frontmatter}/>)}
+        {data.allMarkdownRemark.nodes.map((story, index) => <StoryItem key={index} {...story}/>)}
     </Page>
 }
 
@@ -18,38 +18,7 @@ export const query = graphql`
 {
   allMarkdownRemark(filter: {fields: {sourceName: {eq: "stories"}}, frontmatter: {draft: {eq: false}}}) {
     nodes {
-      html
-      frontmatter {
-        thumbnail {
-          childImageSharp {
-            gatsbyImageData(
-              width: 200
-            )
-          }
-        }
-        fullPhoto {
-          childImageSharp {
-            gatsbyImageData(
-              transformOptions: {
-                fit: INSIDE
-              }
-            )
-          }
-        }
-        title
-        socials {
-          facebook
-          twitter
-          instagram
-        }
-        definitions {
-          frontmatter {
-            title
-            slug
-          }
-        }
-        triggers
-      }
+      ...Story
     }
   }
 }

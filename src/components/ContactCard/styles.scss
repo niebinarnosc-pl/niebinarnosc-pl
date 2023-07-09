@@ -23,15 +23,15 @@
             font-size: 1rem;
         }
     }
-    a {
-        color: inherit;
-        font-weight: 700;
-        text-decoration: underline;
-    }
     p {
         margin: 0;
         @include for-phone-only {
             font-size: 0.875rem;
+        }
+        a {
+            color: inherit;
+            font-weight: 700;
+            text-decoration: underline;
         }
     }
     & > div {
@@ -40,12 +40,12 @@
         br {display: initial;}
         span:last-of-type {display: none;}
         a {display: initial;}
-        button {display: none;}
+        .button {display: none;}
         @include for-desktop-up {
             br {display: none;}
             span:last-of-type {display: initial;}
             a {display: none;}
-            button {display: initial;}
+            .button {display: initial;}
         }
     }
 }

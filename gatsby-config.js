@@ -9,7 +9,8 @@ module.exports = {
     title: `niebinarnosc.pl - polska strona o niebinarności, tworzona przez osoby niebinarne`,
     titleTemplate: "%s - niebinarnosc.pl",
     description: "",
-    siteUrl: `https://niebinarnosc-pl.netlify.app`
+    siteUrl: `https://niebinarnosc-pl.netlify.app`,
+    contactFormUrl: "https://forms.gle/TtUto7L4xXnts4Lg6"
   },
   plugins: [
     "gatsby-plugin-netlify",
@@ -49,7 +50,12 @@ module.exports = {
       }
     }, 
     "gatsby-transformer-json",
-    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        excerpt_separator: `<!-- endexcerpt -->`
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
