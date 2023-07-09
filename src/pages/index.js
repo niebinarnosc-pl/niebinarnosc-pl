@@ -13,7 +13,7 @@ export default function Home({data}) {
         <HomeNav/>
         <h3>Definicje</h3>
         <p className="font-weight-500">Niebinarność, demipłciowość, panpłciowość... Co to oznacza? Przejrzyj nasz słowniczek.</p>
-        <DefinitionItem {...data.definition}/>
+        <DefinitionItem {...data.definition} hideButton/>
         <Link to={`/definicje/`} className="button margin-top-bottom">Zobacz więcej definicji</Link>
         <hr/>
         <h3>Opowieści</h3>
