@@ -1,5 +1,7 @@
 ---
 storyId: karo
+thumbnail: images/karo-thumbnail.jpg
+fullPhoto: images/karo-full.jpg
 title: Karo
 slug: karo
 definitionIds:

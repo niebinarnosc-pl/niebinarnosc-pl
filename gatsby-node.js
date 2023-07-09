@@ -28,7 +28,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         resolve: async (source, args, context, info) => (await context.nodeModel.findAll({
           type: "MarkdownRemark",
           query: {
-            filter: { frontmatter: { definitionId: { in: source.definitionIds || [] } } }
+            filter: { frontmatter: { definitionId: { in: source.definitionIds || [] }, draft: { eq: false } } },
+            sort: { frontmatter: { priority: "DESC" } }
           }
         })).entries
       },
@@ -37,7 +38,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         resolve: async (source, args, context, info) => (await context.nodeModel.findAll({
           type: "MarkdownRemark",
           query: {
-            filter: { frontmatter: { definitionIds: { eq: source.definitionId } } }
+            filter: { frontmatter: { definitionIds: { eq: source.definitionId }, draft: { eq: false } } }
           }
         })).entries
       },

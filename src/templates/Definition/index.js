@@ -1,13 +1,14 @@
 import React from "react";
 import Page from "../../components/Page"
 import Seo from "../../components/Seo";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import DefinitionItem from "../../components/DefinitionItem";
 import StoryItem from "../../components/StoryItem";
 
 export default function Definicje({data: {definition}}) {
     return <Page className={"definicja"} heading={definition.frontmatter.heading}>
         <DefinitionItem {...definition} hideHeading/>
+        <Link className="button margin-top-bottom" to="/definicje/">Zobacz inne definicje</Link>
         {definition.frontmatter.stories
             .map((story, index) => <StoryItem key={index} {...story}/>)}
     </Page>

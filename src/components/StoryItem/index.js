@@ -53,7 +53,7 @@ export default function StoryItem({frontmatter: {thumbnail, fullPhoto, title, so
 export const query = graphql`
 fragment Story on MarkdownRemark {
   html
-  excerpt(format: HTML)
+  excerpt(format: HTML, pruneLength: 250)
   frontmatter {
     thumbnail {
       childImageSharp {

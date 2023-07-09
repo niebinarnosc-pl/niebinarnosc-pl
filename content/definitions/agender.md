@@ -3,7 +3,7 @@ heading: Apłciowość (agender)
 title: Apłciowość
 definitionId: aplciowosc
 slug: aplciowosc
-priority: 0
+priority: 850
 draft: false
 ---
 Tożsamość płciowa, którą dosłownie można przetłumaczyć jako "bez płci" (z gr. a - bez i z ang. gender - płeć (tożsamość płciowa)). Apłciowość może być rozumiana jako całkowity brak płci lub posiadanie płci, która jest neutralna - nie bycie ani mężczyzną, ani kobietą.

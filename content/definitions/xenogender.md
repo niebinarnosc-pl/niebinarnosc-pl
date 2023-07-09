@@ -3,7 +3,7 @@ heading: Ksenopłciowość (xenogender)
 title: Ksenopłciowość
 definitionId: ksenoplciowosc
 slug: ksenoplciowosc
-priority: 0
+priority: 700
 draft: false
 ---
 Tożsamość płciowa, która jest terminem zbiorczym dla osób, których identyfikacja wymyka się standardowemu rozumieniu płci i nie może być zdefiniowana poprzez cechy, które mają jakikolwiek związek z szeroko rozumianą kobiecością czy męskością. 
