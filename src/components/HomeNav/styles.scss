@@ -3,7 +3,10 @@
 @import "../../scss/buttons";
 
 .home-nav {
-    display: flex;
+    display: none;
+    @include for-tablet-portrait-up {
+        display: flex;
+    }
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
