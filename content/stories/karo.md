@@ -5,6 +5,7 @@ fullPhoto: images/karo-full.jpg
 title: Karo
 slug: karo
 definitionIds:
+  - niebinarnosc
   - aplciowosc
 draft: false
 ---
