@@ -1,5 +1,7 @@
 ---
 storyId: hihi
+thumbnail: images/hihi-thumbnail.jpg
+fullPhoto: images/hihi-full.jpg
 title: Hihi
 slug: hihi
 definitionIds:
