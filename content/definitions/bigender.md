@@ -1,6 +1,6 @@
 ---
-heading: Bipłciowość (bigender)
 title: Bipłciowość
+titleEn: Bigender
 definitionId: biplciowosc
 slug: biplciowosc
 priority: 600

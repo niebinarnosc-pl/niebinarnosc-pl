@@ -9,6 +9,8 @@ slug:
   encoding: "ascii"
   clean_accents: true
 locale: 'pl'
+editor:
+  preview: false
 
 collections:
   - name: 'definitions'
@@ -18,12 +20,16 @@ collections:
     create: true
     slug: '{{definitionId}}'
     fields:
-      - {label: "ID", name: "definitionId", widget: "string"}
-      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+      - {label: "ID", name: "definitionId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'. Nie należy go zmieniać, jeśli są już przydzielone jakieś opowieści."}
+      - label: 'Slug'
+        name: 'slug'
+        widget: 'string'
+        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
+        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
       - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Nagłówek na stronie", name: "heading", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Nazwa EN", name: "titleEn", widget: "string"}
+      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'stories'
     label: 'Opowieści'
@@ -34,11 +40,15 @@ collections:
     create: true
     slug: '{{storyId}}'
     fields:
-      - {label: "ID", name: "storyId", widget: "string"}
+      - {label: "ID", name: "storyId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'."}
       - {label: "Miniaturka", name: "thumbnail", widget: "image", required: false}
       - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image", required: false}
       - {label: "Imię / pseudonim", name: "title", widget: "string"}
-      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+      - label: 'Slug'
+        name: 'slug'
+        widget: 'string'
+        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
+        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
       - label: "Sociale"
         name: "socials"
         widget: "object"
@@ -60,13 +70,14 @@ collections:
           value_field: "definitionId"
           search_fields: ["heading", "definitionId", "title"]
           display_fields: ["title"]
+        hint: "Powinna być co najmniej jedna."
       - label: "Triggery"
         name: "triggers"
         widget: "list"
         required: false
         summary: "{{fields.trigger}}"
         field: {label: "Trigger", name: "trigger", widget: "string"}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'history'
     label: 'Historia'
@@ -75,11 +86,15 @@ collections:
     create: true
     slug: '{{historyId}}'
     fields:
-      - {label: "ID", name: "historyId", widget: "string"}
-      - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
+      - {label: "ID", name: "historyId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'."}
+      - label: 'Slug'
+        name: 'slug'
+        widget: 'string'
+        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
+        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
       - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
       - {label: "Treść", name: "body", widget: "markdown"}
   # - name: 'config'
   #   label: 'Konfiguracja'

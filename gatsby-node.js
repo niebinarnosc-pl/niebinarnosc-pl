@@ -56,7 +56,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           frontmatter {
             slug
-            heading
           }
         }
       }
@@ -69,13 +68,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const definitionTemplate = require.resolve(`./src/templates/Definition/index.js`)
-  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug, heading}}) => {
+  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug}}) => {
     createPage({
       path: `/${slug}`,
       component: definitionTemplate,
       context: {
-        slug,
-        heading
+        slug
       }
     })
   })

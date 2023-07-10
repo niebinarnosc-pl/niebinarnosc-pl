@@ -31,7 +31,7 @@ query($slug: String) {
     html
     frontmatter {
       title
-      heading
+      titleEn
       stories {
         ...Story
       }

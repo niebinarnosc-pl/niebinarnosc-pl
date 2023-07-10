@@ -1,6 +1,6 @@
 ---
-heading: Ksenopłciowość (xenogender)
 title: Ksenopłciowość
+titleEn: Xenogender
 definitionId: ksenoplciowosc
 slug: ksenoplciowosc
 priority: 700

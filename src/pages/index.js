@@ -17,7 +17,7 @@ export default function Home({data}) {
         <Link to={`/definicje/`} className="button margin-top-bottom">Zobacz więcej definicji</Link>
         <hr/>
         <h3>Opowieści</h3>
-        <p className="font-weight-500">Jak wygląda nasze życie? Poznaj naszą perspektywę, codzienne perspektywy i marzenia.</p>
+        <p className="font-weight-500">Jak wygląda nasze życie? Poznaj naszą perspektywę, codzienność i marzenia.</p>
         <StoryItem {...data.luStory} expandable/>
         <StoryItem {...data.hihiStory} expandable/>
         <StoryItem {...data.sybiliuszStory} expandable/>

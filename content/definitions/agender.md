@@ -1,6 +1,6 @@
 ---
-heading: Apłciowość (agender)
 title: Apłciowość
+titleEn: Agender
 definitionId: aplciowosc
 slug: aplciowosc
 priority: 850

@@ -1,6 +1,6 @@
 ---
-heading: Panpłciowość (pangender)
 title: Panpłciowość
+titleEn: Pangender
 definitionId: panplciowosc
 slug: panplciowosc
 priority: 0

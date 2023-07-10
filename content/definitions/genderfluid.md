@@ -1,6 +1,6 @@
 ---
-heading: Płynnopłciowość (genderfluid)
 title: Płynnopłciowość
+titleEn: Genderfluid
 definitionId: plynnoplciowosc
 slug: plynnoplciowosc
 priority: 900

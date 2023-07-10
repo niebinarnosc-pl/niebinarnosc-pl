@@ -1,5 +1,4 @@
 ---
-heading: Niebinarność
 title: Niebinarność
 definitionId: niebinarnosc
 slug: niebinarnosc

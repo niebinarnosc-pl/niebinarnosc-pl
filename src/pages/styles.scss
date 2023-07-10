@@ -4,7 +4,7 @@
 .home {
     & > header {
         background-color: $purple-100;
-        box-shadow: -50vw 0 $purple-100, 50vw 0 $purple-100;
+        box-shadow: -6.125rem 0 $purple-100, 6.125rem 0 $purple-100;
         color: white;
         margin-bottom: 1.5rem;
         padding: 1.5rem 0;
@@ -17,13 +17,7 @@
             font-style: normal;
         }
         @include for-tablet-landscape-up {
-            padding-top: 2.88rem;
-            background: transparent;
-            box-shadow: none;
-            color: $black;
-            em {
-                color: $purple-100;
-            }
+            padding: 2.375rem 0;
         }
         h1 {
             color: inherit !important;

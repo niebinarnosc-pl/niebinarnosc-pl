@@ -1,6 +1,6 @@
 ---
-heading: Demipłciowość (demigender)
 title: Demipłciowość
+titleEn: Demigender
 definitionId: demiplciowosc
 slug: demiplciowosc
 priority: 800

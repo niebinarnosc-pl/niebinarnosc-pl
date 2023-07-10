@@ -19,7 +19,7 @@ export const query = graphql`
 {
   definitions: allMarkdownRemark(
     filter: {fields: {sourceName: {eq: "definitions"}}, frontmatter: {draft: {eq: false}}},
-    sort: [{frontmatter: {priority: DESC}}, {frontmatter: {heading: ASC}}]
+    sort: [{frontmatter: {priority: DESC}}, {frontmatter: {title: ASC}}]
   ) {
     nodes {
       ...Definition

@@ -12,7 +12,7 @@ export default function Footer() {
                 <Link to={"/"}>
                     <StaticImage className="logo" width={400} src={"../../images/logo-white.png"} alt={"niebinarnosc.pl"}/>
                 </Link>
-                <p><strong>niebinarnosc.pl</strong></p>
+                {/* <p><strong>niebinarnosc.pl</strong></p> */}
                 <div className="contact-container">
                     <Link to="/kontakt/"><strong>Formularz kontaktowy</strong></Link>
                     <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail/>kontakt@niebinarnosc.pl</a>
