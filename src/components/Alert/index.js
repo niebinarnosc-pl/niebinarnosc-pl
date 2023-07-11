@@ -1,11 +1,12 @@
 import React from "react";
 import "./styles.scss";
+import { IconClose } from "../Icons";
 
-export default function Alert({message, type = "success", isOpen, setIsOpen}) {
-    return <div className={`alert ${type} ${isOpen || "closed"}`}>
+export default function Alert({message, type = "success", close}) {
+    return <div className={`alert ${type}`}>
         <span>{message}</span>
-        <button type="button" onClick={() => setIsOpen(false)}>
-            <span aria-hidden="true">&times;</span>
+        <button type="button" onClick={close}>
+            <IconClose/>
         </button>
     </div>
 }

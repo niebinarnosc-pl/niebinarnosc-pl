@@ -25,6 +25,9 @@
         margin-left: auto;
         width: fit-content;
     }
+    &:disabled {
+        background-color: $gray-60;
+    }
 }
 
 .clear-button {

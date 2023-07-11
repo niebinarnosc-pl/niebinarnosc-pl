@@ -1,27 +1,24 @@
-@import "../../scss/mixins";
+@import "../../scss/variables";
 
 .alert {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    font-size: 1.2rem;
-    &.closed {
-        display: none;
-    }
+    align-items: start;
+    gap: 1.5rem;
+    border-radius: 0.75rem;
+    padding: 1rem;
     &.success {
-        &, & button {color: get-color("green", 5);}
-        background-color: transparentize(get-color("green"), 0.8);
+        &, & button {color: $purple-100;}
+        background-color: $purple-20;
     }
     &.error {
-        &, & button {color: get-color("red", 5);}
-        background-color: transparentize(get-color("red"), 0.8);
+        &, & button {color: #ff2222;}
+        background-color: #ffe6e6;
     }
     button {
+        font-size: inherit;
         background: transparent;
         border: none;
-        margin: 1rem;
-    }
-    & > span {
-        margin: 1rem;
+        padding: 0;
     }
 }
