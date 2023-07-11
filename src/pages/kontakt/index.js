@@ -45,8 +45,8 @@ export default function Kontakt() {
             {alertOpen && <Alert type={alertType} message={alertMessage} close={() => setAlertOpen(false)}/>}
             <input type="hidden" name="form-name" value="Kontakt"/>
             <input type="hidden" name="subject" data-remove-prefix value={`Wiadomość od ${userEmail}`}/>
-            <label><IconEmail/><input type="email" placeholder="E-mail, np. nazwa@gmail.com" onChange={e => setUserEmail(e.target.value)} required/></label>
-            <textarea placeholder="Tutaj wpisz swoją wiadomość" required/>
+            <label><IconEmail/><input type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" onChange={e => setUserEmail(e.target.value)} required/></label>
+            <textarea name="text" placeholder="Tutaj wpisz swoją wiadomość" required/>
             <label className="display-none">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
             <button type="submit" className="button" disabled={isSending}>Wyślij wiadomość</button>
         </form>
