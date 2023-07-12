@@ -17,7 +17,7 @@ export default function Definicje({data: {definition, site}}) {
             <div>
                 <h4>Brak opowieści :(</h4>
                 <p>Niestety, nikt nie podzielił się jeszcze swoją opowieścią.</p>
-                <p>Chcesz być pierwsza_y? <strong><a href={site.siteMetadata.contactFormUrl}>Napisz do nas.</a></strong></p>
+                <p>Chcesz być pierwsz_? <strong><a href={site.siteMetadata.contactFormUrl}>Napisz do nas.</a></strong></p>
             </div>
             }
     </Page>
