@@ -7,7 +7,8 @@ import StoryItem from "../../components/StoryItem";
 import ContactCard from "../../components/ContactCard";
 
 export default function Definicje({data: {definition, site}}) {
-    return <Page className={"definicja"} heading={definition.frontmatter.heading}>
+    const {title, titleEn} = definition.frontmatter
+    return <Page className={"definicja"} heading={title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")}>
         <DefinitionItem {...definition} hideHeading hideButton/>
         <Link className="button margin-top-bottom" to="/definicje/">Zobacz inne definicje</Link>
         <hr/>
@@ -23,7 +24,7 @@ export default function Definicje({data: {definition, site}}) {
     </Page>
 }
 
-export const Head = ({pageContext, location}) => <Seo title={pageContext.heading} addTitleTemplate location={location}/>
+export const Head = ({pageContext, location}) => <Seo title={pageContext.title} addTitleTemplate location={location}/>
 
 export const query = graphql`
 query($slug: String) {

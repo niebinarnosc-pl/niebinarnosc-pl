@@ -56,6 +56,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           frontmatter {
             slug
+            title
+            titleEn
           }
         }
       }
@@ -68,12 +70,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const definitionTemplate = require.resolve(`./src/templates/Definition/index.js`)
-  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug}}) => {
+  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug, title, titleEn}}) => {
     createPage({
       path: `/${slug}`,
       component: definitionTemplate,
       context: {
-        slug
+        slug,
+        title: title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")
       }
     })
   })
