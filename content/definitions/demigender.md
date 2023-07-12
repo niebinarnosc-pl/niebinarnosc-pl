@@ -11,5 +11,5 @@ Tożsamość płciowa oznaczająca utożsamianie się częściowo, ale nie w pe�
 Pod parasolem demipłciowości znajdują się m.in. takie tożsamości płciowe jak:
 
 * demidziewczyna/demikobieta (demigirl) - osoba jest częściowo kobietą,
-* demichłopak/demimężczyzna (demiboy)- osoba jest częściowo mężczyzną,
+* demichłopak/demimężczyzna (demiboy) - osoba jest częściowo mężczyzną,
 * demipłynność (demifluid) - tożsamość płciowa osoby jest częściowo płynna.
