@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `niebinarnosc.pl - polska strona o niebinarności, tworzona przez osoby niebinarne`,
     titleTemplate: "%s - niebinarnosc.pl",
-    description: "Dowiedz się czym są niebinarne tożsamości płciowe. Poznaj historię niebinarności oraz opowieści osób niebinarnych.",
+    description: "Dowiedz się, czym są niebinarne tożsamości płciowe. Poznaj historię niebinarności oraz opowieści osób niebinarnych.",
     siteUrl: `https://niebinarnosc.pl`,
     contactFormUrl: "https://forms.gle/TtUto7L4xXnts4Lg6"
   },

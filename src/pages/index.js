@@ -32,7 +32,7 @@ export default function Home({data}) {
 
 export const Head = ({location}) => <Seo
     title={"niebinarnosc.pl - polska strona o niebinarności, tworzona przez osoby niebinarne"}
-    description={"Dowiedz się czym są niebinarne tożsamości płciowe. Poznaj historię niebinarności oraz opowieści osób niebinarnych."}
+    description={"Dowiedz się, czym są niebinarne tożsamości płciowe. Poznaj historię niebinarności oraz opowieści osób niebinarnych."}
     location={location}
 />
 
