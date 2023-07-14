@@ -13,7 +13,9 @@ export default function Definicje({data: {definitions}}) {
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"Definicje"} addTitleTemplate location={location}/>
+export const Head = ({location}) => <Seo title={"Definicje"} addTitleTemplate location={location}
+    description={"Niebinarność, demipłciowość, panpłciowość... Co to oznacza? Przejrzyj nasz słowniczek."}
+/>
 
 export const query = graphql`
 {

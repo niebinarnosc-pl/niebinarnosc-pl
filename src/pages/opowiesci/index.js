@@ -12,7 +12,9 @@ export default function Opowiesci({data}) {
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"Opowieści"} addTitleTemplate location={location}/>
+export const Head = ({location}) => <Seo title={"Opowieści"} addTitleTemplate location={location}
+    description={"Jak wygląda życie osób niebinarnych? Poznaj naszą perspektywę, codzienność i marzenia."}
+/>
 
 export const query = graphql`
 {

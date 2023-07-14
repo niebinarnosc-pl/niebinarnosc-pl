@@ -30,7 +30,11 @@ export default function Home({data}) {
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"niebinarnosc.pl"} location={location}/>
+export const Head = ({location}) => <Seo
+    title={"niebinarnosc.pl - polska strona o niebinarności, tworzona przez osoby niebinarne"}
+    description={"Dowiedz się czym są niebinarne tożsamości płciowe. Poznaj historię niebinarności oraz opowieści osób niebinarnych."}
+    location={location}
+/>
 
 export const query = graphql`
 {

@@ -53,4 +53,6 @@ export default function Kontakt() {
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"Kontakt"} addTitleTemplate location={location}/>
+export const Head = ({location}) => <Seo title={"Kontakt"} addTitleTemplate location={location}
+    description={"Skontaktuj się z twórcami strony niebinarnosc.pl"}
+/>

@@ -10,7 +10,9 @@ export default function Historia({data}) {
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"Historia"} addTitleTemplate location={location}/>
+export const Head = ({location}) => <Seo title={"Historia"} addTitleTemplate location={location}
+    description={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}
+/>
 
 export const query = graphql`
 {

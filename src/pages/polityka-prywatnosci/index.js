@@ -51,21 +51,21 @@ export default function PolitykaPrywatnosci() {
         </ol>
         <h4 id="polityka-użytkowania-plików-cookie">Polityka użytkowania plików cookie</h4>
         <ol>
-        <li>Niniejsza polityka dotyczy użytkowania plików cookie (tzw. „ciasteczek”) przez stronę internetową projektu Nowa Tęcza na Placu Zbawiciela w budżecie obywatelskim w Warszawie (<a href="https://www.nowatecza.pl/">www.nowatecza.pl</a> oraz powiązane z nią podstrony) – dalej zwaną „Strona projektu Nowa Tęcza na Placu Zbawiciela”.</li>
-        <li>Strona projektu Nowa tęcza na Placu Zbawiciela korzysta z plików cookie w celu dostosowania zawartości strony do Twoich preferencji. Używane są również w celu tworzenia anonimowych statystyk.</li>
+        <li>Niniejsza polityka dotyczy użytkowania plików cookie (tzw. „ciasteczek”) przez stronę internetową (<a href="https://niebinarnosc.pl/">niebinarnosc.pl</a> oraz powiązane z nią podstrony) – dalej zwaną „Strona niebinarnosc.pl”.</li>
+        <li>Strona niebinarnosc.pl korzysta z plików cookie w celu dostosowania zawartości strony do Twoich preferencji. Używane są również w celu tworzenia anonimowych statystyk.</li>
         <li>Pliki cookie są danymi informatycznymi występującymi na ogół w formacie tekstowym zapisywanymi na urządzeniu końcowym, zawierające dane (w tym nazwę) dotyczące strony internetowej.</li>
-        <li>Podmiotem odpowiedzialnym za automatyczne umieszczanie na Twoim urządzeniu plików cookie jest operator Strony projektu Nowa tęcza na Placu Zbawiciela.</li>
-        <li>Strona projektu Nowa tęcza na Placu Zbawiciela stosuje dwa rodzaje plików cookie:
+        <li>Podmiotem odpowiedzialnym za automatyczne umieszczanie na Twoim urządzeniu plików cookie jest operator Strony niebinarnosc.pl.</li>
+        <li>Strona niebinarnosc.pl stosuje dwa rodzaje plików cookie:
         <ol>
         <li>sesyjne, czyli takie, które pozwalają zapamiętać dokonane wybory. Pozostają one na urządzeniu końcowym do czasu zakończenia sesji strony internetowej/aplikacji bądź wyłączenia przeglądarki.</li>
         <li>stałe, czyli takie, które są przechowywane na urządzeniu przez czas zdefiniowany w parametrach danego pliku.</li>
         </ol>
         </li>
-        <li>Strona projektu Nowa tęcza na Placu Zbawiciela korzysta z funkcjonalności analizy internetowej Google Analytics, która również używa plików cookie.</li>
-        <li>Pliki cookie można wyczyścić, wyłączyć lub ograniczyć ich przechowywanie w ustawieniach przeglądarki internetowej. Może to wpłynąć na niektóre funkcjonalności Strony projektu Nowa tęcza na Placu Zbawiciela.</li>
+        <li>Strona niebinarnosc.pl korzysta z funkcjonalności analizy internetowej Google Analytics, która również używa plików cookie.</li>
+        <li>Pliki cookie można wyczyścić, wyłączyć lub ograniczyć ich przechowywanie w ustawieniach przeglądarki internetowej. Może to wpłynąć na niektóre funkcjonalności Strony niebinarnosc.pl.</li>
         <li>Pliki cookie mogą być wykorzystywane przez współpracujących ze Stowarzyszeniem partnerów.</li>
         </ol>
     </Page>
 }
 
-export const Head = ({location}) => <Seo title={"Polityka prywatności"} description={"Polityka prywatności"} addTitleTemplate location={location}/>
+export const Head = ({location}) => <Seo title={"Polityka prywatności"} description={"Polityka prywatności strony niebinarnosc.pl"} addTitleTemplate location={location}/>
