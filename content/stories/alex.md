@@ -1,5 +1,7 @@
 ---
 storyId: alex
+thumbnail: images/alex-mini.jpg
+fullPhoto: images/alex.jpg
 title: Alex
 slug: alex
 definitionIds:
