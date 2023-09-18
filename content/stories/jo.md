@@ -1,6 +1,7 @@
 ---
 storyId: jo
 thumbnail: images/jo-jo-wu-jo-wu-.jpg
+fullPhoto: images/jo-jo-wu-jo-wu-.jpg
 title: Jo
 slug: jo
 definitionIds:
