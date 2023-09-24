@@ -2,15 +2,15 @@ import React from "react"
 import "./styles.scss"
 import love from "../../images/transheart.svg";
 import {Link} from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 import { IconEmail } from "../Icons";
+import logo from "../../images/logo-full.svg";
 
 export default function Footer() {
     return (
         <footer className={"site-footer"}>
             <div className="footer-contents">
                 <Link to={"/"}>
-                    <StaticImage className="logo" width={400} src={"../../images/logo-white.png"} alt={"niebinarnosc.pl"}/>
+                    <img className="logo" src={logo} alt={"niebinarnosc.pl"}/>
                 </Link>
                 {/* <p><strong>niebinarnosc.pl</strong></p> */}
                 <div className="contact-container">

@@ -18,3 +18,15 @@
     margin-bottom: 2.5rem;
   }
 }
+
+@mixin button-border($hover: true) {
+  border: 1px solid $purple-10;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0 0 $purple-10;
+  @if $hover {
+    &:hover {
+      border-color: $purple-20;
+      box-shadow: 0 4px 0 0 $purple-20;
+    }
+  }
+}

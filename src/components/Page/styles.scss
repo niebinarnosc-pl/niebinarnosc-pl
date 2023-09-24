@@ -5,9 +5,11 @@
 .page {
   margin: 0 auto;
   max-width: $page-max-width;
+  margin-top: 6.5rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   @include for-tablet-portrait-up {
+    margin-top: 7.5rem;
     padding-top: 2.88rem;
     padding-bottom: 2.88rem
   }

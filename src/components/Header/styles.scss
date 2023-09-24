@@ -4,10 +4,13 @@
 
 .site-header {
   z-index: 100;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
-  // @include box-shadow;
-  // box-shadow: rgba(0, 0, 0, 0.15) 0 0 2rem;
+  transition: top 200ms;
+  &.hidden {
+    top: -7rem;
+  }
   .standard-site-header {
     display: none;
   }
@@ -19,15 +22,4 @@
       display: none;
     }
   }
-  // @each $name, $list in $rainbow {
-  //   @each $color in $list {
-  //     $index: index($list, $color);
-  //     $white-font: true;
-  //     @if $name == "yellow" and ($index == 1 or $index == 2 or $index == 3) {
-  //       $white-font: false;
-  //     }
-  //     @include nav-border("" + $name + $index, $color, "bottom", $white-font);
-  //     @include nav-border("" + $name + $index, $color, "right", $white-font);
-  //   }
-  // }
 }
