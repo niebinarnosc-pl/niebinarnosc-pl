@@ -14,19 +14,26 @@
     &, &:hover {text-decoration: none;}
     background-color: $purple-100;
     border-radius: 12px;
-    border: none;
+    border: 1px solid $purple-dark-1;
+    box-shadow: 0 4px 0 0 $purple-dark-1;
     &.border {
         border: 2px solid white;
     }
-    transition: 0.1s ease-in-out;
+    transition: 200ms ease-in-out;
     cursor: pointer;
+    width: 100%;
     @include for-tablet-portrait-up {
         align-self: flex-end;
         margin-left: auto;
         width: fit-content;
     }
+    &:hover:not(:disabled) {
+        background-color: $purple-dark-1;
+    }
     &:disabled {
-        background-color: $gray-60;
+        background-color: $gray-40;
+        border: 1px solid $gray-60;
+        box-shadow: 0 4px 0 0 $gray-60;
     }
 }
 

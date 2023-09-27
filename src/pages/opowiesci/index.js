@@ -4,11 +4,12 @@ import ContactCard from "../../components/ContactCard";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
 import StoryItem from "../../components/StoryItem";
+import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Opowiesci({data}) {
-    return <Page className={"opowiesci"} heading={"Opowieści"}>
+    return <Page className={"opowiesci"} heading={"Opowieści"} subheading={"Nasze opowieści o płciowości."}>
         <ContactCard/>
-        {data.allMarkdownRemark.nodes.map((story, index) => <StoryItem key={index} {...story}/>)}
+        <ContentItemContainer items={data.allMarkdownRemark.nodes} />
     </Page>
 }
 

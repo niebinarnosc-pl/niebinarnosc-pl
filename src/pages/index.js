@@ -3,30 +3,20 @@ import "./styles.scss"
 import Seo from "../components/Seo";
 import Page from "../components/Page";
 import { Link, graphql } from "gatsby";
-import DefinitionItem from "../components/DefinitionItem";
-import StoryItem from "../components/StoryItem";
-import HistoryItem from "../components/HistoryItem";
 import HomeNav from "../components/HomeNav";
+import HomeHeader from "../components/HomeHeader";
+import ContactForm from "../components/ContactForm";
+import { ContentItemContainer } from "../components/ContentItem";
 
 export default function Home({data}) {
-    return <Page className={"home"} heading={<>Niebinarność <span>jest dziobakiem wśród płci.</span> <span>Ni to wydra, ni to kaczka, <em>still cute</em></span></>}>
+    return <Page className={"home"}>
+        <HomeHeader/>
         <HomeNav/>
-        <h3>Definicje</h3>
-        <p className="font-weight-500">Niebinarność, demipłciowość, panpłciowość... Co to oznacza? Przejrzyj nasz słowniczek.</p>
-        <DefinitionItem {...data.definition} hideButton/>
-        <Link to={`/definicje/`} className="button margin-top-bottom">Zobacz więcej definicji</Link>
-        <hr/>
-        <h3>Opowieści</h3>
-        <p className="font-weight-500">Jak wygląda nasze życie? Poznaj naszą perspektywę, codzienność i marzenia.</p>
-        <StoryItem {...data.luStory} expandable/>
-        <StoryItem {...data.hihiStory} expandable/>
-        <StoryItem {...data.sybiliuszStory} expandable/>
-        <Link to={`/opowiesci/`} className="button margin-top-bottom">Zobacz więcej opowieści</Link>
-        <hr/>
-        <h3>Historia</h3>
-        <p className="font-weight-500">Jaka jest nasza historia? Dowiedz się więcej o niebinarności.</p>
-        <HistoryItem {...data.history}/>
-        <Link to={`/historia/`} className="button margin-top-bottom">Zobacz więcej informacji</Link>
+        <section>
+          <h3>Niusy</h3>
+          <ContentItemContainer isLinks items={[data.luStory, data.hihiStory, data.sybiliuszStory]}/>
+        </section>
+        <ContactForm/>
     </Page>
 }
 

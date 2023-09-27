@@ -14,7 +14,7 @@ export default function Footer() {
                 </Link>
                 {/* <p><strong>niebinarnosc.pl</strong></p> */}
                 <div className="contact-container">
-                    <Link to="/kontakt/"><strong>Formularz kontaktowy</strong></Link>
+                    <Link to="/#kontakt"><strong>Napisz do nas</strong></Link>
                     <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail/>kontakt@niebinarnosc.pl</a>
                 </div>
                 {/* <p>© 2023 Wszelkie prawa zastrzeżone | <Link to={`/polityka-prywatnosci/`}>Polityka Prywatności</Link></p> */}

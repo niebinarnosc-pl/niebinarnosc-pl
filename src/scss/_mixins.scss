@@ -19,10 +19,13 @@
   }
 }
 
-@mixin button-border($hover: true) {
+@mixin button-border($hover: true, $dark: false) {
+  background-color: white;
+  text-decoration: none;
   border: 1px solid $purple-10;
   border-radius: 0.75rem;
   box-shadow: 0 4px 0 0 $purple-10;
+  transition: box-shadow 200ms, border-color 200ms;
   @if $hover {
     &:hover {
       border-color: $purple-20;

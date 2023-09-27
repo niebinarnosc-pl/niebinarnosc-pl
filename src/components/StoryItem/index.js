@@ -6,7 +6,7 @@ import Lightbox from "../Lightbox";
 import { Link, graphql } from "gatsby";
 import defaultThumbnail from "../../images/nb-flag-square.svg"
 
-export default function StoryItem({frontmatter: {thumbnail, fullPhoto, title, socials, definitions, triggers}, html, excerpt, expandable = false}) {
+export default function StoryItem({frontmatter: {id, thumbnail, fullPhoto, title, definitions, triggers}, html, excerpt, expandable = false}) {
     const [expanded, setExpanded] = useState(false)
     const [imageActive, setImageActive] = useState(false)
     const thumbnailElem = <div className="thumbnail">
@@ -17,7 +17,7 @@ export default function StoryItem({frontmatter: {thumbnail, fullPhoto, title, so
             <img src={defaultThumbnail} alt="Flaga niebinarna"/>
         }
     </div>
-    return <div key={title} className="story-item">
+    return <div key={title} className="story-item" id={id}>
         {fullPhoto && imageActive && <Lightbox image={fullPhoto} alt={title} deactivate={() => setImageActive(false)}/>}
         <aside>
             {thumbnailElem}
@@ -29,11 +29,6 @@ export default function StoryItem({frontmatter: {thumbnail, fullPhoto, title, so
                 </div>
                 <div className="info">
                     <h4>{title}</h4>
-                    {/* <div className="socials">
-                        <a href={`https://www.facebook.com/${socials.facebook}`}>{<IconLogoFacebook size={1}/>}</a>
-                        <a href={`https://twitter.com/${socials.twitter}`}>{<IconLogoTwitter size={1}/>}</a>
-                        <a href={`https://www.instagram.com/${socials.instagram}`}>{<IconLogoInstagram size={1}/>}</a>
-                    </div> */}
                     <div className="tags">
                         {definitions.map(({frontmatter: {slug, title}}) => <p key={slug} className="badge-button"><Link to={`/${slug}`}>{title}</Link></p>)}
                     </div>
@@ -49,41 +44,3 @@ export default function StoryItem({frontmatter: {thumbnail, fullPhoto, title, so
         </article>
     </div>
 }
-
-export const query = graphql`
-fragment Story on MarkdownRemark {
-  html
-  excerpt(format: HTML, pruneLength: 250)
-  frontmatter {
-    thumbnail {
-      childImageSharp {
-        gatsbyImageData(
-          width: 200
-        )
-      }
-    }
-    fullPhoto {
-      childImageSharp {
-        gatsbyImageData(
-          transformOptions: {
-            fit: INSIDE
-          }
-        )
-      }
-    }
-    title
-    socials {
-      facebook
-      twitter
-      instagram
-    }
-    definitions {
-      frontmatter {
-        title
-        slug
-      }
-    }
-    triggers
-  }
-}
-`

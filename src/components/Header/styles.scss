@@ -4,12 +4,22 @@
 
 .site-header {
   z-index: 100;
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
+  max-height: 0;
   transition: top 200ms;
   &.hidden {
     top: -7rem;
+  }
+  .site-header-container {
+    margin: 0 auto;
+    max-width: $page-max-width;
+    @include side-padding;
+    padding-top: 1rem;
+    @include for-tablet-portrait-up {
+        padding-top: 1.5rem;
+    }
   }
   .standard-site-header {
     display: none;

@@ -1,0 +1,124 @@
+@import "../../scss/variables";
+@import "../../scss/breakpoints";
+@import "../../scss/buttons";
+
+.content-item-container {
+  @include for-phone-only {
+    padding: 0 $side-padding-small;
+    background-color: white;
+  }
+  margin: 0 -$side-padding-small;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  @include for-phone-only {
+    & > *:not(:last-child) {
+      border-bottom: 1px solid $purple-10;
+    }
+  }
+  @include for-tablet-portrait-up {
+    margin: 0 0 4rem 0;
+    gap: 1rem;
+    &:not(.with-links) {
+      gap: 2rem;
+      border-radius: 0.75rem;
+      background-color: white;
+      .text-container {
+        max-width: 40rem;
+      }
+    }
+  }
+  @include for-tablet-landscape-up {
+    
+  }
+  @include for-desktop-up {
+    &:not(.with-links) {
+      padding: 2.5rem;
+    }
+  }
+  .content-item-as-link {
+    text-decoration: none;
+    @include for-tablet-portrait-up {
+      @include button-border;
+    }
+    .side-image {
+      padding-right: 0 !important;
+      border-right: none !important;
+    }
+  }
+  .content-item {
+    .thumbnail {
+      button {
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+      }
+      img, .gatsby-image-wrapper {
+        border-radius: 0.75rem;
+        width: 4.5rem;
+        @include for-tablet-landscape-up {
+          width: 9rem;
+        }
+        margin: 0;
+      }
+    }
+    border-radius: 0.75rem;
+    padding: $side-padding-small 0;
+    @include for-tablet-portrait-up {
+      padding: $side-padding-big;
+    }
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    .side-image {
+      display: none;
+      @include for-tablet-landscape-up {
+        display: initial;
+        padding-right: 1.5rem;
+        border-right: 1px solid $purple-10;
+      }
+    }
+    .text-container {
+      width: 100%;
+    }
+    header {
+      display: flex;
+      align-items: end;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      .header-image {
+        @include for-tablet-landscape-up {
+          display: none;
+        }
+      }
+      & > div.info {
+        min-width: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        @include for-tablet-landscape-up {
+          gap: 0.75rem;
+        }
+        h4 {
+          margin: 0;
+        }
+        & > div.tags {
+          * {
+            margin: 0;
+          }
+          display: flex;
+          gap: 0.5rem;
+          overflow-x: auto;
+          @include for-tablet-landscape-up {
+            flex-wrap: wrap;
+          }
+        }
+      }
+    }
+    .text > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -3,12 +3,13 @@
 @import "../../scss/buttons";
 
 .story-item {
-  margin-bottom: 2.5rem;
-  &:last-of-type {
-    margin-bottom: 1.5rem;
-  }
-  @include for-tablet-landscape-up {
-    padding: 1.5rem 0;
+  background-color: white;
+  padding: $side-padding-small;
+  margin: 0 -$side-padding-small;
+  @include for-tablet-portrait-up {
+    padding: $side-padding-big;
+    margin: 0 0 1rem 0;
+    @include button-border;
   }
   display: flex;
   gap: 1.25rem;
@@ -21,7 +22,7 @@
         cursor: pointer;
       }
       img, .gatsby-image-wrapper {
-        border-radius: 12px;
+        border-radius: 0.75rem;
         width: 6.25rem;
         height: 6.25rem;
         margin: 0;
@@ -62,18 +63,6 @@
         gap: 0.5rem;
         @include for-tablet-landscape-up {
           gap: 0.75rem;
-        }
-        .socials {
-          display: flex;
-          gap: 0.75rem;
-          a {
-            line-height: 1;
-            font-size: 1.5rem;
-            @include for-tablet-portrait-up {
-              font-size: 2rem;
-            }
-            color: $purple-100;
-          }
         }
         h4 {
           margin: 0;

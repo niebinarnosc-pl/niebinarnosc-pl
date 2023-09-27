@@ -3,13 +3,11 @@ import Page from "../../components/Page"
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
 import DefinitionItem from "../../components/DefinitionItem";
+import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Definicje({data: {definitions}}) {
-    return <Page className={"definicje"} heading={"Definicje"}>
-        {definitions.nodes.map((definition, index, nodes) => <React.Fragment key={index}>
-            <DefinitionItem {...definition}/>
-            {index !== nodes.length - 1 && <hr/>}
-        </React.Fragment>)}
+    return <Page className={"definicje"} heading={"Definicje"} subheading={"Czym jest niebinarność i inne."}>
+        <ContentItemContainer items={definitions.nodes} />
     </Page>
 }
 

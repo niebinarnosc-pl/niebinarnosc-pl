@@ -3,8 +3,11 @@
 
 .mobile-site-header {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    padding: 1rem 1.5rem;
+    @include button-border($hover: false);
+    z-index: 600;
+    background-color: white;
     a {
         font-size: 1.125rem;
         @include for-tablet-portrait-up {
@@ -12,47 +15,25 @@
         }
     }
     color: $purple-dark-1;
-    .header-container {
+    .title-bar {
         display: flex;
-        flex-direction: column;
-        margin: 1rem auto;
-        width: calc(100% - 2rem);
+        align-items: center;
+        justify-content: space-between;
+        height: 2rem;
+        & > a, & > a > img {
+            height: 100%;
+        }
+    }
+    .nav-expand-button {
+        cursor: pointer;
+        border: none;
+        color: inherit;
+        font-size: 1.5rem;
         @include for-tablet-portrait-up {
-            margin: 1.5rem auto;
-            width: calc(100% - 3rem);
+            font-size: 2rem;
         }
-        padding: 1rem 1.5rem;
-        @include button-border($hover: false);
-        z-index: 600;
-        background-color: white;
-        .title-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 2rem;
-            & > a {
-                display: flex;
-                align-items: center;
-            }
-            & > div a {
-                margin: 0 0.9rem;
-            }
-            img {
-                height: 2rem;
-                margin-right: 0.3rem;
-            }
-        }
-        .nav-expand-button {
-            cursor: pointer;
-            border: none;
-            color: inherit;
-            font-size: 1.5rem;
-            @include for-tablet-portrait-up {
-                font-size: 2rem;
-            }
-            line-height: 0;
-            background: transparent;
-        }
+        line-height: 0;
+        background: transparent;
     }
     .nav-wrapper {
         display: grid;
@@ -69,6 +50,7 @@
                 height: 0.75rem;
             }
             a {
+                color: inherit;
                 padding: 1.25rem 0;
                 width: min-content;
                 font-weight: 500;
