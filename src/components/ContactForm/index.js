@@ -52,7 +52,7 @@ export default function ContactForm() {
                     <label><IconEmail/><input type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" onChange={e => setUserEmail(e.target.value)} required/></label>
                     <textarea name="text" placeholder="Tutaj wpisz swoją wiadomość" required/>
                     <label className="display-none">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
-                    <button type="submit" className="button" disabled={isSending}>Wyślij wiadomość</button>
+                    <button type="submit" className="button primary" disabled={isSending}>Wyślij wiadomość</button>
                 </form>
             </div>
         </div>

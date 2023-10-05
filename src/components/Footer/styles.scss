@@ -12,9 +12,8 @@
     .footer-contents {
         height: fit-content;
         width: 100%;
-        max-width: 59.75rem;
-        padding: 1.5rem 0;
-        margin: 0 2.5rem;
+        max-width: $page-max-width;
+        padding: 1.5rem;
         display: flex;
         @include for-phone-only {
             gap: 1.5rem;

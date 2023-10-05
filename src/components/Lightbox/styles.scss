@@ -9,9 +9,14 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0,0.6);
-    .gatsby-image-wrapper {
-        max-height: 85%;
-        max-width: 85%;
+    & > div {
+        max-height: 85vh;
+        max-width: 85vw;
+        & > * {
+            width: 100vw;
+            max-width: 100%;
+            max-height: 85vh;
+        }
         img {
             object-fit: contain !important;
         }

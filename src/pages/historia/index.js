@@ -2,11 +2,11 @@ import React from "react";
 import Page from "../../components/Page";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import HistoryItem from "../../components/HistoryItem";
+import {TextContentItemContainer} from "../../components/TextContentItem";
 
 export default function Historia({data}) {
-    return <Page className={"historia"} heading={"Historia"}>
-        {data.historyItems.nodes.map((historyItem, index) => <HistoryItem key={index} {...historyItem}/>)}
+    return <Page className={"historia"} heading={"Historia"} subheading={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}>
+        <TextContentItemContainer items={data.historyItems.nodes}/>
     </Page>
 }
 

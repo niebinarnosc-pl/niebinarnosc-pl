@@ -19,17 +19,23 @@
   }
 }
 
-@mixin button-border($hover: true, $dark: false) {
+@mixin button-border($hover: true, $phone: false) {
   background-color: white;
   text-decoration: none;
-  border: 1px solid $purple-10;
-  border-radius: 0.75rem;
+  @if not $phone {
+    border: 1px solid $purple-10;
+    border-radius: 0.75rem;
+  }
   box-shadow: 0 4px 0 0 $purple-10;
-  transition: box-shadow 200ms, border-color 200ms;
+  transition: box-shadow 100ms, border-color 100ms, transform 100ms, color 100ms;
   @if $hover {
     &:hover {
       border-color: $purple-20;
       box-shadow: 0 4px 0 0 $purple-20;
+    }
+    &:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 0 $purple-20;
     }
   }
 }

@@ -7,6 +7,11 @@ exports.onCreateNode = ({ node, getNode, actions: {createNodeField} }) => {
     name: 'sourceName',
     value: getNode(node.parent).sourceInstanceName,
   });
+  createNodeField({
+    node,
+    name: 'filename',
+    value: getNode(node.parent).name,
+  });
 };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
@@ -19,26 +24,16 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   schema.buildObjectType({
     name: "Frontmatter",
     fields: {
-      definitionIds: {
-        type: "[String]!",
-        resolve: source => source.definitionIds || []
-      },
-      definitions: {
-        type: "[MarkdownRemark]",
+      definitionsRemark: {
+        type: "[MarkdownRemark]!",
         resolve: async (source, args, context, info) => (await context.nodeModel.findAll({
           type: "MarkdownRemark",
           query: {
-            filter: { frontmatter: { definitionId: { in: source.definitionIds || [] }, draft: { eq: false } } },
-            sort: { frontmatter: { priority: "DESC" } }
-          }
-        })).entries
-      },
-      stories: {
-        type: "[MarkdownRemark]",
-        resolve: async (source, args, context, info) => (await context.nodeModel.findAll({
-          type: "MarkdownRemark",
-          query: {
-            filter: { frontmatter: { definitionIds: { eq: source.definitionId }, draft: { eq: false } } }
+            filter: {
+              fields: {sourceName: {eq: "definitions"}, filename: {in: source.definitions || []}},
+              frontmatter: {draft: {eq: false}}
+            },
+            sort: {frontmatter: {priority: "DESC"}}
           }
         })).entries
       },
@@ -54,6 +49,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     {
       allMarkdownRemark(filter: {fields: {sourceName: {eq: "definitions"}}, frontmatter: {draft: {eq: false}}}) {
         nodes {
+          fields {
+            filename
+          }
           frontmatter {
             slug
             title
@@ -70,11 +68,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const definitionTemplate = require.resolve(`./src/templates/Definition/index.js`)
-  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug, title, titleEn}}) => {
+  result.data.allMarkdownRemark.nodes.forEach(({fields: {filename}, frontmatter: {slug, title, titleEn}}) => {
     createPage({
       path: `/${slug}`,
       component: definitionTemplate,
       context: {
+        filename,
         slug,
         title: title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")
       }

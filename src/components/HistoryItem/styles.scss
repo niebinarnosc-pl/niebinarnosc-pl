@@ -1,9 +1,0 @@
-@import "../../scss/variables";
-@import "../../scss/breakpoints";
-
-.history-item {
-  margin: 1rem 0;
-  @include for-tablet-portrait-up {
-    margin: 2.5rem 0; 
-  }
-}

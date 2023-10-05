@@ -14,7 +14,7 @@ export default function Home({data}) {
         <HomeNav/>
         <section>
           <h3>Niusy</h3>
-          <ContentItemContainer isLinks items={[data.luStory, data.hihiStory, data.sybiliuszStory]}/>
+          <ContentItemContainer isButtons items={data.news.nodes}/>
         </section>
         <ContactForm/>
     </Page>
@@ -28,23 +28,13 @@ export const Head = ({location}) => <Seo
 
 export const query = graphql`
 {
-  luStory: markdownRemark(frontmatter: {storyId: {eq: "lu"}}) {
-    ...Story
-  }
-  hihiStory: markdownRemark(frontmatter: {storyId: {eq: "hihi"}}) {
-    ...Story
-  }
-  sybiliuszStory: markdownRemark(frontmatter: {storyId: {eq: "sybiliusz-mykofanes"}}) {
-    ...Story
-  }
-  definition: markdownRemark(frontmatter: {definitionId: {eq: "niebinarnosc"}}) {
-    ...Definition
-  }
-  history: markdownRemark(frontmatter: {historyId: {eq: "termin-niebinarnosc"}}) {
-    frontmatter {
-      title
+  news: allMarkdownRemark(
+    filter: {frontmatter: {draft: {eq: false}}},
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    nodes {
+      ...ContentItem
     }
-    html: excerpt(format: HTML)
   }
 }
 `

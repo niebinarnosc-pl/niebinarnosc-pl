@@ -11,6 +11,7 @@ export const shouldUpdateScroll = ({ routerProps: { location } }) => {
                 targetElement.scrollIntoView({ behavior: "smooth" });
             }
         }, 0);
+        return false;
     }
-    return false;
+    return true;
 };

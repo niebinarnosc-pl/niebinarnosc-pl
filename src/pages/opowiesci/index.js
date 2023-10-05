@@ -3,7 +3,6 @@ import Page from "../../components/Page";
 import ContactCard from "../../components/ContactCard";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import StoryItem from "../../components/StoryItem";
 import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Opowiesci({data}) {

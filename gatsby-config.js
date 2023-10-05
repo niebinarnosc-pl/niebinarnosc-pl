@@ -55,6 +55,9 @@ module.exports = {
       options: {
         excerpt_separator: `<!-- endexcerpt -->`
       },
+      plugins: [
+        `gatsby-remark-copy-linked-files`
+      ]
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -97,6 +100,22 @@ module.exports = {
         "path": "./content/history/"
       },
       __key: "history"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "representation",
+        "path": "./content/representation/"
+      },
+      __key: "representation"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "guide",
+        "path": "./content/guide/"
+      },
+      __key: "guide"
     }
   ]
 };

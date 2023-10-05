@@ -8,6 +8,11 @@ export default function Lightbox({image, alt="", deactivate}) {
         ref.current.focus()
     }, [])
     return <div className={`lightbox`} ref={ref} onClick={deactivate} tabIndex={0} onKeyDown={deactivate}>
-        <GatsbyImage image={getImage(image)} alt={alt} />
+        <div>
+            {typeof getImage(image) !== "undefined" ? 
+                <GatsbyImage image={getImage(image)} alt={alt}/> :
+                <img src={image.publicURL} alt={alt}/>
+            }
+        </div>
     </div>
 }
