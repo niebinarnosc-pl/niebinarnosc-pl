@@ -1,6 +1,6 @@
 ---
 date: 2023-06-27T21:37:09.000Z
-thumbnail: images/demiplciowosc.svg
+fullPhoto: images/demiplciowosc.svg
 slug: demiplciowosc
 title: Demipłciowość
 titleEn: Demigender

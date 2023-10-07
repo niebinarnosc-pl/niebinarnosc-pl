@@ -7,7 +7,7 @@
     display: none !important;
   }
   margin: 0 (-$side-padding-small);
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   @include for-phone-only {
@@ -15,22 +15,29 @@
       border-bottom: 1px solid $purple-10;
     }
   }
-  gap: 1rem;
-  @include for-tablet-portrait-up {
-    margin: 0 0 4rem 0;
-    &:not(.with-links) {
+  &.with-links {
+    gap: 1rem;
+    @include for-tablet-portrait-up {
       gap: 2rem;
+    }
+  }
+  &:not(.with-links) {
+    background-color: white;
+    padding: $side-padding-small;
+    @include for-tablet-portrait-up {
+      padding: $side-padding-big;
       border-radius: 0.75rem;
-      background-color: white;
+      gap: 2rem;
       .text-container {
         max-width: 40rem;
       }
     }
-  }
-  @include for-desktop-up {
-    &:not(.with-links) {
+    @include for-desktop-up {
       padding: 2.5rem;
     }
+  }
+  @include for-tablet-portrait-up {
+    margin: 0 0 4rem 0;
   }
   .content-item-as-link {
     @include for-phone-only {
@@ -72,9 +79,9 @@
         }
       }
     }
-    border-radius: 0.75rem;
     padding: $side-padding-small 0;
     @include for-tablet-portrait-up {
+      border-radius: 0.75rem;
       padding: $side-padding-big;
     }
     display: flex;

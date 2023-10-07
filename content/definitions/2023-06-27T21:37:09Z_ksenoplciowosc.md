@@ -1,6 +1,6 @@
 ---
 date: 2023-06-27T21:37:09.000Z
-thumbnail: images/ksenoplciowosc.svg
+fullPhoto: images/ksenoplciowosc.svg
 title: Ksenopłciowość
 titleEn: Xenogender
 slug: ksenoplciowosc

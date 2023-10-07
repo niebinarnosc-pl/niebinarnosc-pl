@@ -22,7 +22,12 @@
     @include for-tablet-portrait-up {
         align-self: flex-end;
         margin-left: auto;
+        margin-right: 0;
         width: fit-content;
+    }
+    &.align-left {
+        margin-left: 0;
+        margin-right: auto;
     }
     &.primary {
         color: white;
@@ -77,6 +82,7 @@
 }
 
 .badge-button {
+    height: 2rem;
     display: flex;
     padding: 0.25rem 0.75rem;
     justify-content: center;

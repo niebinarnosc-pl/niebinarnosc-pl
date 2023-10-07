@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import {TextContentItemContainer} from "../../components/TextContentItem";
 
 export default function Historia({data}) {
-    return <Page className={"historia"} heading={"Historia"} subheading={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}>
+    return <Page isArticle className={"historia"} heading={"Historia"} subheading={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}>
         <TextContentItemContainer items={data.historyItems.nodes}/>
     </Page>
 }

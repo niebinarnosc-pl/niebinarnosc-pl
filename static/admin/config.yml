@@ -32,7 +32,7 @@ collections:
         widget: "string"
         pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
         hint: "Musi być unikalne; będzie częścią adresu strony."
-      - {label: "Miniaturka", name: "thumbnail", widget: "image", required: false}
+      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
       - {label: "Nazwa", name: "title", widget: "string"}
       - {label: "Nazwa EN", name: "titleEn", widget: "string"}
       - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
@@ -63,11 +63,11 @@ collections:
       - label: "Definicje"
         name: "definitions"
         widget: "list"
-        default: ["niebinarnosc"]
-        summary: "{{fields.definitionId}}"
+        default: ["2023-06-27T21:37:09Z_niebinarnosc"]
+        summary: "{{fields.definition}}"
         field:
           label: "Definicje"
-          name: "definitionId"
+          name: "definition"
           widget: "relation"
           collection: "definitions"
           value_field: "{{slug}}"
@@ -126,10 +126,18 @@ collections:
         widget: "string"
         pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
         hint: "Musi być unikalne; będzie częścią adresu strony."
-      - {label: "Miniaturka", name: "thumbnail", widget: "image", required: false}
-      - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image", required: false}
+      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
       - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
+      - label: "Osoby autorskie"
+        name: "authors"
+        widget: "list"
+        summary: "{{fields.name}}"
+        fields:
+          - {label: "Nazwa", name: "name", widget: "string"}
+          - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuki wizualne"]}
+      - {label: "Rok wydania", name: "year", widget: "number"}
+      - {label: "Opis", name: "description", widget: "text"}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'guide'

@@ -42,9 +42,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   createTypes(typeDefs);
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
+const createDefinitions = async (graphql, createPage, reporter) => {
   const result = await graphql(`
     {
       allMarkdownRemark(filter: {fields: {sourceName: {eq: "definitions"}}, frontmatter: {draft: {eq: false}}}) {
@@ -79,4 +77,41 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
   })
+}
+
+const createRepresentations = async (graphql, createPage, reporter) => {
+  const result = await graphql(`
+    {
+      allMarkdownRemark(filter: {fields: {sourceName: {eq: "representation"}}, frontmatter: {draft: {eq: false}}}) {
+        nodes {
+          frontmatter {
+            slug
+            title
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  const represetnationTemplate = require.resolve(`./src/templates/Representation/index.js`)
+  result.data.allMarkdownRemark.nodes.forEach(({frontmatter: {slug, title}}) => {
+    createPage({
+      path: `/reprezentacja/${slug}`,
+      component: represetnationTemplate,
+      context: {
+        slug,
+        title
+      }
+    })
+  })
+}
+
+exports.createPages = async ({ graphql, actions: {createPage}, reporter }) => {
+  await createDefinitions(graphql, createPage, reporter)
+  await createRepresentations(graphql, createPage, reporter)
 }

@@ -13,7 +13,7 @@ export default function Home({data}) {
         <HomeHeader/>
         <HomeNav/>
         <section>
-          <h3>Niusy</h3>
+          <h2>Niusy</h2>
           <ContentItemContainer isButtons items={data.news.nodes}/>
         </section>
         <ContactForm/>

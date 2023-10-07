@@ -7,12 +7,12 @@ import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Definicja({data: {definition, stories, site}}) {
     const {title, titleEn} = definition.frontmatter
-    return <Page className={"definicja"} heading={title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")}>
-        <ContentItemContainer items={[definition]}/>
-        <Link className="button margin-top-bottom" to="/definicje/">Zobacz inne definicje</Link>
+    return <Page isArticle className={"definicja"} heading={title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")}>
+        <ContentItemContainer singleDefinition items={[definition]}/>
+        <h2>Opowieści</h2>
         {stories.nodes.length !== 0 ?
             <ContentItemContainer items={stories.nodes}/> :
-            <div>
+            <div className="container">
                 <h4>Brak opowieści :(</h4>
                 <p>Niestety, nikt nie podzielił się jeszcze swoją opowieścią.</p>
                 <p>Chcesz być pierwsz_? <strong><a href={site.siteMetadata.contactFormUrl}>Napisz do nas.</a></strong></p>
@@ -27,14 +27,7 @@ export const Head = ({pageContext, location}) => <Seo title={pageContext.title} 
 export const query = graphql`
 query($slug: String, $filename: String) {
   definition: markdownRemark(frontmatter: {slug: {eq: $slug}}) {
-    fields {
-      sourceName
-    }
-    html
-    frontmatter {
-      title
-      titleEn
-    }
+    ...Definition
   }
   stories: allMarkdownRemark(filter: {frontmatter: {definitions: {eq: $filename}, draft: {eq: false}}}) {
     nodes {

@@ -6,24 +6,25 @@ import { Link, graphql } from "gatsby";
 import defaultThumbnail from "../../images/logo-square.svg"
 import { IconArrowRight } from "../Icons";
 
-export const ContentItemContainer = ({items, isButtons}) => <div className={
+export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <div className={
     "content-item-container" +
     (isButtons ? " with-links" : "")
     }>
-        {items.map((item, index) => <ContentItem {...item} isButton={isButtons} key={index}/>)}
+        {items.map((item, index) => <ContentItem {...item} isButton={isButtons} singleDefinition={singleDefinition} key={index}/>)}
 </div>
 
-export const ContentItem = ({isButton, fields: {sourceName}, frontmatter: {slug, thumbnail, fullPhoto, title, titleEn, definitionsRemark, triggers}, html, excerpt}) => {
+export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, description}, html, excerpt}) => {
     const [imageActive, setImageActive] = useState(false)
+    const thumbnailPic = thumbnail || thumbnailFromPhoto
     const thumbnailElem = <div className={
         "thumbnail" +
         (["stories", "definitions"].includes(sourceName) ? " square" : "")
     }>
-        {thumbnail ? 
+        {thumbnailPic ? 
             <button onClick={() => setImageActive(true)}>
-                {typeof getImage(thumbnail) !== "undefined" ? 
-                    <GatsbyImage image={getImage(thumbnail)} alt={title} onClick={() => setImageActive(true)}/> :
-                    <img src={thumbnail.publicURL} alt={title} onClick={() => setImageActive(true)}/>
+                {typeof getImage(thumbnailPic) !== "undefined" ? 
+                    <GatsbyImage image={getImage(thumbnailPic)} alt={title} onClick={() => setImageActive(true)}/> :
+                    <img src={thumbnailPic.publicURL} alt={title} onClick={() => setImageActive(true)}/>
                 }
             </button> :
             <img src={defaultThumbnail} alt="Flaga niebinarna z logiem niebinarnosc.pl"/>
@@ -36,10 +37,9 @@ export const ContentItem = ({isButton, fields: {sourceName}, frontmatter: {slug,
         "guide": `/poradnik#${slug}`,
         "representation": `/reprezentacja/${slug}`,
     }[sourceName]
-    const fullPhotoElem = fullPhoto || thumbnail
     const shouldHideThumbnail = ["history", "guide"].includes(sourceName) ? " hidden" : ""
     const article = <article className="content-item" id={slug}>
-        {fullPhotoElem && imageActive && <Lightbox image={fullPhotoElem} alt={title} deactivate={() => setImageActive(false)}/>}
+        {fullPhoto && imageActive && <Lightbox image={fullPhoto} alt={title} deactivate={() => setImageActive(false)}/>}
         <div className={`side-image${shouldHideThumbnail}`}>
             {thumbnailElem}
         </div>
@@ -58,9 +58,12 @@ export const ContentItem = ({isButton, fields: {sourceName}, frontmatter: {slug,
                     </div>}
                 </div>
             </header>
-            <div className="text" dangerouslySetInnerHTML={{__html: isButton ? excerpt : html}}/>
+            <div className="text" dangerouslySetInnerHTML={{__html: isButton ? (description || excerpt) : html}}/>
             {isButton && <button className="button secondary">Czytaj więcej <IconArrowRight/></button>}
-            {sourceName === "definitions" && !isButton && <Link to={href}><button className="button secondary">Zobacz opowieści <IconArrowRight/></button></Link>}
+            {sourceName === "definitions" && !isButton && (singleDefinition ?
+                <Link to={"/definicje/"}><button className="button secondary">Zobacz inne definicje <IconArrowRight/></button></Link> :
+                <Link to={href}><button className="button secondary">Zobacz opowieści <IconArrowRight/></button></Link>
+            )}
         </div>
     </article>
     return isButton ? <Link className="content-item-as-link" to={href}>{article}</Link> : article
@@ -85,7 +88,17 @@ fragment ContentItem on MarkdownRemark {
         )
       }
     }
+    thumbnailFromPhoto: fullPhoto {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(
+          width: 200
+          placeholder: BLURRED
+        )
+      }
+    }
     fullPhoto {
+      publicURL
       childImageSharp {
         gatsbyImageData(
           placeholder: BLURRED
@@ -103,6 +116,7 @@ fragment ContentItem on MarkdownRemark {
       }
     }
     triggers
+    description
   }
 }
 

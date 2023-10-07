@@ -38,7 +38,7 @@ export default function ContactForm() {
         })
     }
     return <section className="contact-form" id="kontakt">
-        <h3>Kontakt</h3>
+        <h2>Kontakt</h2>
         <div>
             <div>
                 <p>Masz do nas pytania? Szukasz pomocy? Napisz do nas na maila lub wypełnij formularz.</p>

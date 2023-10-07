@@ -9,13 +9,13 @@ export const TextContentItemContainer = ({items}) => <div className="text-conten
 </div>
 
 export const TextContentItem = ({frontmatter: {title, fullPhoto, fullPhotoAlt, slug}, html}) => {
-    return <article className={`text-content-item${fullPhoto ? " with-photo" : ""}`} id={slug}>
+    return <section className={`text-content-item${fullPhoto ? " with-photo" : ""}`} id={slug}>
         {fullPhoto && <GatsbyImage image={getImage(fullPhoto)} alt={fullPhotoAlt || title}/>}
         <div className="text-container">
             <h4>{title}</h4>
             <div dangerouslySetInnerHTML={{__html: html}}/>
         </div>
-    </article>
+    </section>
 }
 
 export const query = graphql`

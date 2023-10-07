@@ -1,6 +1,6 @@
 ---
 date: 2023-06-27T21:37:09.000Z
-thumbnail: images/plynnoplciowosc.svg
+fullPhoto: images/plynnoplciowosc.svg
 title: Płynnopłciowość
 titleEn: Genderfluid
 slug: plynnoplciowosc
