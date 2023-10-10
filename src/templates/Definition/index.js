@@ -7,7 +7,7 @@ import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Definicja({data: {definition, stories, site}}) {
     const {title, titleEn} = definition.frontmatter
-    return <Page isArticle className={"definicja"} heading={title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")}>
+    return <Page isArticle className={"definicja"} heading={title}>
         <ContentItemContainer singleDefinition items={[definition]}/>
         <h2>Opowieści</h2>
         {stories.nodes.length !== 0 ?
