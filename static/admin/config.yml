@@ -137,6 +137,7 @@ collections:
           - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuki wizualne"]}
       - {label: "Rok wydania", name: "year", widget: "number"}
+      - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "number", required: false}
       - {label: "Opis", name: "description", widget: "text"}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}

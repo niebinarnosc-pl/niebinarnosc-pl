@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Page from "../../components/Page";
 import Seo from "../../components/Seo";
 
-export default function Representation({data: {representation: {frontmatter: {title, fullPhoto, authors, category, year, description}, html}}}) {
+export default function Representation({data: {representation: {frontmatter: {title, fullPhoto, authors, category, year, ageLimit, description}, html}}}) {
     return <Page isArticle className="representation">
         <header>
           {fullPhoto && <GatsbyImage image={getImage(fullPhoto)} alt={title}/>}
@@ -14,6 +14,7 @@ export default function Representation({data: {representation: {frontmatter: {ti
             <div className="short-info">
               <a className="badge-button">{category}</a>
               <p>{year}</p>
+              {ageLimit && <p>{ageLimit}+</p>}
             </div>
             <div>
               <p><span>{authors.length > 1 ? "Osoby autorskie:" : "Osoba autorska:"}</span>{authors.map(author => author.link ?
@@ -42,6 +43,7 @@ fragment Representation on MarkdownRemark {
     }
     category
     year
+    ageLimit
     description
   }
 }

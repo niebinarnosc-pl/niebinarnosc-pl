@@ -20,7 +20,7 @@ export default function HomeNav() {
   return <nav className="home-nav">
     <div>
       <HomeNavItem to="/definicje/" color="yellow" icon={<IconChartRelationship/>} heading="Definicje" desc="Czym jest niebinarność i inne."/>
-      <HomeNavItem to="/poradnik/" color="yellow" icon={<IconUserSimulation/>} heading="Poradnik" desc="Jak nie być osobą genitalną."/>
+      <HomeNavItem to="/poradnik/" color="yellow" icon={<IconUserSimulation/>} heading="Poradnik" desc="Jak być spoko."/>
       <HomeNavItem to="/opowiesci/" color="purple" icon={<IconVoiceActivate/>} heading="Opowieści" desc="Nasze opowieści o płciowości."/>
     </div>
     <div>
