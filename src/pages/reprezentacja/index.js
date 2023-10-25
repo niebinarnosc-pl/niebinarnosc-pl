@@ -8,8 +8,8 @@ export default function Reprezentacja({data: {representations}}) {
     return <Page className={"reprezentacje"} heading={""} subheading={""}>
         <header>
           <h1>Reprezentacja</h1>
-          <p>Zaproponuj nam swoją pozycję z odniesieniami w kulturze. (potrzebujemy dobrego copy dla tego typu treści)</p>
-          <button className="button primary align-left">Zaproponuj artykuł</button>
+          <p>Zaproponuj nam swoją pozycję z odniesieniami w kulturze.</p>
+          <a className="button primary align-left" href="https://forms.gle/cuWkGHvyWbbfbsd16">Zaproponuj artykuł</a>
         </header>
         <ContentItemContainer isButtons items={representations.nodes}/>
     </Page>

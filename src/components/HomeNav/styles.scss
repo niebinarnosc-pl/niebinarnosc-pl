@@ -40,7 +40,16 @@
         position: relative;
         display: flex;
         gap: inherit;
-        @include button-border;
+        @mixin bb($color, $color-id) {@include button-border($transition-duration: 200ms, $hover-color: $color, $special-border-animation: $color-id);}
+        &.yellow {
+            @include bb($yellow-100, "yellow");
+        }
+        &.purple {
+            @include bb($purple-80, "purple");
+        }
+        &.black {
+            @include bb(black, "black");
+        }
         flex: 1;
         padding: 0.75rem;
         @include for-tablet-portrait-up {
@@ -63,7 +72,7 @@
         & > div:first-of-type {
             width: 4rem;
             height: 4rem;
-            border-radius: 0.75rem;
+            border-radius: 0.6rem;
             display: flex;
             justify-content: center;
             align-items: center;

@@ -61,8 +61,8 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
             <div className="text" dangerouslySetInnerHTML={{__html: isButton ? (description || excerpt) : html}}/>
             {isButton && <button className="button secondary">Czytaj więcej <IconArrowRight/></button>}
             {sourceName === "definitions" && !isButton && (singleDefinition ?
-                <Link to={"/definicje/"}><button className="button secondary">Zobacz inne definicje <IconArrowRight/></button></Link> :
-                <Link to={href}><button className="button secondary">Zobacz opowieści <IconArrowRight/></button></Link>
+                <Link to={"/definicje/"} className="button secondary">Zobacz inne definicje <IconArrowRight/></Link> :
+                <Link to={href} className="button secondary">Zobacz opowieści <IconArrowRight/></Link>
             )}
         </div>
     </article>

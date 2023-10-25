@@ -52,6 +52,10 @@
       padding-right: 0 !important;
       border-right: none !important;
     }
+    &:hover h4 {
+      transition: color 100ms;
+      color: $purple-80;
+    }
   }
   .content-item {
     .thumbnail {

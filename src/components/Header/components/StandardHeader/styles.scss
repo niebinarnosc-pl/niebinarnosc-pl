@@ -23,8 +23,17 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            .active {
-                text-decoration: underline;
+            .active, a:hover {
+                //coupled with the order of links, watch out
+                margin: 0 -2px 0 -1px;
+                &:nth-child(5) {
+                    margin: 0 -3px 0 -2px;
+                }
+                &:nth-child(6) {
+                    margin: 0 -2px 0 -2px;
+                }
+                text-align: center;
+                text-decoration: none;
                 color: $purple-100;
                 font-weight: 700;
             }

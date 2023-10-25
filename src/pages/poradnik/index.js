@@ -5,7 +5,13 @@ import { graphql } from "gatsby";
 import {TextContentItemContainer} from "../../components/TextContentItem";
 
 export default function Poradnik({data}) {
-    return <Page isArticle className={"poradnik"} heading={"Poradnik"} subheading={"Pomyłki się zdarzają i nie ma w nich nic złego. O ile ktoś nie misgenderuje lub deadname’uje nas z premedytacją, wszystko jest w porządku. Jeśli nie chcesz być osobą enbyfobiczną, przyswój sobie poniższe zasady."}>
+    return <Page isArticle className={"poradnik"} heading={""} subheading={""}>
+        <header>
+          <h1>Poradnik</h1>
+          <p>Stworzyliśmy ten poradnik, by pokazać, że komunikacja z osobami niebinarnymi może być prosta.</p>
+          <p>Słyszał_ś o „tych dziwnych zaimkach” i czujesz się tym trochę skołowan_? Może znasz osobę niebinarną i chcesz wiedzieć, jak się do niej zwracać? Albo próbujesz dowiedzieć się jak być osobą sojuszniczą?</p>
+          <p>W każdym z tych przypadków trafił_ś idealnie. Dzięki, że jesteś tu z nami.</p>
+        </header>
         <TextContentItemContainer items={data.guideItems.nodes}/>
     </Page>
 }
