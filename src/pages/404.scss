@@ -6,9 +6,9 @@
     padding: $side-padding-small;
   }
   header > h1 {
-    font-size: 8rem !important;
+    font-size: 7rem !important;
     @include for-tablet-portrait-up {
-      font-size: 13rem !important;
+      font-size: 10rem !important;
     }
     // color: $black !important;
     text-align: center !important;
