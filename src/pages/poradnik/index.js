@@ -2,7 +2,6 @@ import React from "react";
 import Page from "../../components/Page";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import renderAst from "../../utils/renderAst";
 import ArticleContainer from "../../components/ArticleContainer"
 
 export default function Poradnik({data: {guide}}) {
