@@ -13,6 +13,37 @@ editor:
   preview: false
 
 collections:
+  - name: 'pages'
+    label: 'Strony'
+    files:
+    - name: 'history'
+      label: 'Historia'
+      file: 'content/history/2023-06-27T21:37:09Z_historia.md'
+      media_folder: 'images'
+      public_folder: 'images'
+      format: 'frontmatter'
+      fields:
+        - label: "Data utworzenia"
+          name: "date"
+          widget: "datetime"
+          date_format: "DD.MM.YYYY"
+          time_format: "HH:mm"
+        - {label: "Nazwa", name: "title", widget: "string"}
+        - {label: "Treść", name: "body", widget: "markdown"}
+    - name: 'guide'
+      label: 'Poradnik'
+      file: 'content/guide/2023-10-04T22:19:32Z_poradnik.md'
+      media_folder: 'images'
+      public_folder: 'images'
+      format: 'frontmatter'
+      fields:
+        - label: "Data utworzenia"
+          name: "date"
+          widget: "datetime"
+          date_format: "DD.MM.YYYY"
+          time_format: "HH:mm"
+        - {label: "Nazwa", name: "title", widget: "string"}
+        - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'definitions'
     label: 'Definicje'
     folder: 'content/definitions/'
@@ -82,31 +113,6 @@ collections:
         field: {label: "Trigger", name: "trigger", widget: "string"}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
-  - name: 'history'
-    label: 'Historia'
-    folder: 'content/history/'
-    media_folder: 'images'
-    public_folder: 'images'
-    format: 'frontmatter'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}T{{hour}}:{{minute}}:{{second}}Z_{{slug}}'
-    fields:
-      - label: "Data utworzenia"
-        name: "date"
-        widget: "datetime"
-        date_format: "DD.MM.YYYY"
-        time_format: "HH:mm"
-      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
-      - {label: "Podpis/opis obrazka", name: "fullPhotoAlt", widget: "string", required: false}
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
-        hint: "Musi być unikalne; będzie częścią adresu strony."
-      - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
-      - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
-      - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'representation'
     label: 'Reprezentacja'
     folder: 'content/representation/'
@@ -139,30 +145,5 @@ collections:
       - {label: "Rok wydania", name: "year", widget: "number"}
       - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "number", required: false}
       - {label: "Opis", name: "description", widget: "text"}
-      - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
-      - {label: "Treść", name: "body", widget: "markdown"}
-  - name: 'guide'
-    label: 'Poradnik'
-    folder: 'content/guide/'
-    media_folder: 'images'
-    public_folder: 'images'
-    format: 'frontmatter'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}T{{hour}}:{{minute}}:{{second}}Z_{{slug}}'
-    fields:
-      - label: "Data utworzenia"
-        name: "date"
-        widget: "datetime"
-        date_format: "DD.MM.YYYY"
-        time_format: "HH:mm"
-      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
-      - {label: "Podpis/opis obrazka", name: "fullPhotoAlt", widget: "string", required: false}
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
-        hint: "Musi być unikalne; będzie częścią adresu strony."
-      - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
