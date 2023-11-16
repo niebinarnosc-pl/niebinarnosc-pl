@@ -15,7 +15,7 @@
   @include side-padding;
   & > header {
     p {
-      max-width: 45rem;
+      max-width: 50rem;
       font-weight: 700;
       color: $gray-60;
     }
@@ -31,7 +31,7 @@
     }
     line-height: 1.2;
   }
-  h2 {
+  h2:not(.article-h2) {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     @include for-tablet-portrait-up {
@@ -72,9 +72,10 @@
     p {
         font-size: 1em;
     }
-    padding-left: 1rem;
+    padding: 0.5em 1.5em 0.5em 1.2em;
     margin: 1.5rem 0;
     border-left: 0.3em solid $purple-100;
+    background-color: $purple-5;
     line-height: 1.5;
   }
   p, li {

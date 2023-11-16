@@ -2,11 +2,11 @@ import React from "react";
 import Page from "../../components/Page";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import {TextContentItemContainer} from "../../components/TextContentItem";
+import ArticleContainer from "../../components/ArticleContainer";
 
-export default function Historia({data}) {
+export default function Historia({data: {history}}) {
     return <Page isArticle className={"historia"} heading={"Historia"} subheading={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}>
-        <TextContentItemContainer items={data.historyItems.nodes}/>
+        <ArticleContainer {...history}/>
     </Page>
 }
 
@@ -16,13 +16,8 @@ export const Head = ({location}) => <Seo title={"Historia"} addTitleTemplate loc
 
 export const query = graphql`
 {
-  historyItems: allMarkdownRemark(
-    filter: {fields: {sourceName: {eq: "history"}}, frontmatter: {draft: {eq: false}}},
-    sort: {frontmatter: {priority: DESC}}
-  ) {
-    nodes {
-      ...History
-    }
+  history: markdownRemark(fields: {sourceName: {eq: "history"}}, frontmatter: {title: {eq: "Historia"}}) {
+    ...History
   }
 }
 `

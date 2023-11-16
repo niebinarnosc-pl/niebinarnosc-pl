@@ -2,7 +2,6 @@ import React from "react";
 import Page from "../../components/Page"
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import DefinitionItem from "../../components/DefinitionItem";
 import { ContentItemContainer } from "../../components/ContentItem";
 
 export default function Definicje({data: {definitions}}) {

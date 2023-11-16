@@ -53,11 +53,17 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        excerpt_separator: `<!-- endexcerpt -->`
-      },
-      plugins: [
-        `gatsby-remark-copy-linked-files`
-      ]
+        excerpt_separator: `<!-- endexcerpt -->`,
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+          `gatsby-remark-copy-linked-files`
+        ]
+      }
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

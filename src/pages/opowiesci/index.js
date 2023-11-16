@@ -5,10 +5,10 @@ import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
 import { ContentItemContainer } from "../../components/ContentItem";
 
-export default function Opowiesci({data}) {
+export default function Opowiesci({data: {stories}}) {
     return <Page className={"opowiesci"} heading={"Opowieści"} subheading={"Nasze opowieści o płciowości."}>
         <ContactCard/>
-        <ContentItemContainer items={data.allMarkdownRemark.nodes} />
+        <ContentItemContainer items={stories.nodes} />
     </Page>
 }
 
@@ -18,7 +18,7 @@ export const Head = ({location}) => <Seo title={"Opowieści"} addTitleTemplate l
 
 export const query = graphql`
 {
-  allMarkdownRemark(filter: {fields: {sourceName: {eq: "stories"}}, frontmatter: {draft: {eq: false}}}) {
+  stories: allMarkdownRemark(filter: {fields: {sourceName: {eq: "stories"}}, frontmatter: {draft: {eq: false}}}) {
     nodes {
       ...Story
     }

@@ -2,17 +2,12 @@ import React from "react";
 import Page from "../../components/Page";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import {TextContentItemContainer} from "../../components/TextContentItem";
+import renderAst from "../../utils/renderAst";
+import ArticleContainer from "../../components/ArticleContainer"
 
-export default function Poradnik({data}) {
-    return <Page isArticle className={"poradnik"} heading={""} subheading={""}>
-        <header>
-          <h1>Poradnik</h1>
-          <p>Stworzyliśmy ten poradnik, by pokazać, że komunikacja z osobami niebinarnymi może być prosta.</p>
-          <p>Słyszał_ś o „tych dziwnych zaimkach” i czujesz się tym trochę skołowan_? Może znasz osobę niebinarną i chcesz wiedzieć, jak się do niej zwracać? Albo próbujesz dowiedzieć się jak być osobą sojuszniczą?</p>
-          <p>W każdym z tych przypadków trafił_ś idealnie. Dzięki, że jesteś tu z nami.</p>
-        </header>
-        <TextContentItemContainer items={data.guideItems.nodes}/>
+export default function Poradnik({data: {guide}}) {
+    return <Page isArticle className={"poradnik"} heading={"Poradnik"} subheading={"Słyszał_ś o „tych dziwnych zaimkach” i czujesz się tym trochę skołowan_? Może znasz osobę niebinarną i chcesz wiedzieć, jak się do niej zwracać? Albo próbujesz dowiedzieć się jak być osobą sojuszniczą? W każdym z tych przypadków trafił_ś idealnie. Dzięki, że jesteś tu z nami."}>
+        <ArticleContainer {...guide}/>
     </Page>
 }
 
@@ -22,12 +17,11 @@ export const Head = ({location}) => <Seo title={"Poradnik"} addTitleTemplate loc
 
 export const query = graphql`
 {
-  guideItems: allMarkdownRemark(
-    filter: {fields: {sourceName: {eq: "guide"}}, frontmatter: {draft: {eq: false}}},
-    sort: {frontmatter: {priority: DESC}}
-  ) {
-    nodes {
-      ...Guide
+  guide: markdownRemark(fields: {sourceName: {eq: "guide"}}, frontmatter: {title: {eq: "Poradnik"}}) {
+    htmlAst
+    html
+    frontmatter {
+      title
     }
   }
 }

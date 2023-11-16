@@ -5,6 +5,7 @@ import Lightbox from "../Lightbox";
 import { Link, graphql } from "gatsby";
 import defaultThumbnail from "../../images/logo-square.svg"
 import { IconArrowRight } from "../Icons";
+import renderAst from "../../utils/renderAst";
 
 export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <div className={
     "content-item-container" +
@@ -13,7 +14,7 @@ export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <d
         {items.map((item, index) => <ContentItem {...item} isButton={isButtons} singleDefinition={singleDefinition} key={index}/>)}
 </div>
 
-export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, description}, html, excerpt}) => {
+export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, description}, htmlAst, excerpt}) => {
     const [imageActive, setImageActive] = useState(false)
     const thumbnailPic = thumbnail || thumbnailFromPhoto
     const thumbnailElem = <div className={
@@ -58,7 +59,7 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
                     </div>}
                 </div>
             </header>
-            <div className="text" dangerouslySetInnerHTML={{__html: isButton ? (description || excerpt) : html}}/>
+            <div className="text">{isButton ? (description || excerpt) : renderAst(htmlAst)}</div>
             {isButton && <button className="button secondary">Czytaj więcej <IconArrowRight/></button>}
             {sourceName === "definitions" && !isButton && (singleDefinition ?
                 <Link to={"/definicje/"} className="button secondary">Zobacz inne definicje <IconArrowRight/></Link> :
@@ -75,8 +76,8 @@ fragment ContentItem on MarkdownRemark {
   fields {
     sourceName
   }
-  html
-  excerpt(format: HTML, pruneLength: 250)
+  htmlAst
+  excerpt(pruneLength: 250)
   frontmatter {
     slug
     thumbnail {
