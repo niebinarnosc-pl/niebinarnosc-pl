@@ -141,9 +141,9 @@ collections:
         fields:
           - {label: "Nazwa", name: "name", widget: "string"}
           - {label: "Link", name: "link", widget: "string", required: false}
-      - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuki wizualne"]}
-      - {label: "Rok wydania", name: "year", widget: "number"}
+      - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuka"]}
+      - {label: "Rok wydania", name: "year", widget: "number", required: false}
       - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "number", required: false}
-      - {label: "Opis", name: "description", widget: "text"}
+      - {label: "Opis fabuły", name: "storyDescription", widget: "text"}
+      - {label: "Opis reprezentacji", name: "representationDescription", widget: "text"}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
-      - {label: "Treść", name: "body", widget: "markdown"}

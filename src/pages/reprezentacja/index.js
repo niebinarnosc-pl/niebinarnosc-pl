@@ -11,7 +11,7 @@ export default function Reprezentacja({data: {representations}}) {
           <p>Zaproponuj nam swoją pozycję z odniesieniami w kulturze.</p>
           <a className="button primary align-left" href="https://forms.gle/cuWkGHvyWbbfbsd16">Zaproponuj artykuł</a>
         </header>
-        <ContentItemContainer isButtons items={representations.nodes}/>
+        <ContentItemContainer items={representations.nodes}/>
     </Page>
 }
 

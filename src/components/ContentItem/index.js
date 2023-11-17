@@ -14,7 +14,7 @@ export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <d
         {items.map((item, index) => <ContentItem {...item} isButton={isButtons} singleDefinition={singleDefinition} key={index}/>)}
 </div>
 
-export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, description}, htmlAst, excerpt}) => {
+export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, authors, category, year, ageLimit, storyDescription, representationDescription}, htmlAst, excerpt}) => {
     const [imageActive, setImageActive] = useState(false)
     const thumbnailPic = thumbnail || thumbnailFromPhoto
     const thumbnailElem = <div className={
@@ -50,16 +50,31 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
                     {thumbnailElem}
                 </div>
                 <div className="info">
-                    <h4>{title + (titleEn ? ` (${titleEn.toLowerCase()})` : "")}</h4>
-                    {definitionsRemark && <div className="tags">
+                    <h4>{title + (titleEn ? ` (${titleEn.toLowerCase()})` : "") + (year ? ` (${year})` : "")}</h4>
+                    {authors && authors.length > 0 && !isButton && <div className="tags">
+                      <p>{authors.map(author => author.name).join(', ')}</p>
+                    </div>}
+                    {definitionsRemark && definitionsRemark.length > 0 && <div className="tags">
                         {definitionsRemark.map(({frontmatter: {slug, title}}) => <p key={slug} className="badge-button"><Link to={`/${slug}`}>{title}</Link></p>)}
+                    </div>}
+                    {(category || ageLimit) && <div className="tags">
+                        {category && <p className="badge-button">{category}</p>}
+                        {ageLimit && <p>{ageLimit}+</p>}
                     </div>}
                     {triggers && <div className="tags">
                         {triggers.map(trigger => <p key={trigger} className="badge-button error">{trigger}</p>)}
                     </div>}
                 </div>
             </header>
-            <div className="text">{isButton ? (description || excerpt) : renderAst(htmlAst)}</div>
+            {storyDescription && <div className="text">
+              {!isButton && <h5>Opis fabuły</h5>}
+              <p>{storyDescription}</p>
+            </div>}
+            {representationDescription && <div className="text">
+              {!isButton && <h5>Reprezentacja</h5>}
+              <p>{representationDescription}</p>
+            </div>}
+            <div className="text">{isButton ? excerpt : renderAst(htmlAst)}</div>
             {isButton && <button className="button secondary">Czytaj więcej <IconArrowRight/></button>}
             {sourceName === "definitions" && !isButton && (singleDefinition ?
                 <Link to={"/definicje/"} className="button secondary">Zobacz inne definicje <IconArrowRight/></Link> :
@@ -117,7 +132,8 @@ fragment ContentItem on MarkdownRemark {
       }
     }
     triggers
-    description
+    category
+    storyDescription
   }
 }
 
@@ -138,6 +154,21 @@ fragment Definition on MarkdownRemark {
   ...ContentItem
   frontmatter {
     titleEn
+  }
+}
+
+fragment Representation on MarkdownRemark {
+  ...ContentItem
+  frontmatter {
+    authors {
+      name
+      link
+    }
+    category
+    year
+    ageLimit
+    storyDescription
+    representationDescription
   }
 }
 `

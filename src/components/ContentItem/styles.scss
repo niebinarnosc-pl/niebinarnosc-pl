@@ -134,6 +134,7 @@
             margin: 0;
           }
           display: flex;
+          align-items: center;
           gap: 0.5rem;
           overflow-x: auto;
           @include for-tablet-landscape-up {
@@ -142,8 +143,14 @@
         }
       }
     }
-    .text > *:last-child {
-      margin-bottom: 0;
+    .text {
+      h5 {
+        font-size: 1.2em;
+        margin-bottom: 0.5rem;
+      }
+      & > *:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
