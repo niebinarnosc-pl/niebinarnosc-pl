@@ -34,9 +34,9 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
     const href = {
         "definitions": `/${slug}`,
         "stories": `/opowiesci#${slug}`,
-        "history": `/historia#${slug}`,
-        "guide": `/poradnik#${slug}`,
-        "representation": `/reprezentacja/${slug}`,
+        "history": `/historia`,
+        "guide": `/poradnik`,
+        "representation": `/reprezentacja#${slug}`,
     }[sourceName]
     const shouldHideThumbnail = ["history", "guide"].includes(sourceName) ? " hidden" : ""
     const article = <article className="content-item" id={slug}>
