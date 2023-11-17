@@ -29,7 +29,7 @@ export default function Layout({location, children}) {
             <>
                 {typeof areCookiesAllowed === "undefined" && <CookieBanner setAreCookiesAllowed={setAreCookiesAllowed}/>}
                 <Footer/>
-                <Header bottom location={location}/>
+                {/* <Header bottom location={location}/> */}
             </>
         </div>
     )

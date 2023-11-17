@@ -1,19 +1,23 @@
 @import "../../scss/breakpoints";
 @import "../../scss/variables";
 @import "../../scss/mixins";
+@import "../../scss/buttons";
 @import "~@fontsource/noto-sans/400.css";
 @import "~@fontsource/noto-sans/500.css";
 @import "~@fontsource/noto-sans/700.css";
 @import "~@fontsource/noto-sans/800.css";
 
 html {
+    scroll-padding-top: 7rem;
     @include for-phone-only {
+        scroll-padding-top: 6rem;
         font-size: 4.5vw;
     }
     body {
         margin: 0;
     }
     font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
     background-color: $purple-5;
     color: $black;
     -webkit-box-sizing: border-box;

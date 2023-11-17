@@ -9,14 +9,3 @@ export default function DefinitionItem({frontmatter: {title, titleEn, slug}, htm
         {!hideButton && <Link to={`/${slug}/`} className="button">Zobacz opowieści</Link>}
     </article>
 }
-
-export const query = graphql`
-fragment Definition on MarkdownRemark {
-  html
-  frontmatter {
-    title
-    titleEn
-    slug
-  }
-}
-`

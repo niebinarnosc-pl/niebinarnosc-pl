@@ -1,9 +1,0 @@
----
-definitionId: panplciowosc
-slug: panplciowosc
-title: Panpłciowość
-titleEn: Pangender
-priority: 0
-draft: false
----
-Tożsamość płciowa, która oznacza doświadczanie wszystkich płci (z gr. pan - wszystkie). Osoby odczuwają wszystkie płcie dotychczasowo zdefiniowane, a także te, które są odczuwane wyłącznie przez daną osobę. Osoba panpłciowa może odczuwać wszystkie płcie jednocześnie i czuć, że posiada tożsamość płciową, która integruje wszystkie odczuwane płcie, bądź też odczuwać je naprzemiennie.

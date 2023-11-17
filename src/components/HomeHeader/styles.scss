@@ -1,0 +1,35 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.home-header {
+    @include side-padding;
+    margin: 2rem 1rem !important;
+    @include for-tablet-portrait-up {
+        margin: 3.75rem 1.5rem !important;
+    }
+    position: relative;
+    h1, button, a {
+        position: relative;
+    }
+    h1 {
+        margin: 0 auto 2rem auto;
+        text-align: center;
+        strong {
+            color: inherit;
+            font-size: 1.375em;
+        }
+    }
+    button, a {
+        margin: 0 auto;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        @include for-phone-only {
+            left: 0;
+        }
+        opacity: 0.15;
+        // height: 100%;
+        max-width: 30%;
+    }
+}

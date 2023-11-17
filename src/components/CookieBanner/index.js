@@ -15,7 +15,7 @@ export default function CookieBanner({setAreCookiesAllowed}) {
     return <section className={"cookie-banner"}>
         <p>Używamy plików cookie do personalizacji treści i analizy dostępu do naszej strony internetowej. Możesz wybrać, czy akceptujesz tylko te pliki cookie, które są niezbędne do funkcjonowania witryny, czy też chcesz zezwolić na pliki cookie do śledzenia. Aby uzyskać więcej informacji, zapoznaj się z naszą polityką prywatności.</p>
         <div>
-            <button className={"button accept"} onClick={() => allowCookies(true)}>Zaakceptuj wszystkie</button>
+            <button className={"button primary accept"} onClick={() => allowCookies(true)}>Zaakceptuj wszystkie</button>
             <button className={"clear-button decline"} onClick={() => allowCookies(false)}>Zaakceptuj tylko niezbędne</button>
         </div>
     </section>

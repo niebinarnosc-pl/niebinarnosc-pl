@@ -4,10 +4,7 @@
 @import "../../scss/mixins";
 
 .site-footer {
-    display: none;
-    @include for-tablet-landscape-up {
-        display: flex;
-    }
+    display: flex;
     height: 100%;
     background-color: $purple-dark-2;
     color: $purple-5;
@@ -15,14 +12,18 @@
     .footer-contents {
         height: fit-content;
         width: 100%;
-        max-width: 59.75rem;
-        padding: 1.5rem 0;
-        margin: 0 2.5rem;
+        max-width: $page-max-width;
+        padding: 1.5rem;
         display: flex;
-        align-items: center;
+        @include for-phone-only {
+            gap: 1.5rem;
+            flex-direction: column;
+            text-align: center;
+        }
         justify-content: space-between;
+        align-items: center;
         .logo {
-            width: 13rem;
+            height: 2rem;
         }
         .contact-container {
             display: flex;

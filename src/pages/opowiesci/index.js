@@ -3,12 +3,12 @@ import Page from "../../components/Page";
 import ContactCard from "../../components/ContactCard";
 import Seo from "../../components/Seo";
 import { graphql } from "gatsby";
-import StoryItem from "../../components/StoryItem";
+import { ContentItemContainer } from "../../components/ContentItem";
 
-export default function Opowiesci({data}) {
-    return <Page className={"opowiesci"} heading={"Opowieści"}>
+export default function Opowiesci({data: {stories}}) {
+    return <Page className={"opowiesci"} heading={"Opowieści"} subheading={"Nasze opowieści o płciowości."}>
         <ContactCard/>
-        {data.allMarkdownRemark.nodes.map((story, index) => <StoryItem key={index} {...story}/>)}
+        <ContentItemContainer items={stories.nodes} />
     </Page>
 }
 
@@ -18,7 +18,7 @@ export const Head = ({location}) => <Seo title={"Opowieści"} addTitleTemplate l
 
 export const query = graphql`
 {
-  allMarkdownRemark(filter: {fields: {sourceName: {eq: "stories"}}, frontmatter: {draft: {eq: false}}}) {
+  stories: allMarkdownRemark(filter: {fields: {sourceName: {eq: "stories"}}, frontmatter: {draft: {eq: false}}}) {
     nodes {
       ...Story
     }

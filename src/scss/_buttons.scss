@@ -4,29 +4,67 @@
 
 .button {
     display: flex;
+    gap: 0.5rem;
     padding: 0.75rem 2rem;
     justify-content: center;
     align-items: center;
     white-space: nowrap;
     font-weight: 800;
     font-size: 1rem;
-    color: white !important;
     &, &:hover {text-decoration: none;}
-    background-color: $purple-100;
     border-radius: 12px;
-    border: none;
     &.border {
         border: 2px solid white;
     }
-    transition: 0.1s ease-in-out;
+    transition: 100ms ease-in-out;
     cursor: pointer;
+    width: 100%;
     @include for-tablet-portrait-up {
         align-self: flex-end;
         margin-left: auto;
+        margin-right: 0;
         width: fit-content;
     }
+    &.align-left {
+        margin-left: 0;
+        margin-right: auto;
+    }
+    &.primary {
+        color: white;
+        background-color: $purple-100;
+        border: 1px solid $purple-dark-1;
+        box-shadow: 0 4px 0 0 $purple-dark-1;
+        &:hover:not(:disabled) {
+            border-color: $purple-dark-2;
+            background-color: $purple-dark-1;
+            box-shadow: 0 4px 0 0 $purple-dark-2;
+        }
+        &:active:not(:disabled) {
+            box-shadow: 0 0 0 0 $purple-dark-2 !important;
+            transform: translateY(4px);
+        }
+    }
+    &.secondary {
+        color: $purple-80;
+        background-color: white;
+        border: 1px solid $purple-60;
+        box-shadow: 0 4px 0 0 $purple-60;
+        &:hover:not(:disabled) {
+            color: $purple-100;
+            border-color: $purple-80;
+            box-shadow: 0 4px 0 0 $purple-80;
+            background-color: $purple-5;
+        }
+        &:active:not(:disabled) {
+            box-shadow: 0 0 0 0 $purple-80 !important;
+            transform: translateY(4px);
+        }
+    }
     &:disabled {
-        background-color: $gray-60;
+        color: $purple-40;
+        background-color: $purple-10;
+        border: 1px solid $purple-20;
+        box-shadow: 0 4px 0 0 $purple-20;
     }
 }
 
@@ -44,6 +82,7 @@
 }
 
 .badge-button {
+    height: 2rem;
     display: flex;
     padding: 0.25rem 0.75rem;
     justify-content: center;
@@ -53,12 +92,25 @@
     font-weight: 500;
     border-radius: 100px;
     border: none;
+    transition: background-color 100ms;
+    &.no-hover {
+        cursor: default;
+    }
+    &:hover, *:hover {
+        text-decoration: none;
+    }
     &, &.normal {
         background-color: $purple-10;
         color: $purple-100;
+        &:not(.no-hover) &:hover {
+            background-color: $purple-20;
+        }
     }
     &.error {
         background-color: #ffe6e6;
         color: #ff2222;
+        &:not(.no-hover) &:hover {
+            background-color: $purple-20;
+        }
     }
 }

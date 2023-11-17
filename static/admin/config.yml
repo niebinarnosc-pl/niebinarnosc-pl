@@ -13,23 +13,61 @@ editor:
   preview: false
 
 collections:
+  - name: 'pages'
+    label: 'Strony'
+    files:
+    - name: 'history'
+      label: 'Historia'
+      file: 'content/history/2023-06-27T21:37:09Z_historia.md'
+      media_folder: 'images'
+      public_folder: 'images'
+      format: 'frontmatter'
+      fields:
+        - label: "Data utworzenia"
+          name: "date"
+          widget: "datetime"
+          date_format: "DD.MM.YYYY"
+          time_format: "HH:mm"
+        - {label: "Nazwa", name: "title", widget: "string"}
+        - {label: "Treść", name: "body", widget: "markdown"}
+    - name: 'guide'
+      label: 'Poradnik'
+      file: 'content/guide/2023-10-04T22:19:32Z_poradnik.md'
+      media_folder: 'images'
+      public_folder: 'images'
+      format: 'frontmatter'
+      fields:
+        - label: "Data utworzenia"
+          name: "date"
+          widget: "datetime"
+          date_format: "DD.MM.YYYY"
+          time_format: "HH:mm"
+        - {label: "Nazwa", name: "title", widget: "string"}
+        - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'definitions'
     label: 'Definicje'
     folder: 'content/definitions/'
+    media_folder: 'images'
+    public_folder: 'images'
     format: 'frontmatter'
     create: true
-    slug: '{{definitionId}}'
+    slug: '{{year}}-{{month}}-{{day}}T{{hour}}:{{minute}}:{{second}}Z_{{slug}}'
     fields:
-      - {label: "ID", name: "definitionId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'. Nie należy go zmieniać, jeśli są już przydzielone jakieś opowieści."}
-      - label: 'Slug'
-        name: 'slug'
-        widget: 'string'
+      - label: "Data utworzenia"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
         pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
-        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
+        hint: "Musi być unikalne; będzie częścią adresu strony."
+      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
       - {label: "Nazwa", name: "title", widget: "string"}
       - {label: "Nazwa EN", name: "titleEn", widget: "string"}
       - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
+      - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
   - name: 'stories'
     label: 'Opowieści'
@@ -38,37 +76,33 @@ collections:
     public_folder: 'images'
     format: 'frontmatter'
     create: true
-    slug: '{{storyId}}'
+    slug: '{{year}}-{{month}}-{{day}}T{{hour}}:{{minute}}:{{second}}Z_{{slug}}'
     fields:
-      - {label: "ID", name: "storyId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'."}
+      - label: "Data utworzenia"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
+        hint: "Musi być unikalne; będzie częścią adresu strony."
       - {label: "Miniaturka", name: "thumbnail", widget: "image", required: false}
       - {label: "Pełne zdjęcie", name: "fullPhoto", widget: "image", required: false}
       - {label: "Imię / pseudonim", name: "title", widget: "string"}
-      - label: 'Slug'
-        name: 'slug'
-        widget: 'string'
-        pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
-        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
-      - label: "Sociale"
-        name: "socials"
-        widget: "object"
-        required: false
-        fields:
-          - {label: "Facebook", name: "facebook", widget: "string", required: false}
-          - {label: "Twitter", name: "twitter", widget: "string", required: false}
-          - {label: "Instagram", name: "instagram", widget: "string", required: false}
       - label: "Definicje"
-        name: "definitionIds"
+        name: "definitions"
         widget: "list"
-        default: ["niebinarnosc"]
-        summary: "{{fields.definitionId}}"
+        default: ["2023-06-27T21:37:09Z_niebinarnosc"]
+        summary: "{{fields.definition}}"
         field:
           label: "Definicje"
-          name: "definitionId"
+          name: "definition"
           widget: "relation"
           collection: "definitions"
-          value_field: "definitionId"
-          search_fields: ["heading", "definitionId", "title"]
+          value_field: "{{slug}}"
+          search_fields: ["heading", "id", "title"]
           display_fields: ["title"]
         hint: "Powinna być co najmniej jedna."
       - label: "Triggery"
@@ -77,134 +111,39 @@ collections:
         required: false
         summary: "{{fields.trigger}}"
         field: {label: "Trigger", name: "trigger", widget: "string"}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
+      - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}
       - {label: "Treść", name: "body", widget: "markdown"}
-  - name: 'history'
-    label: 'Historia'
-    folder: 'content/history/'
+  - name: 'representation'
+    label: 'Reprezentacja'
+    folder: 'content/representation/'
+    media_folder: 'images'
+    public_folder: 'images'
     format: 'frontmatter'
     create: true
-    slug: '{{historyId}}'
+    slug: '{{year}}-{{month}}-{{day}}T{{hour}}:{{minute}}:{{second}}Z_{{slug}}'
     fields:
-      - {label: "ID", name: "historyId", widget: "string", hint: "Musi być unikalne, najlepiej to samo co 'Slug'."}
-      - label: 'Slug'
-        name: 'slug'
-        widget: 'string'
+      - label: "Data utworzenia"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
         pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]
-        hint: "Część adresu strony, musi być unikalny; może zawierać tylko małe litery, cyfry i myślnik."
+        hint: "Musi być unikalne; będzie częścią adresu strony."
+      - {label: "Obrazek", name: "fullPhoto", widget: "image", required: false}
       - {label: "Nazwa", name: "title", widget: "string"}
-      - {label: "Priorytet", name: "priority", widget: "number", default: 0, hint: "Im wyższy tym wyżej na stronie."}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "Szkic; wtedy jest niepubliczne. Domyślnie zaznaczone na tak."}
-      - {label: "Treść", name: "body", widget: "markdown"}
-  # - name: 'config'
-  #   label: 'Konfiguracja'
-  #   files:
-  #     - name: 'categories'
-  #       label: 'Kategorie'
-  #       file: 'config/categories.json'
-  #       fields:
-  #         - name: 'categories'
-  #           label: 'Kategorie'
-  #           widget: 'list'
-  #           collapsed: true
-  #           summary: '{{fields.pl.name}}'
-  #           fields:
-  #             - {label: 'ID', name: 'id', widget: 'number', value_type: 'int', min: 1}
-  #             - label: 'PL'
-  #               name: 'pl'
-  #               widget: 'object'
-  #               collapsed: true
-  #               fields:
-  #                 - {label: 'Nazwa', name: 'name', widget: 'string'}
-  #                 - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
-  #             - label: 'EN'
-  #               name: 'en'
-  #               widget: 'object'
-  #               collapsed: true
-  #               fields:
-  #                 - {label: 'Nazwa', name: 'name', widget: 'string'}
-  #                 - {label: 'Slug', name: 'slug', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
-  #             - {label: 'Kolor', name: 'color', widget: 'string'}
-  #     - name: 'authors'
-  #       label: 'Autorzy'
-  #       file: 'config/authors.json'
-  #       fields:
-  #         - name: 'authors'
-  #           label: 'Autorzy'
-  #           widget: 'list'
-  #           collapsed: true
-  #           summary: '{{fields.name}}'
-  #           fields:
-  #             - {label: 'ID/Slug', name: 'id', widget: 'string', pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"]}
-  #             - {label: 'Nazwa', name: 'name', widget: 'string'}
-  # - name: 'pages'
-  #   label: 'Strony'
-  #   i18n: true
-  #   folder: 'content/pages'
-  #   path: '{{category}}/{{slug}}/index'
-  #   create: true
-  #   view_groups:
-  #     - { label: "Kategoria", field: "category" }
-  #   summary: '{{category}}: {{title}}'
-  #   fields:
-  #     - label: "Kategoria"
-  #       name: "category"
-  #       widget: "relation"
-  #       collection: "config"
-  #       file: "categories"
-  #       search_fields: [ "categories.*.pl.name" ]
-  #       value_field: "categories.*.id"
-  #       display_fields: [ "categories.*.pl.name" ]
-  #       i18n: "duplicate"
-  #     - { label: 'Kolejność', name: 'order', widget: 'number', value_type: "int", i18n: "duplicate" }
-  #     - label: "Autor"
-  #       name: "author"
-  #       widget: "relation"
-  #       collection: "config"
-  #       file: "authors"
-  #       search_fields: [ "authors.*.name" ]
-  #       value_field: "authors.*.id"
-  #       display_fields: [ "authors.*.name" ]
-  #       required: false
-  #       i18n: "duplicate"
-  #     - { label: "Data", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false, picker_utc: true, default: "", required: false, i18n: duplicate }
-  #     - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"], i18n: true }
-  #     - { label: 'Tytuł', name: 'title', widget: 'string', i18n: true }
-  #     - { label: "Szkic", name: "draft", widget: "boolean", default: true, i18n: true }
-  #     - { label: 'Nagłówek', name: 'heading', widget: 'string', i18n: true }
-  #     - { label: 'Treść', name: 'body', widget: 'markdown', i18n: true }
-  # - name: 'misc'
-  #   label: 'Różne'
-  #   i18n:
-  #     structure: "single_file"
-  #   files:
-  #     - name: 'privacy-policy'
-  #       label: 'Polityka prywatności'
-  #       file: 'content/misc/privacy-policy.yaml'
-  #       i18n: true
-  #       fields:
-  #         - { label: 'Tytuł', name: 'title', widget: 'string', i18n: true }
-  #         - { label: 'Treść', name: 'body', widget: 'markdown', i18n: true }
-  # - name: 'blog'
-  #   label: 'Blog'
-  #   folder: 'content/blog/'
-  #   media_folder: '/static/img/blog'
-  #   format: 'frontmatter'
-  #   create: true
-  #   i18n: true
-  #   fields:
-  #     - {label: "Tytuł", name: "title", widget: "string", i18n: true}
-  #     - {label: "Autor", name: "author", widget: "select", options: ['Monika "Pacyfka" Tichy'], i18n: duplicate}
-  #     - {label: "Data", name: "date", widget: "datetime", date_format: true, time_format: false, picker_utc: true, i18n: duplicate}
-  #     - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9\-]*$', "Może zawierać tylko małe litery, cyfry i myślnik"], i18n: true}
-  #     - {label: "Treść", name: "body", widget: "markdown", i18n: true}
-  # - name: 'news'
-  #   label: 'Aktualnosci'
-  #   folder: 'content/news/'
-  #   format: 'frontmatter'
-  #   create: true
-  #   i18n: true
-  #   fields:
-  #     - {label: "Tytuł", name: "title", widget: "string", i18n: true}
-  #     - {label: "Data", name: "date", widget: "datetime", date_format: true, time_format: false, picker_utc: true, i18n: duplicate}
-  #     - {label: "Treść", name: "body", widget: "text", i18n: true}
+      - label: "Osoby autorskie"
+        name: "authors"
+        widget: "list"
+        summary: "{{fields.name}}"
+        fields:
+          - {label: "Nazwa", name: "name", widget: "string"}
+          - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuka"]}
+      - {label: "Rok wydania", name: "year", widget: "number", required: false}
+      - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "number", required: false}
+      - {label: "Opis fabuły", name: "storyDescription", widget: "text"}
+      - {label: "Opis reprezentacji", name: "representationDescription", widget: "text"}
+      - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}

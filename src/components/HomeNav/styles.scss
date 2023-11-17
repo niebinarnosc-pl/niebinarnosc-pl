@@ -1,49 +1,114 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
-@import "../../scss/buttons";
 
 .home-nav {
-    display: none;
-    @include for-tablet-portrait-up {
-        display: flex;
-    }
+    display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    & {
+        gap: 1rem;
+        @include for-tablet-portrait-up {
+            gap: 1.5rem;
+        }
+    }
     width: 100%;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     & > div {
         display: flex;
-        gap: 1.5rem;
-        width: 100%;
-        &:first-of-type {
-            height: 17.1875rem;
-            a:first-child {
-                background-color: $yellow-100;
-            }
-            a:last-child {
-                background-color: $purple-5;
-            }
+        flex-wrap: wrap;
+        gap: inherit;
+        flex-direction: column;
+        @include for-tablet-portrait-up {
+            flex-direction: row;
         }
-        &:last-of-type {
-            height: 11.5rem;
+        width: 100%;
+    }
+    *:not(a) {
+        &.yellow {
+            background-color: $yellow-80;
+            color: black;
+        }
+        &.purple {
+            background-color: $purple-60;
             color: white;
-            a:first-child {
-                background-color: $purple-60;
-            }
-            a:last-child {
-                background-color: $purple-dark-2;
-            }
+        }
+        &.black {
+            background-color: $black;
+            color: white;
         }
     }
     a {
-        flex: 1;
-        padding: 1.5rem;
-        background-color: black;
-        font-size: 2.375rem;
-        font-weight: 700;
-        border-radius: 0.75rem;
+        position: relative;
         display: flex;
-        flex-direction: column;
-        justify-content: end;
+        gap: inherit;
+        @mixin bb($color, $color-id) {@include button-border($transition-duration: 200ms, $hover-color: $color, $special-border-animation: $color-id);}
+        &.yellow {
+            @include bb($yellow-100, "yellow");
+        }
+        &.purple {
+            @include bb($purple-80, "purple");
+        }
+        &.black {
+            @include bb(black, "black");
+        }
+        flex: 1;
+        padding: 0.75rem;
+        @include for-tablet-portrait-up {
+            padding: 1.5rem;
+            height: 10.25rem;
+            min-width: 20rem;
+        }
+        h6 {
+            font-size: 1.25em;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            margin: 0;
+        }
+        @include for-tablet-portrait-up {
+            h6 {
+                font-size: 1.5em;
+            }
+        }
+        & > div:first-of-type {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+            svg {
+                z-index: 10;
+                height: 3rem;
+                width: 3rem;
+            }
+            & > div {
+                position: absolute;
+                top: 0.75rem;
+                left: 0.75rem;
+                @include for-tablet-portrait-up {
+                    top: 1.5rem;
+                    left: 1.5rem;
+                }
+                width: inherit;
+                height: inherit;
+                border-radius: inherit;
+                transition: 200ms all;
+            }
+        }
+        & > div:last-of-type {
+            z-index: 10;
+        }
+        &:hover {
+            &.purple, &.black {
+                color: white;
+            }
+            & > div:first-of-type > div {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 }

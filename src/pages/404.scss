@@ -1,26 +1,26 @@
 @import "../scss/mixins";
 
 .e404 {
-  @include for-desktop-up {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
+  .container {
+    background-color: white;
+    padding: $side-padding-small;
   }
-  h1 {
-    font-size: 8rem !important;
+  header > h1 {
+    font-size: 7rem !important;
     @include for-tablet-portrait-up {
-      font-size: 13rem !important;
+      font-size: 10rem !important;
     }
     // color: $black !important;
     text-align: center !important;
     margin: 1rem 0 !important;
     line-height: 1 !important;
   }
-  h2 {
-    color: $purple-100 !important;
+  header > p {
+    max-width: none !important;
     text-align: center !important;
-    font-size: 1.75rem !important;
+    font-size: 2.25rem !important;
     @include for-tablet-portrait-up {
-      font-size: 2.25rem !important;
+      font-size: 3rem !important;
     }
   }
 }

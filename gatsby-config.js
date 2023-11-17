@@ -46,15 +46,24 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        "icon": "src/images/icon.png"
+        "icon": "src/images/icon.svg"
       }
     }, 
     "gatsby-transformer-json",
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        excerpt_separator: `<!-- endexcerpt -->`
-      },
+        excerpt_separator: `<!-- endexcerpt -->`,
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+          `gatsby-remark-copy-linked-files`
+        ]
+      }
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -97,6 +106,22 @@ module.exports = {
         "path": "./content/history/"
       },
       __key: "history"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "representation",
+        "path": "./content/representation/"
+      },
+      __key: "representation"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "guide",
+        "path": "./content/guide/"
+      },
+      __key: "guide"
     }
   ]
 };
