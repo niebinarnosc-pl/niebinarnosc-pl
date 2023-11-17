@@ -30,7 +30,8 @@ export const query = graphql`
 {
   news: allMarkdownRemark(
     filter: {frontmatter: {draft: {eq: false}}},
-    sort: {frontmatter: {date: DESC}}
+    sort: {frontmatter: {date: DESC}},
+    limit: 3
   ) {
     nodes {
       ...ContentItem
