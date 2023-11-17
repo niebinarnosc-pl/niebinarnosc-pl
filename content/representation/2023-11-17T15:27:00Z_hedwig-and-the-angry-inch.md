@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:25:26.410Z
 slug: hedwig-and-the-angry-inch
+fullPhoto: images/hedwig.jpg
 title: Hedwig and the Angry Inch
 authors:
   - name: John Cameron Mitchell

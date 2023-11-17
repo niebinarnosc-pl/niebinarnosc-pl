@@ -58,7 +58,7 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
                         {definitionsRemark.map(({frontmatter: {slug, title}}) => <p key={slug} className="badge-button"><Link to={`/${slug}`}>{title}</Link></p>)}
                     </div>}
                     {(category || ageLimit) && <div className="tags">
-                        {category && <p className="badge-button">{category}</p>}
+                        {category && <p className="badge-button no-hover">{category}</p>}
                         {ageLimit && <p>{ageLimit}+</p>}
                     </div>}
                     {triggers && <div className="tags">

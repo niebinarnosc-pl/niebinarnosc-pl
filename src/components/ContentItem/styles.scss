@@ -113,7 +113,6 @@
     }
     header {
       display: flex;
-      align-items: end;
       gap: 1rem;
       .header-image {
         @include for-tablet-landscape-up {

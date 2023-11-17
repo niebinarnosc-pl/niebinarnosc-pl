@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:08:36.885Z
 slug: she-ra-i-ksiezniczki-mocy
+fullPhoto: images/she-ra-i-ksiezniczki-mocy.jpg
 title: She-Ra i księżniczki mocy
 authors:
   - name: N.D. Stevenson

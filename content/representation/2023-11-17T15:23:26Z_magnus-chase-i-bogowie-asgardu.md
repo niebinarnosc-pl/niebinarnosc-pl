@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:21:34.929Z
 slug: magnus-chase-i-bogowie-asgardu
+fullPhoto: images/magnus-chase.jpg
 title: Magnus Chase i bogowie Asgardu
 authors:
   - name: Rick Riordan

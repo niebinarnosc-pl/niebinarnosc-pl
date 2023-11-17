@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:06:16.081Z
 slug: wszystkiego-co-najlepsze
+fullPhoto: images/wszystkiego-co-najlepsze.jpg
 title: Wszystkiego, co najlepsze
 authors:
   - name: Mason Deaver

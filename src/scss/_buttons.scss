@@ -93,20 +93,23 @@
     border-radius: 100px;
     border: none;
     transition: background-color 100ms;
+    &.no-hover {
+        cursor: default;
+    }
     &:hover, *:hover {
         text-decoration: none;
     }
     &, &.normal {
         background-color: $purple-10;
         color: $purple-100;
-        &:hover {
+        &:not(.no-hover) &:hover {
             background-color: $purple-20;
         }
     }
     &.error {
         background-color: #ffe6e6;
         color: #ff2222;
-        &:hover {
+        &:not(.no-hover) &:hover {
             background-color: $purple-20;
         }
     }

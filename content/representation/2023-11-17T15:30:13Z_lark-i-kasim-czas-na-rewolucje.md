@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:29:04.637Z
 slug: lark-i-kasim-czas-na-rewolucje
+fullPhoto: images/lark-i-kasim.jpg
 title: Lark i Kasim. Czas na rewolucję
 authors:
   - name: Kacen Callender

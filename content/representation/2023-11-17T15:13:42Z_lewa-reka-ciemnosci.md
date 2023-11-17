@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:13:04.038Z
 slug: lewa-reka-ciemnosci
+fullPhoto: images/lewa-reka-ciemnosci.jpg
 title: Lewa ręka ciemności
 authors:
   - name: Ursula K. Le Guin

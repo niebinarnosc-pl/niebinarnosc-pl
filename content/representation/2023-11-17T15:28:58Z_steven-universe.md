@@ -1,6 +1,7 @@
 ---
 date: 2023-11-17T15:28:18.347Z
 slug: steven-universe
+fullPhoto: images/steven-universe.jpg
 title: Steven Universe
 authors:
   - name: Rebecca Sugar
