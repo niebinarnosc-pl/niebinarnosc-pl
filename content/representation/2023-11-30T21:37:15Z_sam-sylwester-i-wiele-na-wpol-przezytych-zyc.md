@@ -1,7 +1,7 @@
 ---
 date: 2023-11-30T21:31:57.071Z
 slug: sam-sylwester
-fullPhoto: https://s.lubimyczytac.pl/upload/books/5049000/5049762/1036597-352x500.jpg
+fullPhoto: images/sam-sylwester.jpeg
 title: Sam Sylwester i wiele na wpół przeżytych żyć
 authors:
   - name: Maya MacGregor
