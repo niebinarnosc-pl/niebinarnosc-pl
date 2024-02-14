@@ -1,12 +1,12 @@
 import React from "react";
-import Page from "../../components/Page"
 import Seo from "../../components/Seo";
-import { Link, graphql } from "gatsby";
-import ContactCard from "../../components/ContactCard";
+import Page from "../../components/Page"
+import { graphql } from "gatsby";
 import { ContentItemContainer } from "../../components/ContentItem";
+import ContactCard from "../../components/ContactCard";
 
 export default function Definicja({data: {definition, stories, site}}) {
-    const {title, titleEn} = definition.frontmatter
+    const {title} = definition.frontmatter
     return <Page isArticle className={"definicja"} heading={title}>
         <ContentItemContainer singleDefinition items={[definition]}/>
         <h2>Opowieści</h2>

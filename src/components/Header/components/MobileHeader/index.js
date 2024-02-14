@@ -1,7 +1,7 @@
 import React, {useRef} from "react"
 import "./styles.scss"
 import useClickOutside from "../../../../hooks/useClickOutside";
-import Link from "../../../Link"
+import { Link } from "gatsby"
 import logo from "../../../../images/logo.svg"
 import { IconMenu } from "../../../Icons";
 
@@ -14,7 +14,7 @@ export default function MobileHeader({navLinks, expanded, setExpanded}) {
                 <Link to={"/"}>
                     <img className="logo" src={logo} alt={"niebinarnosc.pl"}/>
                 </Link>
-                <button className={"nav-expand-button"} onClick={() => setExpanded(!expanded)}>
+                <button className={"nav-expand-button"} onClick={() => setExpanded(!expanded)} aria-label="Menu">
                     <IconMenu/>
                 </button>
             </div>

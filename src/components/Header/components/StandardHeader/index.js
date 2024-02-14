@@ -1,6 +1,6 @@
 import React from "react"
 import "./styles.scss"
-import Link from "../../../Link"
+import { Link } from "gatsby"
 import logo from "../../../../images/logo-full.svg"
 
 export default function StandardHeader({navLinks}) {

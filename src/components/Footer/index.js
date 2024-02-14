@@ -1,11 +1,13 @@
 import React from "react"
 import "./styles.scss"
-import love from "../../images/transheart.svg";
 import {Link} from "gatsby";
-import { IconEmail } from "../Icons";
+import { IconEmail, IconLogoFacebook, IconLogoInstagram } from "../Icons";
 import logo from "../../images/logo-full.svg";
+import useLinks from "../../hooks/useLinks";
+import ExternalLink from "../ExternalLink";
 
 export default function Footer() {
+    const links = useLinks();
     return (
         <footer className={"site-footer"}>
             <div className="footer-contents">
@@ -14,8 +16,12 @@ export default function Footer() {
                 </Link>
                 {/* <p><strong>niebinarnosc.pl</strong></p> */}
                 <div className="contact-container">
+                    <div className="sm">
+                        <ExternalLink to={links.instagram}><IconLogoInstagram size={1.75}/></ExternalLink>
+                        <ExternalLink to={links.facebook}><IconLogoFacebook size={1.75}/></ExternalLink>
+                    </div>
                     <Link to="/#kontakt"><strong>Napisz do nas</strong></Link>
-                    <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail/>kontakt@niebinarnosc.pl</a>
+                    <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail size={1.5}/>kontakt@niebinarnosc.pl</a>
                 </div>
                 {/* <p>© 2023 Wszelkie prawa zastrzeżone | <Link to={`/polityka-prywatnosci/`}>Polityka Prywatności</Link></p> */}
             </div>

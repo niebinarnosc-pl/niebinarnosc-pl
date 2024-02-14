@@ -1,8 +1,8 @@
 import React from "react";
-import Page from "../../components/Page"
-import Seo from "../../components/Seo";
+import Seo from "../components/Seo";
+import Page from "../components/Page"
 import { graphql } from "gatsby";
-import { ContentItemContainer } from "../../components/ContentItem";
+import { ContentItemContainer } from "../components/ContentItem";
 
 export default function Definicje({data: {definitions}}) {
     return <Page className={"definicje"} heading={"Definicje"} subheading={"Czym jest niebinarność i inne."}>

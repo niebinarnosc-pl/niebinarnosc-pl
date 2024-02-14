@@ -1,5 +1,5 @@
-import CMS from 'netlify-cms-app';
-import { pl } from 'netlify-cms-locales';
+import CMS from 'decap-cms-app';
+import { pl } from 'decap-cms-locales';
 import columnComponent from './columnComponent';
 import containerComponent from './containerComponent';
 import hrComponent from './hrComponent';

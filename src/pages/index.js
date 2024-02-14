@@ -1,12 +1,11 @@
 import React from "react";
-import "./styles.scss"
 import Seo from "../components/Seo";
 import Page from "../components/Page";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
+import { ContentItemContainer } from "../components/ContentItem";
 import HomeNav from "../components/HomeNav";
 import HomeHeader from "../components/HomeHeader";
 import ContactForm from "../components/ContactForm";
-import { ContentItemContainer } from "../components/ContentItem";
 
 export default function Home({data}) {
     return <Page className={"home"}>

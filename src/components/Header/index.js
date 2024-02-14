@@ -1,15 +1,15 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import StandardHeader from "./components/StandardHeader";
 import MobileHeader from "./components/MobileHeader";
 import "./styles.scss"
-import Link from "../Link";
+import { Link } from "gatsby";
 import { IconChartRelationship, IconEmail, IconIdentification, IconNotebook, IconUserSimulation, IconVoiceActivate } from "../Icons";
 import MobileBottomButtons from "./components/MobileBottomButtons";
 import useScrollDirection from "../../hooks/useScrollDirection";
 
 export default function Header({location, bottom=false}) {
     const [expanded, setExpanded] = useState(false)
-    const {isScrollDown, isScrollUp} = useScrollDirection()
+    const {isScrollDown} = useScrollDirection()
 
     useEffect(() => {
         isScrollDown && setExpanded(false)

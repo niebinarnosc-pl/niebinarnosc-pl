@@ -16,7 +16,7 @@
         padding: 1.5rem;
         display: flex;
         @include for-phone-only {
-            gap: 1.5rem;
+            gap: 1rem;
             flex-direction: column;
             text-align: center;
         }
@@ -31,11 +31,27 @@
             gap: 0.75rem;
         }
         a {
-            color: white;
+            color: $purple-20;
             &.contact-mail {
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
+            }
+        }
+        .sm {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            @include for-tablet-portrait-up {
+                justify-content: flex-start;
+                margin: 0 0 0 -3px;
+                height: 1.75rem;
+            }
+            a {
+                padding: 0.5rem;
+                @include for-tablet-portrait-up {
+                    padding: 0;
+                }
             }
         }
     }

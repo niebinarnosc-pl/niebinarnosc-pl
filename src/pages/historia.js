@@ -1,8 +1,8 @@
 import React from "react";
-import Page from "../../components/Page";
-import Seo from "../../components/Seo";
+import Seo from "../components/Seo";
+import Page from "../components/Page";
 import { graphql } from "gatsby";
-import ArticleContainer from "../../components/ArticleContainer";
+import ArticleContainer from "../components/ArticleContainer";
 
 export default function Historia({data: {history}}) {
     return <Page isArticle className={"historia"} heading={"Historia"} subheading={"Jaka jest nasza historia? Dowiedz się więcej o niebinarności."}>

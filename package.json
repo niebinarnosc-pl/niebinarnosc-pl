@@ -16,27 +16,37 @@
   },
   "dependencies": {
     "@fontsource/noto-sans": "^5.0.4",
+    "decap-cms-app": "^3.0.12",
+    "decap-cms-locales": "^3.1.0",
     "gatsby": "^5.11.0",
+    "gatsby-adapter-netlify": "^1.1.3",
+    "gatsby-plugin-decap-cms": "^4.0.3",
     "gatsby-plugin-google-gtag": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
-    "gatsby-plugin-netlify": "^5.1.0",
-    "gatsby-plugin-netlify-cms": "^7.11.0",
+    "gatsby-plugin-offline": "^6.13.1",
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-remark-autolink-headers": "^6.13.1",
     "gatsby-remark-copy-linked-files": "^6.12.0",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^7.12.3",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-json": "^5.11.0",
     "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
-    "netlify-cms-app": "^2.15.72",
-    "netlify-cms-locales": "^1.39.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
     "rehype-react": "^7.0.0",
     "sass": "^1.63.6"
+  },
+  "overrides": {
+    "graphql": "^16.0.0",
+    "decap-cms-app": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
   }
 }

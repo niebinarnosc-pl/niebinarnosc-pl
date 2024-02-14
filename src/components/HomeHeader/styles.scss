@@ -2,11 +2,7 @@
 @import "../../scss/mixins";
 
 .home-header {
-    @include side-padding;
-    margin: 2rem 1rem !important;
-    @include for-tablet-portrait-up {
-        margin: 3.75rem 1.5rem !important;
-    }
+    margin: 0 1rem !important;
     position: relative;
     h1, button, a {
         position: relative;
@@ -19,7 +15,7 @@
             font-size: 1.375em;
         }
     }
-    button, a {
+    button, & > a {
         margin: 0 auto;
     }
     img {
@@ -29,7 +25,21 @@
             left: 0;
         }
         opacity: 0.15;
-        // height: 100%;
         max-width: 30%;
+    }
+    .sm {
+        color: $purple-60;
+        margin: 0.5rem 0;
+        display: flex;
+        justify-content: center;
+        @include for-tablet-portrait-up {
+            justify-content: end;
+        }
+        a {
+            padding: 0.75rem;
+            @include for-tablet-portrait-up {
+                padding: 0.25rem;
+            }
+        }
     }
 }
