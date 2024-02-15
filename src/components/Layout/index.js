@@ -12,25 +12,22 @@ export default function Layout({location, children}) {
             setAreCookiesAllowed(true)
         else if (cookie === "0") {
             setAreCookiesAllowed(false)
-            if (process.env.NODE_ENV === "production")
+            if (process.env.NODE_ENV === "production" && window.gtag)
                 window.gtag("consent", "update", {
                     "ad_storage": "denied",
                     "analytics_storage": "denied",
                 })
         } else
-            setAreCookiesAllowed(undefined)
-    }, [areCookiesAllowed])
+            setAreCookiesAllowed(null)
+    }, [])
     return (
         <div className={"site-root"}>
             <Header location={location}/>
             <main className={"site-main"}>
                 {children}
             </main>
-            <>
-                {typeof areCookiesAllowed === "undefined" && <CookieBanner setAreCookiesAllowed={setAreCookiesAllowed}/>}
-                <Footer/>
-                {/* <Header bottom location={location}/> */}
-            </>
+            {areCookiesAllowed === null && <CookieBanner setAreCookiesAllowed={setAreCookiesAllowed}/>}
+            <Footer/>
         </div>
     )
 }
