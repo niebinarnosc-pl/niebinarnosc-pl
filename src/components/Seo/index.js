@@ -54,8 +54,8 @@ export default function Seo({title, description, ogImage, addTitleTemplate = fal
             {seo.ogLanguage && <meta property="og:locale" content={seo.ogLanguage}/>}
             <meta property="og:type" content="website"/>
             {landingPage && <script type="application/ld+json">{JSON.stringify(schemaOrgLandingPage)}</script>}
-            {/* {seo.ogImage && <meta property="og:image" content={seo.ogImage} />} */}
-            {/* {seo.ogImage && seo.title && <meta property="og:image:alt" content={seo.title} />} */}
+            {seo.ogImage && <meta property="og:image" content={seo.ogImage} />}
+            {seo.ogImage && seo.title && <meta property="og:image:alt" content={seo.title} />}
         </>
     )
 }
