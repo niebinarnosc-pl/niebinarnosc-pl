@@ -6,7 +6,7 @@ title: Felix ever after. Na zawsze Felix
 authors:
   - name: " Callender Kacen"
 category: Książka
-year: 2020
+year: ""
 storyDescription: Felix Love nigdy nie był zakochany, a ironią losu jest
   nazwisko, które nosi. Desperacko chce się dowiedzieć, jak to jest kochać, i
   nie rozumie, dlaczego innym przychodzi to tak łatwo, a jemu nie. Kiedy ktoś
