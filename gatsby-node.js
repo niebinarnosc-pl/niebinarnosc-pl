@@ -36,12 +36,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             sort: {frontmatter: {priority: "DESC"}}
           }
         })).entries
-      },
-      year: {
-        type: "Int"
-      },
-      ageLimit: {
-        type: "Int"
       }
     },
   })]
