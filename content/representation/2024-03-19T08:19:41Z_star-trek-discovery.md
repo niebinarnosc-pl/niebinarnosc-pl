@@ -5,7 +5,7 @@ fullPhoto: images/star-trek_-discovery-poster.jpg
 title: "Star Trek: Discovery"
 authors:
   - name: Bryan Fuller
-  - name: Ale Kurtzman
+  - name: Alex Kurtzman
 category: Serial
 ageLimit: ""
 storyDescription: "Kolejna seria z cyklu Star Trek. Tym razem zabieramy się w
