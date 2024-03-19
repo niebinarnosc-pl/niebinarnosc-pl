@@ -37,6 +37,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           }
         })).entries
       },
+      year: {
+        type: "Int"
+      },
+      ageLimit: {
+        type: "Int"
+      }
     },
   })]
   createTypes(typeDefs);
