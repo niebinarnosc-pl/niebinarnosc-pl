@@ -1,4 +1,4 @@
-exports.onCreateNode = ({ node, getNode, actions: {createNodeField} }) => {
+exports.onCreateNode = ({ node, getNode, actions: {createNode, createNodeField, createParentChildLink} }) => {
   if (node.internal.type !== 'MarkdownRemark') {
     return;
   }
@@ -12,6 +12,27 @@ exports.onCreateNode = ({ node, getNode, actions: {createNodeField} }) => {
     name: 'filename',
     value: getNode(node.parent).name,
   });
+
+  const childType = {
+    definitions: "Definition",
+    guide: "Guide",
+    history: "History",
+    representation: "Representation",
+    stories: "Story"
+  }[node.fields.sourceName]
+
+  const childNode = {
+    id: `${node.id}___${childType.toUpperCase()}`,
+    parent: node.id,
+    children: [],
+    internal: {
+      type: `MarkdownRemark${childType}`,
+      contentDigest: node.internal.contentDigest,
+    },
+    slug: node.fields.filename
+  }
+  createNode(childNode);
+  createParentChildLink({parent: node, child: childNode});
 };
 
 exports.createSchemaCustomization = ({ actions, schema }) => {

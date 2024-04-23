@@ -9,7 +9,7 @@ const renderAst = ast => unified().use(rehypeReact, {
   jsxs,
   createElement: React.createElement,
   components: {
-    h2: (props) => <h2 className="article-h2" {...props}/>,
+    h2: (props) => <h2 className="article-h2" {...props}>{props.children}</h2>,
     columns: (props) => <div className={`columns${props.reverse === "true" ? " reverse" : ""}`}>{props.children}</div>,
     container: (props) => <div {...props}/>
   }

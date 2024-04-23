@@ -6,6 +6,7 @@ import { Link, graphql } from "gatsby";
 import defaultThumbnail from "../../images/logo-square.svg"
 import { IconArrowRight } from "../Icons";
 import renderAst from "../../utils/renderAst";
+import slugify from "../../utils/slugify";
 
 export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <div className={
     "content-item-container" +
@@ -13,6 +14,8 @@ export const ContentItemContainer = ({items, isButtons, singleDefinition}) => <d
     }>
         {items.map((item, index) => <ContentItem {...item} isButton={isButtons} singleDefinition={singleDefinition} key={index}/>)}
 </div>
+
+//todo: fix this file asap
 
 export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, frontmatter: {slug, thumbnail, thumbnailFromPhoto, fullPhoto, title, titleEn, definitionsRemark, triggers, authors, category, year, ageLimit, storyDescription, representationDescription}, htmlAst, excerpt}) => {
     const [imageActive, setImageActive] = useState(false)
@@ -24,8 +27,8 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
         {thumbnailPic ? 
             <button onClick={() => setImageActive(true)}>
                 {typeof getImage(thumbnailPic) !== "undefined" ? 
-                    <GatsbyImage image={getImage(thumbnailPic)} alt={title} onClick={() => setImageActive(true)}/> :
-                    <img src={thumbnailPic.publicURL} alt={title} onClick={() => setImageActive(true)}/>
+                    <GatsbyImage image={getImage(thumbnailPic)} alt={title}/> :
+                    <img src={thumbnailPic.publicURL} alt={title}/>
                 }
             </button> :
             <img src={defaultThumbnail} alt="Flaga niebinarna z logiem niebinarnosc.pl"/>
@@ -55,10 +58,10 @@ export const ContentItem = ({isButton, singleDefinition, fields: {sourceName}, f
                       <p>{authors.map(author => author.name).join(', ')}</p>
                     </div>}
                     {definitionsRemark && definitionsRemark.length > 0 && <div className="tags">
-                        {definitionsRemark.map(({frontmatter: {slug, title}}) => <p key={slug} className="badge-button"><Link to={`/${slug}`}>{title}</Link></p>)}
+                        {definitionsRemark.map(({frontmatter: {slug, title}}) => <Link key={slug} to={`/${slug}`} className="badge-button">{title}</Link>)}
                     </div>}
                     {(category || ageLimit) && <div className="tags">
-                        {category && <p className="badge-button no-hover">{category}</p>}
+                        {category && <Link to={`/reprezentacja/${slugify(category)}`} className="badge-button">{category}</Link>}
                         {ageLimit && <p>{ageLimit}+</p>}
                     </div>}
                     {triggers && <div className="tags">

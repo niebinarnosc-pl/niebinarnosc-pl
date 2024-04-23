@@ -7,7 +7,7 @@ export default function Lightbox({image, alt="", deactivate}) {
     useEffect(() => {
         ref.current.focus()
     }, [])
-    return <div className={`lightbox`} ref={ref} onClick={deactivate} tabIndex={0} onKeyDown={deactivate}>
+    return <div className={`lightbox`} ref={ref} role="button" onClick={deactivate} tabIndex={0} onKeyDown={deactivate}>
         <div>
             {typeof getImage(image) !== "undefined" ? 
                 <GatsbyImage image={getImage(image)} alt={alt}/> :

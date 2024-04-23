@@ -34,6 +34,7 @@
         background-color: $purple-100;
         border: 1px solid $purple-dark-1;
         box-shadow: 0 4px 0 0 $purple-dark-1;
+        margin-bottom: 4px;
         &:hover:not(:disabled) {
             border-color: $purple-dark-2;
             background-color: $purple-dark-1;
@@ -49,6 +50,7 @@
         background-color: white;
         border: 1px solid $purple-60;
         box-shadow: 0 4px 0 0 $purple-60;
+        margin-bottom: 4px;
         &:hover:not(:disabled) {
             color: $purple-100;
             border-color: $purple-80;
@@ -83,7 +85,7 @@
 
 .badge-button {
     height: 2rem;
-    display: flex;
+    display: inline-flex;
     padding: 0.25rem 0.75rem;
     justify-content: center;
     align-items: center;
@@ -101,9 +103,13 @@
     }
     &, &.normal {
         background-color: $purple-10;
-        color: $purple-100;
-        &:not(.no-hover) &:hover {
-            background-color: $purple-20;
+        color: $indigo !important;
+        &:not(.no-hover):hover {
+            background-color: $purple-20 !important;
+        }
+        &.selected, &.selected:hover {
+            background-color: $indigo !important;
+            color: $white !important;
         }
     }
     &.error {

@@ -49,7 +49,7 @@ export default function ContactForm() {
                     {alertOpen && <Alert type={alertType} message={alertMessage} close={() => setAlertOpen(false)}/>}
                     <input type="hidden" name="form-name" value="Kontakt"/>
                     <input type="hidden" name="subject" data-remove-prefix value={`Wiadomość od ${userEmail}`}/>
-                    <label><IconEmail/><input type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" onChange={e => setUserEmail(e.target.value)} required/></label>
+                    <label aria-label="E-mail"><IconEmail/><input type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" onChange={e => setUserEmail(e.target.value)} required/></label>
                     <textarea name="text" placeholder="Tutaj wpisz swoją wiadomość" required/>
                     <label className="display-none">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
                     <button type="submit" className="button primary" disabled={isSending}>Wyślij wiadomość</button>
