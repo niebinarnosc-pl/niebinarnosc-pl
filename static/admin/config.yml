@@ -142,8 +142,8 @@ collections:
           - {label: "Nazwa", name: "name", widget: "string"}
           - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Kategoria", name: "category", widget: "select", options: ["Książka", "Komiks", "Film", "Serial", "Gra wideo", "Teatr", "Sztuka"]}
-      - {label: "Rok wydania", name: "year", widget: "number", required: false}
-      - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "number", required: false}
+      - {label: "Rok wydania", name: "year", widget: "string", required: false, pattern: ['^[0-9]*$', "Może zawierać tylko cyfry"]}
+      - {label: "Ograniczenie wiekowe", name: "ageLimit", widget: "string", required: false, pattern: ['^[0-9]*$', "Może zawierać tylko cyfry"]}
       - {label: "Opis fabuły", name: "storyDescription", widget: "text"}
       - {label: "Opis reprezentacji", name: "representationDescription", widget: "text"}
       - {label: "Niepubliczne", name: "draft", widget: "boolean", default: true}

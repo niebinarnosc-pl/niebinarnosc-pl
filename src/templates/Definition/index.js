@@ -4,6 +4,7 @@ import Page from "../../components/Page"
 import { graphql } from "gatsby";
 import { ContentItemContainer } from "../../components/ContentItem";
 import ContactCard from "../../components/ContactCard";
+import ExternalLink from "../../components/ExternalLink";
 
 export default function Definicja({data: {definition, stories, site}}) {
     const {title} = definition.frontmatter
@@ -15,7 +16,7 @@ export default function Definicja({data: {definition, stories, site}}) {
             <div className="container">
                 <h4>Brak opowieści :(</h4>
                 <p>Niestety, nikt nie podzielił się jeszcze swoją opowieścią.</p>
-                <p>Chcesz być pierwsz_? <strong><a href={site.siteMetadata.contactFormUrl}>Napisz do nas.</a></strong></p>
+                <p>Chcesz być pierwsz_? <strong><ExternalLink to={site.siteMetadata.contactFormUrl}>Napisz do nas.</ExternalLink></strong></p>
             </div>
             }
         <ContactCard/>

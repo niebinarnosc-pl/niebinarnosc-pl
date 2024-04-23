@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.scss";
 import { IconEmail } from "../Icons";
 import Alert from "../Alert";
+import ExternalLink from "../ExternalLink";
 
 export default function ContactForm() {
     const errorMessage = "Wystąpił błąd. Spróbuj ponownie później. Jeśli błąd będzie się powtarzał, skontaktuj się znami na kontakt@niebinarnosc.pl"
@@ -42,7 +43,7 @@ export default function ContactForm() {
         <div>
             <div>
                 <p>Masz do nas pytania? Szukasz pomocy? Napisz do nas na maila lub wypełnij formularz.</p>
-                <p><a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail"><IconEmail/>kontakt@niebinarnosc.pl</a></p>
+                <p><ExternalLink to="mailto:kontakt@niebinarnosc.pl" className="contact-mail"><IconEmail/>kontakt@niebinarnosc.pl</ExternalLink></p>
             </div>
             <div>
                 <form name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>

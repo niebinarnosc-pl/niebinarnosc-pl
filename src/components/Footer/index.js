@@ -21,7 +21,7 @@ export default function Footer() {
                         <ExternalLink to={links.facebook}><IconLogoFacebook size={1.75}/></ExternalLink>
                     </div>
                     <Link to="/#kontakt"><strong>Napisz do nas</strong></Link>
-                    <a href="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail size={1.5}/>kontakt@niebinarnosc.pl</a>
+                    <ExternalLink to="mailto:kontakt@niebinarnosc.pl" className="contact-mail white"><IconEmail size={1.5}/>kontakt@niebinarnosc.pl</ExternalLink>
                 </div>
                 {/* <p>© 2023 Wszelkie prawa zastrzeżone | <Link to={`/polityka-prywatnosci/`}>Polityka Prywatności</Link></p> */}
             </div>

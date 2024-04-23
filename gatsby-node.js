@@ -57,7 +57,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             sort: {frontmatter: {priority: "DESC"}}
           }
         })).entries
-      },
+      }
     },
   })]
   createTypes(typeDefs);
