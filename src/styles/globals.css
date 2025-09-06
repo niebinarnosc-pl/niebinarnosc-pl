@@ -66,48 +66,27 @@
   }
 
   body {
-    font-weight: 500;
-    background-color: var(--color-purple-5);
-    color: var(--color-black);
+    @apply font-medium bg-purple-5 text-black;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    @apply font-bold;
   }
   
   strong {
-    font-weight: 700;
-    color: var(--color-purple-60);
+    @apply font-bold text-purple-60;
   }
 
   a {
-    color: inherit;
-    text-decoration-line: none;
-  }
-  a:hover {
-    text-decoration-line: underline;
+    @apply text-inherit no-underline hover:underline;
   }
 
   blockquote {
-    font-size: 1.125rem;
-    line-height: 1.5;
-    border-left-width: 0.3em;
-    border-left-style: solid;
-    border-left-color: var(--color-purple-100);
-    background-color: var(--color-purple-5);
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1.5rem;
-  }
-  @media (min-width: 600px) { /* tp breakpoint */
-    blockquote {
-      font-size: 1.5rem;
-    }
+    @apply text-lg tp:text-2xl leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-6;
   }
 
   blockquote p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    @apply text-base;
   }
 }
 

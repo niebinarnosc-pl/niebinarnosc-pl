@@ -23,11 +23,30 @@ A base `.btn` class can be created for common styles.
 ```css
 /* src/styles/globals.css */
 @utility .btn {
-  @apply flex gap-2 px-8 py-3 justify-center items-center whitespace-nowrap font-extrabold text-base rounded-xl cursor-pointer w-full tp:w-fit;
-  text-decoration: none; /* remove underline from links styled as buttons */
+  display: flex;
+  gap: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  width: 100%;
+  text-decoration-line: none;
+}
+@media (min-width: 600px) { /* tp breakpoint */
+  .btn {
+    width: fit-content;
+  }
 }
 @utility .btn:hover {
-  text-decoration: none;
+  text-decoration-line: none;
 }
 ```
 
