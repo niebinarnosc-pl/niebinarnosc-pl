@@ -1,4 +1,4 @@
-import type { IconName } from '../components/core/Icon.astro';
+import type { IconName } from '../components/Icon.astro';
 
 export const navLinks: { text: string; route: string; icon: IconName }[] = [
     { text: "Definicje", route: "/definicje/", icon: "chart-relationship" },
