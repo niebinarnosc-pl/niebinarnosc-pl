@@ -1,0 +1,15 @@
+@import "../../scss/breakpoints";
+
+.contact-form {
+    & > div {
+        display: flex;
+        flex-direction: column;
+        @include for-tablet-landscape-up {
+            flex-direction: row;
+        }
+        gap: 1.5rem;
+        & > * {
+            flex: 1;
+        }
+    }
+}

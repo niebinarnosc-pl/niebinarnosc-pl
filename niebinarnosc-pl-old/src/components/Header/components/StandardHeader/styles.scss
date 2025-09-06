@@ -1,0 +1,42 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+
+.standard-site-header {
+    padding: 1.25rem 1.5rem;
+    background-color: white;
+    @include button-border($hover: false);
+    font-weight: 500;
+    font-size: 1rem;
+    color: $purple-dark-1;
+    .header-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & > a {
+            height: 1.5rem;
+            img {
+                height: 100%;
+            }
+        }
+        nav {
+            a {color: inherit;}
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            .active, a:hover {
+                //coupled with the order of links, watch out
+                margin: 0 -2px 0 -1px;
+                &:nth-child(5) {
+                    margin: 0 -3px 0 -2px;
+                }
+                &:nth-child(6) {
+                    margin: 0 -2px 0 -2px;
+                }
+                text-align: center;
+                text-decoration: none;
+                color: $indigo;
+                font-weight: 700;
+            }
+        }
+    }
+}

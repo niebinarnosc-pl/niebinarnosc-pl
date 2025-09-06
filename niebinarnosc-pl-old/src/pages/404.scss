@@ -1,0 +1,26 @@
+@import "../scss/mixins";
+
+.e404 {
+  .container {
+    background-color: white;
+    padding: $side-padding-small;
+  }
+  header > h1 {
+    font-size: 7rem !important;
+    @include for-tablet-portrait-up {
+      font-size: 10rem !important;
+    }
+    // color: $black !important;
+    text-align: center !important;
+    margin: 1rem 0 !important;
+    line-height: 1 !important;
+  }
+  header > p {
+    max-width: none !important;
+    text-align: center !important;
+    font-size: 2.25rem !important;
+    @include for-tablet-portrait-up {
+      font-size: 3rem !important;
+    }
+  }
+}

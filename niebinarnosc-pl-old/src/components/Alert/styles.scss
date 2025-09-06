@@ -1,0 +1,24 @@
+@import "../../scss/variables";
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1.5rem;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    &.success {
+        &, & button {color: $purple-100;}
+        background-color: $purple-20;
+    }
+    &.error {
+        &, & button {color: #ff2222;}
+        background-color: #ffe6e6;
+    }
+    button {
+        font-size: inherit;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+}

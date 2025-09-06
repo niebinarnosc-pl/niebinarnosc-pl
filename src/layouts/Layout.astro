@@ -1,0 +1,50 @@
+---
+import '../styles/globals.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Seo from '../components/Seo.astro';
+import { sanityClient } from 'sanity:client';
+import { siteSettingsQuery } from '../lib/queries';
+
+interface Props {
+    page?: any;
+}
+
+const { page } = Astro.props;
+const siteSettings = await sanityClient.fetch(siteSettingsQuery);
+
+const pageSeo = {
+	id: page?.id,
+    title: page?.seo?.title || page?.heading,
+    description: page?.seo?.description,
+    image: page?.seo?.image,
+};
+
+const siteSeo = siteSettings?.defaultSeo || {};
+
+const siteName = 'niebinarnosc.pl';
+---
+
+<!doctype html>
+<html lang="pl" transition:name="root" transition:animate="none">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<Seo
+            pageSeo={pageSeo}
+            siteSeo={siteSeo}
+            siteName={siteName}
+            canonicalUrl={Astro.url}
+            siteSettings={siteSettings}
+        />
+	</head>
+	<body class="flex flex-col min-h-screen relative">
+		<Header />
+		<main class="flex-1 flex relative z-10">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,45 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.home-header {
+    margin: 0 1rem !important;
+    position: relative;
+    h1, button, a {
+        position: relative;
+    }
+    h1 {
+        margin: 0 auto 2rem auto;
+        text-align: center;
+        strong {
+            color: inherit;
+            font-size: 1.375em;
+        }
+    }
+    button, & > a {
+        margin: 0 auto;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        @include for-phone-only {
+            left: 0;
+        }
+        opacity: 0.15;
+        max-width: 30%;
+    }
+    .sm {
+        color: $purple-60;
+        margin: 0.5rem 0;
+        display: flex;
+        justify-content: center;
+        @include for-tablet-portrait-up {
+            justify-content: end;
+        }
+        a {
+            padding: 0.75rem;
+            @include for-tablet-portrait-up {
+                padding: 0.25rem;
+            }
+        }
+    }
+}

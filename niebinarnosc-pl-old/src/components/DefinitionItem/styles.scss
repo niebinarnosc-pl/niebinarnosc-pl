@@ -1,0 +1,9 @@
+@import "../../scss/variables";
+@import "../../scss/breakpoints";
+
+.definition-item {
+  margin: 1rem 0;
+  @include for-tablet-portrait-up {
+    margin: 2.5rem 0;
+  }
+}

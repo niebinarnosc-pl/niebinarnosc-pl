@@ -1,0 +1,50 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    padding: $side-padding-small;
+    gap: 0.75rem;
+    margin: 0 (-$side-padding-small) 1.5rem (-$side-padding-small);
+    @include for-tablet-portrait-up {
+        margin: 0 0 1.5rem 0;
+        padding: $side-padding-big;
+        gap: 1.5rem;
+        border-radius: 0.75rem;
+    }
+    background-color: $purple-100;
+    color: white;
+    & > h4 {
+        color: inherit;
+        margin: 0;
+        @include for-phone-only {
+            font-size: 1rem;
+        }
+    }
+    p {
+        margin: 0;
+        @include for-phone-only {
+            font-size: 0.875rem;
+        }
+        a {
+            color: inherit;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+    }
+    & > div {
+        display: flex;
+        gap: 1.5rem;
+        br {display: initial;}
+        span:last-of-type {display: none;}
+        a {display: initial;}
+        .button {display: none;}
+        @include for-desktop-up {
+            br {display: none;}
+            span:last-of-type {display: initial;}
+            a {display: none;}
+            .button {display: initial;}
+        }
+    }
+}
