@@ -33,6 +33,7 @@ For detailed guidelines on the blueprint structure, usage, glossary, and the blu
 *   [`old-styles/`](./old-styles/index.md): A framework-agnostic representation of the styles from the original Gatsby/Sass project, serving as an archive and reference.
 *   [`old-components/`](./old-components/index.md): Documents the components from the original Gatsby project, serving as a reference for migration.
 *   [`styles/`](./styles/index.md): The canonical styles blueprint for the new Astro/Tailwind CSS project.
+*   [`components/`](./components/index.md): The canonical blueprint for components in the new Astro project.
 *   [`issues.md`](./issues.md): Documents project-wide known issues and their resolutions.
 *   [`DEVELOPMENT_PROCESS.md`](./DEVELOPMENT_PROCESS.md): Describes the guidelines and principles for the project's development process, with a special focus on human-AI agent collaboration, workflow, and best practices.
 *   [`GLOSSARY.md`](./GLOSSARY.md): A glossary of project-specific terms, domain vocabulary, and technical jargon.

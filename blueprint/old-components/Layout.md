@@ -7,8 +7,7 @@
 
 The `Layout` component is the root wrapper for every page on the site. It is responsible for:
 1.  Establishing the overall page structure (header, main content, footer).
-2.  Handling the cookie consent logic.
-3.  Importing global styles and fonts.
+2.  Importing global styles and fonts.
 
 ## Props
 
