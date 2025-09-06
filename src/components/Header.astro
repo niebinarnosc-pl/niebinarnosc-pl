@@ -19,7 +19,7 @@ const pathname = Astro.url.pathname;
 >
     <div class="mx-auto max-w-[72rem] px-4 sm:px-6 pt-4 sm:pt-6">
         <!-- Standard Header (Desktop) -->
-        <section class="hidden lg:block px-6 py-5 bg-white btn-3d" style="--btn-shadow-color: var(--color-gray-20);">
+        <section class="hidden lg:block px-6 py-5 bg-white [box-shadow:0_4px_0_0_var(--btn-shadow-color)]" style="--btn-shadow-color: var(--color-gray-20);">
             <div class="flex items-center justify-between">
                 <a href="/">
                     <img class="h-6" src={logo.src} alt="niebinarnosc.pl" />
@@ -36,7 +36,7 @@ const pathname = Astro.url.pathname;
 
         <!-- Mobile Header (Top) -->
         <section 
-            class="lg:hidden flex flex-col p-4 sm:p-6 bg-white btn-3d" 
+            class="lg:hidden flex flex-col p-4 sm:p-6 bg-white [box-shadow:0_4px_0_0_var(--btn-shadow-color)]" 
             style="--btn-shadow-color: var(--color-gray-20);"
             @click.outside="mobileNavExpanded = false"
         >
@@ -45,7 +45,7 @@ const pathname = Astro.url.pathname;
                     <img class="h-full" src={logo.src} alt="niebinarnosc.pl"/>
                 </a>
                 <button 
-                    class="text-purple-dark-1 text-2xl sm:text-3xl" 
+                    class="text-purple-dark-1 text-2xl sm:text-[2rem]" 
                     @click="mobileNavExpanded = !mobileNavExpanded" 
                     aria-label="Menu"
                 >
@@ -76,13 +76,13 @@ const pathname = Astro.url.pathname;
 </header>
 
 <!-- Mobile Bottom Buttons -->
-<section class="sticky bottom-0 z-40 lg:hidden bg-white border-t border-purple-60">
+<section class="sticky bottom-0 z-40 lg:hidden bg-white border-t border-purple-60 px-2">
     <nav class="w-full flex justify-center">
         {navLinks.slice(0, 5).map(({ text, route, icon }) => {
             const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
             return (
-                <a href={route} class:list={["flex flex-col items-center gap-1 p-2 text-gray-80 text-xs sm:text-lg", { 'text-purple-100 bg-purple-5 font-bold': isActive }]}>
-                    <Icon name={icon} class="text-2xl" />
+                <a href={route} class:list={["flex flex-col items-center gap-[0.25em] p-[0.5em_0.75em] text-gray-80 text-xs sm:text-lg leading-normal", { 'text-purple-100 bg-purple-5 font-bold': isActive }]}>
+                    <Icon name={icon} class="text-[1.5em]" />
                     <span>{text}</span>
                 </a>
             )
