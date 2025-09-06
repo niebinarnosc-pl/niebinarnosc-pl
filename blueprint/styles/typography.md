@@ -33,12 +33,12 @@ Base typographic styles are defined in `src/styles/globals.css` within the `@lay
     box-sizing: border-box;
     scroll-padding-top: 6rem; /* 96px */
   }
-  @media (min-width: 600px) { /* tp breakpoint */
+  @media (min-width: 640px) { /* sm breakpoint */
     html {
       scroll-padding-top: 7rem; /* 112px */
     }
   }
-  @media (max-width: 599px) { /* below tp breakpoint */
+  @media (max-width: 639px) { /* below sm breakpoint */
     html {
       font-size: 4.5vw;
     }
@@ -74,11 +74,11 @@ Base typographic styles are defined in `src/styles/globals.css` within the `@lay
 
 Specific heading styles should be applied using utility classes on the elements themselves, or within a "prose" like container for CMS-rendered content.
 
-| Element | Mobile (`<600px`)          | Tablet+ (`>=600px`)      | Color            |
+| Element | Mobile (`<640px`)          | Tablet+ (`>=640px`)      | Color            |
 |---------|----------------------------|--------------------------|------------------|
-| `h1`    | `text-xl` (`1.25rem`)      | `tp:text-3xl` (`2rem`)   | `text-purple-dark-2` |
-| `h2`    | `text-2xl` (`1.5rem`)      | `tp:text-3xl` (`2rem`)   | `text-black`     |
-| `h4`    | `text-lg` (`1.125rem`)     | `tp:text-2xl` (`1.5rem`) | `text-black`     |
+| `h1`    | `text-xl` (`1.25rem`)      | `sm:text-3xl` (`2rem`)   | `text-purple-dark-2` |
+| `h2`    | `text-2xl` (`1.5rem`)      | `sm:text-3xl` (`2rem`)   | `text-black`     |
+| `h4`    | `text-lg` (`1.125rem`)     | `sm:text-2xl` (`1.5rem`) | `text-black`     |
 
 ### Decorative `h2` Style
 
@@ -102,8 +102,8 @@ The decorative `h2` used for section titles can be recreated with a custom utili
   display: flex;
   align-items: flex-end;
 }
-@media (min-width: 600px) { /* tp breakpoint */
-  @utility .h2-decorated {
+@media (min-width: 640px) { /* sm breakpoint */
+  .h2-decorated {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
@@ -119,9 +119,7 @@ Base styles for blockquotes in CMS content:
 ```css
 /* in src/styles/globals.css, inside @layer base */
 blockquote {
-  @apply text-lg tp:text-2xl leading-normal;
-  @apply border-l-[0.3em] border-purple-100 bg-purple-5;
-  @apply my-6 px-6 py-2;
+  @apply text-lg sm:text-2xl leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-6;
 }
 blockquote p {
   @apply text-base;

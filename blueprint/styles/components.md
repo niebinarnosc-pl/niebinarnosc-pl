@@ -40,7 +40,7 @@ A base `.btn` class can be created for common styles.
   width: 100%;
   text-decoration-line: none;
 }
-@media (min-width: 600px) { /* tp breakpoint */
+@media (min-width: 640px) { /* sm breakpoint */
   .btn {
     width: fit-content;
   }
@@ -80,25 +80,25 @@ The header has three parts: Desktop, Mobile (Top), and Mobile (Bottom Nav). Alpi
 
 ### Desktop Header (`.standard-site-header`)
 
-*   **Layout**: Hidden by default, `tl:block`. A `flex justify-between items-center` container.
+*   **Layout**: Hidden by default, `lg:block`. A `flex justify-between items-center` container.
 *   **Styling**: `px-6 py-5 bg-white` with the static 3D border effect (a border and box-shadow that don't change on hover).
 
 ### Mobile Header (`.mobile-site-header`)
 
-*   **Layout**: `flex flex-col tp:hidden` (or `tl:hidden`).
-*   **Styling**: `p-4 tp:p-6 bg-white` with static 3D border.
+*   **Layout**: `flex flex-col lg:hidden`.
+*   **Styling**: `p-4 sm:p-6 bg-white` with static 3D border.
 *   **Nav Expansion**: The nav wrapper uses a grid-template-rows transition, controlled by Alpine.js. See [effects.md](./effects.md).
 
 ### Mobile Bottom Buttons
 
-*   **Layout**: `sticky bottom-0 z-50 tl:hidden`. Contains a `nav` with `flex justify-center w-full`.
+*   **Layout**: `sticky bottom-0 z-50 lg:hidden`. Contains a `nav` with `flex justify-center w-full`.
 *   **Styling**: `bg-white border-t border-purple-60`.
 *   **Links**: `flex flex-col items-center gap-1 p-2 text-gray-80`.
 *   **Active Link**: `text-purple-100 bg-purple-5 font-bold`.
 
 ## Home Nav
 
-*   **Layout**: A flex-based grid. `flex flex-col gap-4 tp:gap-6`. Inner divs are also `flex flex-col tp:flex-row gap-4 tp:gap-6`.
+*   **Layout**: A flex-based grid. `flex flex-col gap-4 sm:gap-6`. Inner divs are also `flex flex-col sm:flex-row gap-4 sm:gap-6`.
 *   **Item Styling**: Each link is a `.btn-3d` element.
 *   **Hover Effect**: On hover, the icon's background element expands to fill the card. This requires careful positioning and transitions.
     *   The link is `relative`.

@@ -33,11 +33,6 @@
   --color-yellow-10: #fefce6;
   --color-yellow-5: #fefdf2;
 
-  /* Breakpoints */
-  --breakpoint-tp: 600px;
-  --breakpoint-tl: 900px;
-  --breakpoint-dt: 1200px;
-  --breakpoint-bdt: 1800px;
 }
 
 @layer base {
@@ -48,12 +43,12 @@
     box-sizing: border-box;
     scroll-padding-top: 6rem; /* 96px */
   }
-  @media (min-width: 600px) { /* tp breakpoint */
+  @media (min-width: 640px) { /* sm breakpoint */
     html {
       scroll-padding-top: 7rem; /* 112px */
     }
   }
-  @media (max-width: 599px) { /* below tp breakpoint */
+  @media (max-width: 639px) { /* below sm breakpoint */
     html {
       font-size: 4.5vw;
     }
@@ -82,7 +77,7 @@
   }
 
   blockquote {
-    @apply text-lg tp:text-2xl leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-6;
+    @apply text-lg sm:text-2xl leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-6;
   }
 
   blockquote p {
@@ -108,7 +103,7 @@
   display: flex;
   align-items: flex-end;
 }
-@media (min-width: 600px) { /* tp breakpoint */
+@media (min-width: 640px) { /* sm breakpoint */
   .h2-decorated {
     font-size: 2rem;
     margin-bottom: 2rem;

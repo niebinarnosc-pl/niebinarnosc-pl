@@ -7,30 +7,16 @@ This document outlines the responsive layout system, custom breakpoints, and mai
 
 ## Breakpoints
 
-To match the original design's responsive behavior, we will define custom breakpoints in `src/styles/globals.css`.
+The project will use Tailwind's default breakpoints. We will map the old site's custom breakpoints to the nearest Tailwind equivalent to guide the responsive design.
 
-| Name              | Size       | Old Mixin                   | Notes                                         |
-|-------------------|------------|-----------------------------|-----------------------------------------------|
-| `tp` (tablet portrait) | `600px`    | `for-tablet-portrait-up`    | For tablets in portrait mode and larger.      |
-| `tl` (tablet landscape) | `900px`    | `for-tablet-landscape-up`   | For tablets in landscape mode and larger.     |
-| `dt` (desktop)      | `1200px`   | `for-desktop-up`            | For standard desktop monitors.                |
-| `bdt` (big desktop) | `1800px`   | `for-big-desktop-up`        | For large desktop monitors.                   |
+| Old Name (Size)         | Tailwind Equivalent (Size) | Usage Notes                                       |
+|-------------------------|----------------------------|---------------------------------------------------|
+| `tp` (600px)            | `sm` (640px)               | For tablets in portrait mode and larger.          |
+| `tl` (900px)            | `lg` (1024px)              | For tablets in landscape mode and larger.         |
+| `dt` (1200px)           | `xl` (1280px)              | For standard desktop monitors.                    |
+| `bdt` (1800px)          | `2xl` (1536px)             | For large monitors. Note: This is smaller than original. |
 
-### Implementation
-
-The breakpoints are defined in the `@theme` block in `src/styles/globals.css`.
-
-```css
-/* src/styles/globals.css */
-@theme {
-  --breakpoint-tp: 600px;
-  --breakpoint-tl: 900px;
-  --breakpoint-dt: 1200px;
-  --breakpoint-bdt: 1800px;
-}
-```
-
-Usage in HTML will be, for example: `w-full tl:w-1/2`.
+This means we do not need to define custom breakpoints in `src/styles/globals.css`. Responsive utilities will use Tailwind's standard prefixes (e.g., `sm:`, `lg:`, `xl:`).
 
 ## Page Structure
 
@@ -49,12 +35,12 @@ The primary content container on most pages will be a `<section>` or `<article>`
 *   **Centering**: Horizontally centered using `mx-auto`.
 *   **Side Padding**:
     *   Mobile: `px-4` (`1rem`).
-    *   Tablet Landscape & up: `tl:px-6` (`1.5rem`).
-*   **Top Margin**: A top margin is applied to create space below the sticky header. This can be `mt-26` (`6.5rem`) on mobile and `tp:mt-30` (`7.5rem`) on tablet and up.
+    *   Tablet Landscape & up: `lg:px-6` (`1.5rem`).
+*   **Top Margin**: A top margin is applied to create space below the sticky header. This can be `mt-26` (`6.5rem`) on mobile and `sm:mt-30` (`7.5rem`) on tablet and up.
 
 Example:
 ```html
-<section class="page mx-auto w-full max-w-[72rem] px-4 tl:px-6 mt-26 tp:mt-30 pb-6 tp:pb-11">
+<section class="page mx-auto w-full max-w-[72rem] px-4 lg:px-6 mt-26 sm:mt-30 pb-6 sm:pb-11">
   <!-- Page content -->
 </section>
 ```
@@ -63,13 +49,13 @@ Example:
 
 A two-column layout can be created using Flexbox or Grid utilities.
 
-*   **Behavior**: Stacks vertically by default (mobile-first), and becomes a horizontal row on tablet landscape screens (`tl:flex-row`).
-*   **Reversal**: The order can be reversed on desktop with `tl:flex-row-reverse`.
+*   **Behavior**: Stacks vertically by default (mobile-first), and becomes a horizontal row on large screens (`lg:flex-row`).
+*   **Reversal**: The order can be reversed on large screens with `lg:flex-row-reverse`.
 *   **Gapping**: `gap-*` utilities provide spacing between columns.
 
 Example:
 ```html
-<div class="flex flex-col tl:flex-row tl:flex-row-reverse gap-4 tl:gap-14">
+<div class="flex flex-col lg:flex-row lg:flex-row-reverse gap-4 lg:gap-14">
   <div class="flex-1">Column 1</div>
   <div class="flex-1">Column 2</div>
 </div>
