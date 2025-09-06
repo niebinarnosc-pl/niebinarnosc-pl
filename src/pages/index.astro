@@ -4,6 +4,9 @@ import { sanityClient } from 'sanity:client';
 import HomeHeader from '../components/HomeHeader.astro';
 import HomeNav from '../components/HomeNav.astro';
 import ContactForm from '../components/ContactForm.astro';
+import DefinitionCard from '../components/DefinitionCard.astro';
+import StoryCard from '../components/StoryCard.astro';
+import RepresentationCard from '../components/RepresentationCard.astro';
 
 const news = await sanityClient.fetch(`*[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3]`);
 ---
@@ -14,7 +17,18 @@ const news = await sanityClient.fetch(`*[_type in ["story", "representation", "d
     <section>
       <h2 class="h2-decorated">Niusy</h2>
       <div class="flex flex-col gap-4">
-        <pre>{JSON.stringify(news, null, 2)}</pre>
+        {news.map(item => {
+          if (item._type === 'definition') {
+            return <DefinitionCard definition={item} />;
+          }
+          if (item._type === 'story') {
+            return <StoryCard story={item} />;
+          }
+          if (item._type === 'representation') {
+            return <RepresentationCard rep={item} />;
+          }
+          return null;
+        })}
       </div>
     </section>
     <ContactForm />
