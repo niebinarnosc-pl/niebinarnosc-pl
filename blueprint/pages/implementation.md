@@ -12,7 +12,8 @@ The page structure will be implemented in `src/pages/` as follows:
     *   Single: `src/pages/definicje/[slug].astro`
 *   **Stories**: `src/pages/opowiesci.astro`
 *   **Representation**:
-    *   List (all and filtered): `src/pages/reprezentacja/[[...category]].astro`. This will use optional catch-all routing to handle both `/reprezentacja` and `/reprezentacja/[category]`.
+    *   List (all): `src/pages/reprezentacja/index.astro`.
+    *   List (filtered by category): `src/pages/reprezentacja/[category].astro`.
 *   **History**: `src/pages/historia.astro`
 *   **Guide**: `src/pages/poradnik.astro`
 *   **404**: `src/pages/404.astro`

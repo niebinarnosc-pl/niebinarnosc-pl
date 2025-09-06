@@ -4,25 +4,8 @@ import { sanityClient } from 'sanity:client'
 import Button from '../../components/core/Button.astro';
 import TagSelector from '../../components/features/TagSelector.astro';
 import RepresentationCard from '../../components/features/cards/RepresentationCard.astro';
-import slugify from '../../lib/slugify';
 
-export async function getStaticPaths() {
-    const categories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
-    const uniqueCategories = [...new Set(categories as string[])];
-
-    return uniqueCategories.map((category: string) => ({
-        params: { category: slugify(category) },
-        props: { categoryValue: category }
-    }));
-}
-
-const { category } = Astro.params;
-const { categoryValue } = Astro.props;
-
-const query = `*[_type == "representation" && draft != true && category == $category] | order(date desc)`;
-const params = { category: categoryValue };
-
-const representations = await sanityClient.fetch(query, params);
+const representations = await sanityClient.fetch(`*[_type == "representation" && draft != true] | order(date desc)`);
 const allCategories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
 const uniqueCategories = [...new Set(allCategories as string[])];
 ---
@@ -32,7 +15,7 @@ const uniqueCategories = [...new Set(allCategories as string[])];
       <h1 class="text-xl sm:text-3xl text-purple-dark-2">Reprezentacja</h1>
       <p class="max-w-2xl font-bold text-gray-60">Zaproponuj nam swoją pozycję z odniesieniami w kulturze.</p>
       <Button href="https://forms.gle/cuWkGHvyWbbfbsd16" isExternal class="w-full sm:w-fit">Zaproponuj artykuł</Button>
-      {uniqueCategories && <TagSelector basePath="/reprezentacja" tags={uniqueCategories} active={categoryValue} />}
+      {uniqueCategories && <TagSelector basePath="/reprezentacja" tags={uniqueCategories} active={undefined} />}
     </header>
     <div class="flex flex-col gap-4">
         {representations.map(rep => <RepresentationCard rep={rep} />)}
