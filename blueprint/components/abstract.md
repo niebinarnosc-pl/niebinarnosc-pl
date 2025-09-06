@@ -13,23 +13,12 @@ This approach leads to components that are:
 
 ## 2. Component Categories
 
-To organize our components, we'll group them into several conceptual categories:
+To organize our components, we'll group them into several conceptual categories, although they all reside in the `src/components/` directory:
 
-1.  **Core Components**: The fundamental, unstyled or minimally styled building blocks of the UI.
-    *   **Examples**: `Button`, `Icon`, `Badge`, `Card`.
-    *   **Purpose**: These components provide the basic interactive and structural elements.
-
-2.  **Compound Components**: Components that combine several Core components to form common UI patterns.
-    *   **Examples**: `FormGroup` (combines an `Input`, `Label`, and `Icon`), `ContentCard` (uses a `Card` as a base and provides slots for content).
-    *   **Purpose**: To create reusable, structured UI elements.
-
-3.  **Feature Components**: Application-specific components that are tied to a particular feature or data type. These often compose Compound components.
-    *   **Examples**: `DefinitionCard`, `StoryCard`, `RepresentationCard`.
-    *   **Purpose**: To encapsulate the logic and presentation for a specific piece of content.
-
-4.  **Layout Components**: High-level components that define the structure and layout of pages.
-    *   **Examples**: `Header`, `Footer`, `PageLayout`.
-    *   **Purpose**: To provide a consistent structure across the site.
+1.  **Core Components**: The fundamental, unstyled or minimally styled building blocks of the UI (e.g., `Button`, `Icon`, `Badge`, `Card`).
+2.  **Compound Components**: Components that combine several Core components to form common UI patterns (e.g., `FormGroup`, `ContentCard`).
+3.  **Feature Components**: Application-specific components tied to a particular feature or data type (e.g., `DefinitionCard`, `StoryCard`, `RepresentationCard`).
+4.  **Layout Components**: High-level components defining page structure (e.g., `Header`, `Footer`, `PageLayout`).
 
 ## 3. The `ContentItem` Refactor Strategy
 

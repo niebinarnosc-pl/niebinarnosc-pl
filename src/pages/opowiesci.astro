@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client'
-import StoryCard from '../components/features/cards/StoryCard.astro';
-import ContactCard from '../components/features/ContactCard.astro';
+import StoryCard from '../components/StoryCard.astro';
+import ContactCard from '../components/ContactCard.astro';
 
 const query = `*[_type == "story" && draft != true] | order(date desc) {
     ...,

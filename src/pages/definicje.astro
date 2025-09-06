@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client'
-import DefinitionCard from '../components/features/cards/DefinitionCard.astro';
+import DefinitionCard from '../components/DefinitionCard.astro';
 
 const definitions = await sanityClient.fetch(`*[_type == "definition" && draft != true] | order(priority desc)`);
 ---

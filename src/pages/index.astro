@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
-import HomeHeader from '../components/features/HomeHeader.astro';
-import HomeNav from '../components/features/HomeNav.astro';
-import ContactForm from '../components/features/ContactForm.astro';
+import HomeHeader from '../components/HomeHeader.astro';
+import HomeNav from '../components/HomeNav.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const news = await sanityClient.fetch(`*[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3]`);
 ---

@@ -4,26 +4,16 @@ This document describes the specific technical implementation of the component a
 
 ## 1. Directory Structure
 
-All components will reside in the `src/components/` directory, organized into subdirectories that correspond to the categories defined in the `abstract.md`:
+All components reside directly in the `src/components/` directory. They are organized conceptually into categories as defined in the `abstract.md`, but not into physical subdirectories.
 
 ```
 src/components/
-├── core/
-│   ├── Button.astro
-│   ├── Card.astro
-│   └── ...
-├── compound/
-│   ├── ContentCard.astro
-│   ├── FormGroup.astro
-│   └── ...
-├── features/
-│   ├── DefinitionCard.astro
-│   ├── StoryCard.astro
-│   └── ...
-└── layout/
-    ├── Header.astro
-    ├── Footer.astro
-    └── ...
+├── Button.astro
+├── Card.astro
+├── ContentCard.astro
+├── DefinitionCard.astro
+├── Header.astro
+└── ...
 ```
 
 ## 2. Astro Component Patterns
@@ -32,25 +22,25 @@ src/components/
 
 We will heavily utilize Astro's `<slot />` feature to achieve composition.
 
-**Example: `Card.astro` (Core)**
+**Example: `Card.astro`**
 This component provides the basic wrapper and styling.
 
 ```astro
 ---
-// src/components/core/Card.astro
+// src/components/Card.astro
 ---
 <div class="bg-white rounded-xl shadow p-4">
   <slot /> <!-- Default slot for content -->
 </div>
 ```
 
-**Example: `ContentCard.astro` (Compound)**
+**Example: `ContentCard.astro`**
 This component defines the layout for content summaries using named slots.
 
 ```astro
 ---
-// src/components/compound/ContentCard.astro
-import Card from '../core/Card.astro';
+// src/components/ContentCard.astro
+import Card from './Card.astro';
 ---
 <Card>
   <article class="flex flex-col lg:flex-row gap-6">
@@ -72,13 +62,13 @@ import Card from '../core/Card.astro';
 </Card>
 ```
 
-**Example: `StoryCard.astro` (Feature)**
+**Example: `StoryCard.astro`**
 This component consumes `ContentCard` and populates its slots with story-specific data.
 
 ```astro
 ---
-// src/components/features/StoryCard.astro
-import ContentCard from '../compound/ContentCard.astro';
+// src/components/StoryCard.astro
+import ContentCard from './ContentCard.astro';
 import Thumbnail from './Thumbnail.astro'; // Assumed component
 import Badge from '../core/Badge.astro';
 const { story } = Astro.props;
@@ -107,7 +97,7 @@ Props will be used to pass data and control variants. For example, a `Button` co
 
 ```astro
 ---
-// src/components/core/Button.astro
+// src/components/Button.astro
 interface Props {
   variant?: 'primary' | 'secondary';
   href?: string;

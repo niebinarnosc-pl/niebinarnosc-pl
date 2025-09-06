@@ -1,4 +1,27 @@
 ---
-import Footer from './layout/Footer.astro';
+import logo from '../assets/logo.svg';
+import Icon from './Icon.astro';
+import ExternalLink from './ExternalLink.astro';
 ---
-<Footer {...Astro.props} />
+<footer class="bg-purple-dark-2 text-purple-5">
+    <div class="w-full max-w-[72rem] mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+        <a href="/">
+            <img class="h-8" src={logo.src} alt="niebinarnosc.pl" />
+        </a>
+        <div class="flex flex-col gap-3">
+            <div class="flex gap-4 justify-center sm:justify-start sm:ml-[-3px] h-7">
+                <ExternalLink href="https://www.instagram.com/niebinarnosc.pl/">
+                    <Icon name="logo-instagram" size={1.75} />
+                </ExternalLink>
+                <ExternalLink href="https://www.facebook.com/niebinarnoscpl">
+                    <Icon name="logo-facebook" size={1.75} />
+                </ExternalLink>
+            </div>
+            <a href="/#kontakt" class="font-bold text-purple-20 hover:underline">Napisz do nas</a>
+            <ExternalLink href="mailto:kontakt@niebinarnosc.pl" class="flex items-center justify-center sm:justify-start gap-3 text-purple-20 hover:underline">
+                <Icon name="email" size={1.5} />
+                <span>kontakt@niebinarnosc.pl</span>
+            </ExternalLink>
+        </div>
+    </div>
+</footer>

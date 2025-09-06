@@ -1,4 +1,23 @@
 ---
-import Header from './layout/Header.astro';
+import StandardHeader from './StandardHeader.astro';
+import MobileHeader from './MobileHeader.astro';
+import MobileBottomButtons from './MobileBottomButtons.astro';
 ---
-<Header {...Astro.props} />
+<header 
+    x-data="{ atTop: true, prevY: 0, isVisible: true, mobileNavExpanded: false }" 
+    @scroll.window.throttle.100ms="
+        newY = window.scrollY;
+        atTop = newY <= 10;
+        isVisible = atTop || newY < prevY;
+        if (!isVisible) { mobileNavExpanded = false };
+        prevY = newY;
+    "
+    :class="{ '!-top-28': !isVisible && !atTop }"
+    class="sticky top-0 z-50 transition-all duration-200"
+>
+    <div class="mx-auto max-w-[72rem] px-4 sm:px-6 pt-4 sm:pt-6">
+        <StandardHeader />
+        <MobileHeader />
+    </div>
+</header>
+<MobileBottomButtons />

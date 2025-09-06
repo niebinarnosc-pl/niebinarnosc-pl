@@ -1,9 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client'
-import Button from '../../components/core/Button.astro';
-import TagSelector from '../../components/features/TagSelector.astro';
-import RepresentationCard from '../../components/features/cards/RepresentationCard.astro';
+import Button from '../../components/Button.astro';
+import TagSelector from '../../components/TagSelector.astro';
+import RepresentationCard from '../../components/RepresentationCard.astro';
 
 const representations = await sanityClient.fetch(`*[_type == "representation" && draft != true] | order(date desc)`);
 const allCategories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
