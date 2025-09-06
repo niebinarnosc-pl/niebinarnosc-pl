@@ -1,0 +1,20 @@
+---
+// Placeholder based on blueprint/old-components/Seo.md
+interface Props {
+    pageSeo: any;
+    siteSeo: any;
+    siteName: string;
+    canonicalUrl: URL;
+    siteSettings: any;
+}
+const { pageSeo, siteSeo, siteName, canonicalUrl } = Astro.props;
+const title = pageSeo?.title || siteName;
+const description = pageSeo?.description || 'Strona o niebinarności';
+---
+<title>{title}</title>
+<link rel="canonical" href={canonicalUrl.href} />
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl.href} />
+<meta property="og:site_name" content={siteName} />

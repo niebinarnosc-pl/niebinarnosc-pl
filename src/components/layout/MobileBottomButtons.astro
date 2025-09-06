@@ -1,0 +1,16 @@
+---
+import { navLinks } from '../../lib/navLinks';
+import NavLink from './NavLink.astro';
+---
+<section class="sticky bottom-0 z-20 w-full bg-white border-t border-purple-60 lg:hidden">
+    <nav class="w-full flex justify-center">
+        {navLinks.map(link => (
+            <NavLink 
+                text={link.text}
+                route={link.route}
+                icon={link.icon}
+                class="flex flex-col items-center gap-1 p-2 text-gray-80 text-xs sm:text-lg leading-snug [&.active]:text-purple-100 [&.active]:bg-purple-5 [&.active]:font-bold"
+            />
+        ))}
+    </nav>
+</section>

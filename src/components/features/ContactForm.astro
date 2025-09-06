@@ -1,0 +1,31 @@
+---
+import ExternalLink from '../core/ExternalLink.astro';
+import Icon from '../core/Icon.astro';
+import Button from '../core/Button.astro';
+---
+<section class="contact-form" id="kontakt">
+    <h2 class="h2-decorated">Kontakt</h2>
+    <div class="flex flex-col lg:flex-row gap-6">
+        <div class="flex-1">
+            <p>Masz do nas pytania? Szukasz pomocy? Napisz do nas na maila lub wypełnij formularz.</p>
+            <p>
+                <ExternalLink href="mailto:kontakt@niebinarnosc.pl" class="flex items-center gap-3 text-purple-100 font-medium">
+                    <Icon name="email"/>kontakt@niebinarnosc.pl
+                </ExternalLink>
+            </p>
+        </div>
+        <div class="flex-1">
+            <form name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-3 lg:max-w-[35.25rem] w-full">
+                <input type="hidden" name="form-name" value="Kontakt"/>
+                <input type="hidden" name="subject" data-remove-prefix value={`Wiadomość od nieznajomego`}/>
+                <label class="group flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-40 has-[:focus]:outline has-[:focus]:outline-1 has-[:focus]:outline-purple-100 text-gray-80 has-[:focus]:text-purple-100">
+                    <Icon name="email"/>
+                    <input type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" required class="p-0 m-0 border-none rounded-none w-full focus:outline-none bg-transparent"/>
+                </label>
+                <textarea name="text" placeholder="Tutaj wpisz swoją wiadomość" required class="p-3 bg-white rounded-xl border border-gray-40 h-32 focus:outline focus:outline-1 focus:outline-purple-100"></textarea>
+                <label class="hidden">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
+                <Button type="submit">Wyślij wiadomość</Button>
+            </form>
+        </div>
+    </div>
+</section>

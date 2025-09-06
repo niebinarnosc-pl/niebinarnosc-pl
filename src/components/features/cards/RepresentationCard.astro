@@ -1,0 +1,24 @@
+---
+import ContentCard from '../../../compound/ContentCard.astro';
+import Badge from '../../../core/Badge.astro';
+import slugify from '../../../lib/slugify';
+---
+const { rep } = Astro.props;
+---
+<ContentCard>
+    <div slot="thumbnail">
+        <!-- TODO: Thumbnail component -->
+        <div class="aspect-video bg-gray-10 rounded-xl"></div>
+    </div>
+    <div slot="header">
+        <h4 class="text-xl font-bold">{rep.title}</h4>
+        {rep.authors && <p class="text-sm">{rep.authors.map(a => a.name).join(', ')}</p>}
+        {rep.category && <Badge href={`/reprezentacja/${slugify(rep.category)}`}>{rep.category}</Badge>}
+    </div>
+    <div slot="body">
+        <h5 class="font-bold">Opis fabuły</h5>
+        <p>{rep.storyDescription}</p>
+        <h5 class="font-bold">Reprezentacja</h5>
+        <p>{rep.representationDescription}</p>
+    </div>
+</ContentCard>

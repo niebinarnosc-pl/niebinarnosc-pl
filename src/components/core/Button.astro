@@ -1,0 +1,27 @@
+---
+import ExternalLink from './ExternalLink.astro';
+
+interface Props extends astro.JSX.ButtonHTMLAttributes, astro.JSX.AnchorHTMLAttributes {
+  variant?: 'primary' | 'secondary' | 'clear' | 'border';
+  href?: string;
+  isExternal?: boolean;
+  class?: string;
+}
+const { variant = 'primary', href, isExternal = false, class: className, disabled, ...rest } = Astro.props;
+
+const Tag = href ? (isExternal ? ExternalLink : 'a') : 'button';
+
+const baseClasses = 'btn';
+
+const variantClasses = {
+  primary: 'bg-purple-100 text-white border border-purple-dark-1 hover:bg-purple-dark-1 hover:border-purple-dark-2 btn-3d',
+  secondary: 'bg-white text-purple-80 border border-purple-60 hover:text-purple-100 hover:border-purple-80 hover:bg-purple-5 btn-3d',
+  clear: 'bg-transparent border-none p-0 hover:underline',
+  border: 'bg-transparent text-white border border-white hover:bg-white hover:text-purple-100',
+};
+
+const disabledClasses = 'disabled:bg-purple-10 disabled:text-purple-40 disabled:border-purple-20 disabled:cursor-not-allowed';
+---
+<Tag class:list={[baseClasses, variantClasses[variant], disabledClasses, className]} href={href} disabled={disabled} {...rest}>
+  <slot />
+</Tag>

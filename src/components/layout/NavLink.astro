@@ -1,0 +1,21 @@
+---
+import Icon from '../core/Icon.astro';
+import type { IconName } from '../core/Icon.astro';
+
+interface Props extends astro.JSX.AnchorHTMLAttributes {
+  text: string;
+  route: string;
+  icon?: IconName;
+  class?: string;
+}
+
+const { text, route, icon, class: className } = Astro.props;
+const currentPath = new URL(Astro.request.url).pathname;
+
+// An active link is one that starts with the route, but the root route is a special case
+const isActive = route === '/' ? currentPath === '/' : currentPath.startsWith(route);
+---
+<a href={route} class:list={[className, { 'active': isActive }]} {...Astro.props}>
+  {icon && <Icon name={icon} />}
+  <span>{text}</span>
+</a>

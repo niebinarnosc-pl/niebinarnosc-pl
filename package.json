@@ -28,6 +28,8 @@
     "alpinejs": "^3.14.9",
     "astro": "^5.13.3",
     "astro-portabletext": "^0.11.1",
+    "@types/lodash": "^4.17.5",
+    "lodash": "^4.17.21",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sanity": "^4.3.0",

@@ -1,0 +1,21 @@
+---
+import quote from '../../assets/images/quote.svg';
+import Button from '../core/Button.astro';
+import ExternalLink from '../core/ExternalLink.astro';
+import Icon from '../core/Icon.astro';
+---
+<header class="relative my-4 sm:my-8">
+    <img src={quote.src} alt="Cudzysłów" class="absolute top-0 left-0 opacity-15 max-w-[30%]" />
+    <h1 class="relative text-center mx-auto mb-8 text-purple-dark-2">
+        <strong class="text-inherit text-[1.375em]">Niebinarność</strong> jest dziobakiem wśród płci.<br/>Ni to wydra, ni to kaczka, still cute.
+    </h1>
+    <div class="flex justify-center">
+        <Button href="https://docs.google.com/forms/d/e/1FAIpQLSc42Nvv4n8X80YckrCSUzKZphsVoKCqXkeHNgIeSjMKTjcdUA/viewform?usp=sf_link" isExternal>
+            Zaproponuj slogan
+        </Button>
+    </div>
+    <div class="text-purple-60 my-2 flex justify-center sm:justify-end">
+        <ExternalLink href="https://www.instagram.com/niebinarnosc.pl/" class="p-3 sm:p-1"><Icon name="logo-instagram" size={2} /></ExternalLink>
+        <ExternalLink href="https://www.facebook.com/niebinarnoscpl" class="p-3 sm:p-1"><Icon name="logo-facebook" size={2} /></ExternalLink>
+    </div>
+</header>

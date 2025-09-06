@@ -1,0 +1,23 @@
+---
+import ContentCard from '../../../compound/ContentCard.astro';
+import Button from '../../../core/Button.astro';
+import Icon from '../../../core/Icon.astro';
+import { PortableText } from 'astro-portabletext';
+
+const { definition } = Astro.props;
+---
+<ContentCard>
+  <div slot="thumbnail">
+    <!-- TODO: Thumbnail component -->
+    <div class="aspect-square bg-gray-10 rounded-xl"></div>
+  </div>
+  <div slot="header">
+    <h4 class="text-xl font-bold">{definition.title}</h4>
+  </div>
+  <div slot="body">
+    <PortableText value={definition.body} />
+  </div>
+  <div slot="footer">
+     <Button href={`/definicje/${definition.slug.current}`} variant="secondary">Zobacz opowieści <Icon name="arrow-right"/></Button>
+  </div>
+</ContentCard>

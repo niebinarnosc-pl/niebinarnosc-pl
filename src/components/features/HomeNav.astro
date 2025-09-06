@@ -1,0 +1,16 @@
+---
+import HomeNavItem from './HomeNavItem.astro';
+---
+<nav class="flex flex-col gap-4 sm:gap-6 mb-16 w-full">
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+        <HomeNavItem to="/definicje/" color="yellow" icon="chart-relationship" heading="Definicje" desc="Czym jest niebinarność i inne." />
+        <HomeNavItem to="/poradnik/" color="yellow" icon="user-simulation" heading="Poradnik" desc="Jak być spoko." />
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+        <HomeNavItem to="/opowiesci/" color="purple" icon="voice-activate" heading="Opowieści" desc="Nasze opowieści o płciowości." />
+        <HomeNavItem to="/historia/" color="purple" icon="notebook" heading="Historia" desc="Pierwsze użycie terminu niebinarność. Niebinarność w dawnych kulturach." />
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+        <HomeNavItem to="/reprezentacja/" color="black" icon="identification" heading="Reprezentacja" desc="Osoby niebinarne w wytworach kultury." />
+    </div>
+</nav>

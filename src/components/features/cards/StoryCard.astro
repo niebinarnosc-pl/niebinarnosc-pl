@@ -1,0 +1,29 @@
+---
+import ContentCard from '../../../compound/ContentCard.astro';
+import Badge from '../../../core/Badge.astro';
+import Button from '../../../core/Button.astro';
+import Icon from '../../../core/Icon.astro';
+import { PortableText } from 'astro-portabletext';
+
+const { story } = Astro.props;
+---
+<ContentCard>
+  <div slot="thumbnail">
+    <!-- TODO: Thumbnail component -->
+    <div class="aspect-square bg-gray-10 rounded-xl"></div>
+  </div>
+  <div slot="header">
+    <h4 class="text-xl font-bold">{story.title}</h4>
+    {story.definitions && story.definitions.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+            {story.definitions.map(def => def && <Badge href={`/definicje/${def.slug.current}`}>{def.title}</Badge>)}
+        </div>
+    )}
+  </div>
+  <div slot="body">
+    <PortableText value={story.body} />
+  </div>
+  <div slot="footer" class="hidden">
+    <Button href={`/opowiesci#${story.slug.current}`} variant="secondary">Czytaj więcej <Icon name="arrow-right" /></Button>
+  </div>
+</ContentCard>

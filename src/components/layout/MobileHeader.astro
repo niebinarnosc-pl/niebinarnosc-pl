@@ -1,0 +1,35 @@
+---
+import logo from '../../assets/logo.svg';
+import Icon from '../core/Icon.astro';
+import { navLinks } from '../../lib/navLinks';
+import NavLink from './NavLink.astro';
+---
+<section 
+    class="lg:hidden flex flex-col p-4 sm:p-6 bg-white btn-3d" 
+    style="--btn-shadow-color: var(--color-purple-60);"
+    x-ref="mobileNav"
+    @click.outside="mobileNavExpanded = false"
+>
+    <div class="flex items-center justify-between h-8">
+        <a href="/" class="h-full">
+            <img src={logo.src} alt="niebinarnosc.pl" class="h-full" />
+        </a>
+        <button class="cursor-pointer border-none text-purple-dark-1 text-2xl sm:text-3xl bg-transparent" @click="mobileNavExpanded = !mobileNavExpanded" aria-label="Menu">
+            <Icon name="menu" />
+        </button>
+    </div>
+    <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-200" :class="{'grid-rows-[1fr]': mobileNavExpanded}">
+        <nav class="overflow-hidden">
+            <div class="pt-3"></div>
+            {navLinks.map(link => (
+                <NavLink
+                    text={link.text}
+                    route={link.route}
+                    icon={link.icon}
+                    class="text-purple-dark-1 text-lg sm:text-2xl py-5 w-min font-medium flex items-center gap-2 whitespace-nowrap [&.active]:underline [&.active]:font-bold"
+                    @click="mobileNavExpanded = false"
+                />
+            ))}
+        </nav>
+    </div>
+</section>
