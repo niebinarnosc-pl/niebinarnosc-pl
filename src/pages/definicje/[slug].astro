@@ -14,7 +14,10 @@ const { slug } = Astro.params;
 
 const query = `*[_type == "definition" && slug.current == $slug && draft != true][0]{
   ...,
-  "relatedStories": *[_type == "story" && references(^._id) && draft != true]
+  "relatedStories": *[_type == "story" && references(^._id) && draft != true] {
+    ...,
+    "definitions": definitions[]->{title, slug}
+  }
 }`;
 
 const definition = await sanityClient.fetch(query, { slug });

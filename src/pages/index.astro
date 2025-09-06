@@ -8,7 +8,14 @@ import DefinitionCard from '../components/DefinitionCard.astro';
 import StoryCard from '../components/StoryCard.astro';
 import RepresentationCard from '../components/RepresentationCard.astro';
 
-const news = await sanityClient.fetch(`*[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3]`);
+const news = await sanityClient.fetch(`
+  *[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3] {
+    ...,
+    _type == "story" => {
+      "definitions": definitions[]->{title, slug}
+    }
+  }
+`);
 ---
 <Layout>
   <div class="w-full max-w-[72rem] mx-auto px-4 sm:px-6">
