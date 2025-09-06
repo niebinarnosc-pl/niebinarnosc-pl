@@ -1,7 +1,9 @@
 ---
-import StandardHeader from './StandardHeader.astro';
-import MobileHeader from './MobileHeader.astro';
-import MobileBottomButtons from './MobileBottomButtons.astro';
+import logo from '../assets/logo.svg';
+import { navLinks } from '../lib/navLinks';
+import Icon from './Icon.astro';
+
+const pathname = Astro.url.pathname;
 ---
 <header 
     x-data="{ atTop: true, prevY: 0, isVisible: true, mobileNavExpanded: false }" 
@@ -16,8 +18,74 @@ import MobileBottomButtons from './MobileBottomButtons.astro';
     class="sticky top-0 z-50 transition-all duration-200"
 >
     <div class="mx-auto max-w-[72rem] px-4 sm:px-6 pt-4 sm:pt-6">
-        <StandardHeader />
-        <MobileHeader />
+        <!-- Standard Header (Desktop) -->
+        <section class="hidden lg:block px-6 py-5 bg-white btn-3d" style="--btn-shadow-color: var(--color-gray-20);">
+            <div class="flex items-center justify-between">
+                <a href="/">
+                    <img class="h-6" src={logo.src} alt="niebinarnosc.pl" />
+                </a>
+                <nav class="flex justify-center gap-8">
+                    {navLinks.slice(0, -1).map(({ text, route }) => {
+                        const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
+                        return <a href={route} class:list={["font-medium text-purple-dark-1 hover:text-indigo hover:font-bold", { 'text-indigo font-bold': isActive }]}>{text}</a>
+                    })}
+                </nav>
+                <a href="/#kontakt" class="btn btn-3d bg-white text-purple-80 border border-purple-60 hover:text-purple-100 hover:border-purple-80 hover:bg-purple-5 !py-2 !px-4" style="--btn-shadow-color: var(--color-purple-20);">{navLinks.at(-1)?.text}</a>
+            </div>
+        </section>
+
+        <!-- Mobile Header (Top) -->
+        <section 
+            class="lg:hidden flex flex-col p-4 sm:p-6 bg-white btn-3d" 
+            style="--btn-shadow-color: var(--color-gray-20);"
+            @click.outside="mobileNavExpanded = false"
+        >
+            <div class="flex items-center justify-between h-8">
+                <a href="/" class="h-full">
+                    <img class="h-full" src={logo.src} alt="niebinarnosc.pl"/>
+                </a>
+                <button 
+                    class="text-purple-dark-1 text-2xl sm:text-3xl" 
+                    @click="mobileNavExpanded = !mobileNavExpanded" 
+                    aria-label="Menu"
+                >
+                    <Icon name="menu" />
+                </button>
+            </div>
+            <div 
+                x-show="mobileNavExpanded"
+                x-transition:enter="grid-rows-[1fr] transition-[grid-template-rows] duration-200"
+                x-transition:leave="grid-rows-[0fr] transition-[grid-template-rows] duration-200"
+                class="grid grid-rows-[0fr]"
+            >
+                <nav class="overflow-hidden pl-8">
+                    <div class="h-3"></div>
+                    {navLinks.map(({ text, route, icon }) => {
+                        const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
+                        return (
+                            <a href={route} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min font-medium flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
+                                <Icon name={icon} />
+                                <span>{text}</span>
+                            </a>
+                        )
+                    })}
+                </nav>
+            </div>
+        </section>
     </div>
 </header>
-<MobileBottomButtons />
+
+<!-- Mobile Bottom Buttons -->
+<section class="sticky bottom-0 z-40 lg:hidden bg-white border-t border-purple-60">
+    <nav class="w-full flex justify-center">
+        {navLinks.slice(0, 5).map(({ text, route, icon }) => {
+            const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
+            return (
+                <a href={route} class:list={["flex flex-col items-center gap-1 p-2 text-gray-80 text-xs sm:text-lg", { 'text-purple-100 bg-purple-5 font-bold': isActive }]}>
+                    <Icon name={icon} class="text-2xl" />
+                    <span>{text}</span>
+                </a>
+            )
+        })}
+    </nav>
+</section>
