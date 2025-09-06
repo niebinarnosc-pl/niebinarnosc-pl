@@ -17,20 +17,14 @@ The `Layout` component is the root wrapper for every page on the site. It is res
 | `location` | `object` | Yes      | Gatsby's location object, passed down to the `Header`. |
 | `children` | `node`   | Yes      | The page content to be rendered inside the `<main>` tag. |
 
-## State Management
-
-*   `areCookiesAllowed`: A state variable that can be `true`, `false`, or `null`. It tracks the user's cookie consent status. If `null`, the `CookieBanner` is rendered.
-
 ## Dependencies
 
 *   `Footer`: The site footer component.
-*   `CookieBanner`: The banner for cookie consent.
 *   `Header`: The site header component.
 *   `@fontsource/noto-sans`: The package for the primary site font.
 
 ## Behavior
 
-*   On mount (`useEffect`), it checks for the `allow_cookies` cookie to determine the initial state of `areCookiesAllowed`.
 *   It implements a "sticky footer" pattern using flexbox, ensuring the footer is at the bottom of the viewport even on short pages.
 
 ## Global Styles (`styles.scss`)

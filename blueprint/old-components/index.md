@@ -11,7 +11,6 @@ Each document provides a breakdown of a single component.
 *   [`ContactCard.md`](./ContactCard.md): A promotional card encouraging users to share their story.
 *   [`ContactForm.md`](./ContactForm.md): A form for users to send messages, integrated with Netlify Forms.
 *   [`ContentItem.md`](./ContentItem.md): A versatile card for displaying summaries of stories, definitions, etc.
-*   [`CookieBanner.md`](./CookieBanner.md): A banner to request cookie consent from the user.
 *   [`DefinitionItem.md`](./DefinitionItem.md): A component to display a single definition term and its explanation.
 *   [`ExternalLink.md`](./ExternalLink.md): A simple wrapper around an `<a>` tag for external links.
 *   [`Footer.md`](./Footer.md): The main site footer.
