@@ -87,7 +87,7 @@
 
 /* Custom utilities */
 
-@utility h2Decorated {
+@utility h2-decorated {
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 700;
@@ -109,19 +109,19 @@
   }
 }
 
-@utility .btn-3d {
+@utility btn-3d {
   --btn-shadow-color: var(--color-purple-dark-1); /* Default shadow color */
   box-shadow: 0 4px 0 0 var(--btn-shadow-color);
   transform: translateY(0);
   transition: box-shadow 100ms, border-color 100ms, transform 100ms, color 100ms, background-color 100ms;
+
+  &:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 var(--btn-shadow-color);
+  }
 }
 
-@utility .btn-3d:active:not(:disabled) {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 0 var(--btn-shadow-color);
-}
-
-@utility .btn {
+@utility btn {
   display: flex;
   gap: 0.5rem;
   padding-left: 2rem;
@@ -138,12 +138,12 @@
   cursor: pointer;
   width: 100%;
   text-decoration-line: none;
-}
-@media (min-width: 600px) { /* tp breakpoint */
-  .btn {
+
+  @media (min-width: 640px) { /* sm breakpoint */
     width: fit-content;
   }
-}
-@utility .btn:hover {
-  text-decoration-line: none;
+  
+  &:hover {
+    text-decoration-line: none;
+  }
 }

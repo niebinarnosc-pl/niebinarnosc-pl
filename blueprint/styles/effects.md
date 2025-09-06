@@ -15,16 +15,16 @@ Add the following to `src/styles/globals.css`:
 
 ```css
 /* src/styles/globals.css */
-@utility .btn-3d {
+@utility btn-3d {
   --btn-shadow-color: var(--color-purple-dark-1); /* Default shadow color */
   box-shadow: 0 4px 0 0 var(--btn-shadow-color);
   transform: translateY(0);
   transition: box-shadow 100ms, border-color 100ms, transform 100ms, color 100ms, background-color 100ms;
-}
 
-@utility .btn-3d:active:not(:disabled) {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 0 var(--btn-shadow-color);
+  &:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 var(--btn-shadow-color);
+  }
 }
 ```
 

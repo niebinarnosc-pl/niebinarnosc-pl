@@ -86,7 +86,7 @@ The decorative `h2` used for section titles can be recreated with a custom utili
 
 ```css
 /* in src/styles/globals.css */
-@utility h2Decorated {
+@utility h2-decorated {
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 700;

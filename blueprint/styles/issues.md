@@ -26,3 +26,12 @@ This document is a log for any significant issues, problems, or non-obvious beha
     *   The syntax within the `@keyframes` blocks was corrected to standard CSS.
 *   **Files Affected**: `src/styles/globals.css`, `blueprint/styles/effects.md`.
 *   **Status**: Resolved.
+
+# 3. Invalid Utility Name Error for Utilities Starting with a Dot
+
+*   **Issue Date**: 2025-09-06
+*   **Symptom**: PostCSS build errors: `@utility .h2-decorated defines an invalid utility name. Utilities should be alphanumeric and start with a lowercase letter.`
+*   **Context**: This error occurs when a custom utility name in an `@utility` rule starts with a `.` character. The error message is slightly misleading, as it suggests only alphanumeric characters are allowed. In fact, hyphens are permitted in utility names. The key constraint is that the name must start with a lowercase letter, and `.` is not a letter.
+*   **Resolution/Workaround**: Remove the leading `.` from any `@utility` definitions. For example, `@utility .btn` should be corrected to `@utility btn`. The corresponding class name used in HTML/Astro components remains the same (e.g., `class="btn"`).
+*   **Files Affected**: `src/styles/globals.css`, various blueprint documents.
+*   **Status**: Resolved.

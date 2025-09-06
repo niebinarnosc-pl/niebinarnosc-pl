@@ -16,13 +16,13 @@ This document provides a detailed breakdown of styling patterns for major UI com
 
 ## Buttons
 
-### Standard Button (`.btn`)
+### Standard Button (`btn`)
 
-A base `.btn` class can be created for common styles.
+A base `btn` utility can be created for common styles.
 
 ```css
 /* src/styles/globals.css */
-@utility .btn {
+@utility btn {
   display: flex;
   gap: 0.5rem;
   padding-left: 2rem;
@@ -39,14 +39,14 @@ A base `.btn` class can be created for common styles.
   cursor: pointer;
   width: 100%;
   text-decoration-line: none;
-}
-@media (min-width: 640px) { /* sm breakpoint */
-  .btn {
+
+  @media (min-width: 640px) { /* sm breakpoint */
     width: fit-content;
   }
-}
-@utility .btn:hover {
-  text-decoration-line: none;
+  
+  &:hover {
+    text-decoration-line: none;
+  }
 }
 ```
 
