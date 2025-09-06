@@ -67,3 +67,21 @@ The main configuration file will:
 *   Define the project ID and dataset.
 *   Configure the Sanity Studio with the defined schema types.
 *   Include the Vision plugin for querying data.
+
+## Mock Data
+
+The `sanity/data/import.ndjson` file contains a set of mock documents that can be imported into a clean Sanity dataset to populate the project with initial content. This is useful for development and testing.
+
+The data is based on the content from the original Gatsby project.
+
+### Importing Mock Data
+
+To import the data, run the following Sanity CLI command from the root of the project:
+
+```bash
+sanity dataset import sanity/data/import.ndjson production --replace
+```
+
+**Warning**: The `--replace` flag will delete all existing documents in the dataset before importing the new ones. Only use this on a development dataset.
+
+The NDJSON file includes `definition`, `story`, `representation`, and `page` documents with content from the old markdown files, converted to Portable Text format.

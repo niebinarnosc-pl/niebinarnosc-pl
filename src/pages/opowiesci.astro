@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client'
+
+const stories = await sanityClient.fetch(`*[_type == "story" && draft != true] | order(date desc)`);
+---
+<Layout>
+  <main class="container mx-auto p-4">
+    <header>
+      <h1>Opowieści</h1>
+      <p>Nasze opowieści o płciowości.</p>
+    </header>
+    <pre>{JSON.stringify(stories, null, 2)}</pre>
+  </main>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client'
+
+export async function getStaticPaths() {
+    const categories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
+    const uniqueCategories = [...new Set(categories)];
+
+    const paths = uniqueCategories.map((category) => ({
+        params: { category: category },
+    }));
+
+    // Add a path for the main /reprezentacja page
+    paths.push({ params: { category: undefined } });
+
+    return paths;
+}
+
+const { category } = Astro.params;
+
+let query = `*[_type == "representation" && draft != true`;
+const params = {};
+
+if (category) {
+    query += ` && category == $category`;
+    params.category = category;
+}
+
+query += `] | order(date desc)`;
+
+const representations = await sanityClient.fetch(query, params);
+const allCategories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
+const uniqueCategories = [...new Set(allCategories)];
+---
+<Layout>
+  <main class="container mx-auto p-4">
+    <header>
+      <h1>Reprezentacja</h1>
+      <p>Zaproponuj nam swoją pozycję z odniesieniami w kulturze.</p>
+      {/* Add ExternalLink button here later */}
+      {uniqueCategories && (
+          <nav>
+              <a href="/reprezentacja" class={!category ? 'font-bold' : ''}>Wszystko</a>
+              {uniqueCategories.map((cat: string) => (
+                  <a href={`/reprezentacja/${cat}`} class={category === cat ? 'font-bold' : ''}>{cat}</a>
+              ))}
+          </nav>
+      )}
+    </header>
+    <pre>{JSON.stringify(representations, null, 2)}</pre>
+  </main>
+</Layout>

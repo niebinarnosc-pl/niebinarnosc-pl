@@ -1,5 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client';
+
+const news = await sanityClient.fetch(`*[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3]`);
 ---
 <Layout>
+  <main class="container mx-auto p-4">
+    <h1>Strona główna</h1>
+    <section>
+        <h2>Niusy</h2>
+        <pre>{JSON.stringify(news, null, 2)}</pre>
+    </section>
+    {/* HomeHeader, HomeNav, and ContactForm will be added here later */}
+  </main>
 </Layout>

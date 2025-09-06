@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client';
+
+export async function getStaticPaths() {
+    const slugs = await sanityClient.fetch(`*[_type == "definition" && defined(slug.current) && draft != true].slug.current`);
+    return slugs.map((slug: string) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+const query = `*[_type == "definition" && slug.current == $slug && draft != true][0]{
+  ...,
+  "relatedStories": *[_type == "story" && references(^._id) && draft != true]
+}`;
+
+const definition = await sanityClient.fetch(query, { slug });
+
+if (!definition) {
+    return Astro.redirect('/404');
+}
+---
+<Layout>
+    <main class="container mx-auto p-4">
+        <h1>{definition.title}</h1>
+        <pre>{JSON.stringify(definition, null, 2)}</pre>
+    </main>
+</Layout>
