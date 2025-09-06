@@ -6,15 +6,12 @@
 
 This document is a log for any significant issues, problems, or non-obvious behaviors discovered within the Tailwind CSS-based styling implementation of the website. This can help inform development by highlighting potential pitfalls or areas that require special attention.
 
-# 1. `@apply` and dynamic color functions are not supported within `@utility` or `@layer`
+# 1. `@apply` is not supported within `@utility`
 
 *   **Issue Date**: 2025-08-10
-*   **Symptom**: PostCSS build errors: `@apply is not supported within nested at-rules like @utility` and `The text-color(blue-dark3) class does not exist.`
-*   **Context**: These errors occur when using `@apply` with either standard utility classes or dynamic color functions (e.g., `color()`) inside a custom utility defined with `@utility` or within `@layer base`. This is a design limitation of Tailwind CSS v4's engine.
-*   **Resolution/Workaround**: Manually expand the utilities and functions into their corresponding raw CSS properties.
-    *   For example, `@apply rounded-3xl;` becomes `border-radius: 1.5rem;`.
-    *   `@apply text-color(blue-dark3);` becomes `color: var(--color-blue-dark3);`.
-    *   If a utility like `.btn-rainbow` was composing another utility (`@apply btn`), its styles must be updated to manually include the properties from `.btn` instead of using `@apply`.
+*   **Symptom**: PostCSS build errors: `@apply is not supported within nested at-rules like @utility`.
+*   **Context**: These errors occur when using `@apply` with standard utility classes inside a custom utility defined with `@utility`. This is a design limitation of Tailwind CSS v4's engine. The `@apply` directive is, however, supported within `@layer` blocks.
+*   **Resolution/Workaround**: For custom utilities defined with `@utility`, manually expand the utilities into their corresponding raw CSS properties. For styles within `@layer`, use `@apply` where possible to align with Tailwind best practices.
 *   **Files Affected**: `src/styles/globals.css`, `blueprint/styles/components.md`, `blueprint/styles/effects.md`, `blueprint/styles/typography.md`.
 *   **Status**: Resolved.
 
