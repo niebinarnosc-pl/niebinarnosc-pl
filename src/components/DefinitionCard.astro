@@ -1,6 +1,5 @@
 ---
 import ContentCard from './ContentCard.astro';
-import Button from './Button.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
 
@@ -18,6 +17,6 @@ const { definition } = Astro.props;
     <PortableText value={definition.body} />
   </div>
   <div slot="footer">
-     <Button href={`/definicje/${definition.slug.current}`} variant="secondary">Zobacz opowieści <Icon name="arrow-right"/></Button>
+     <a href={`/definicje/${definition.slug.current}`} class="btn btn-secondary">Zobacz opowieści <Icon name="arrow-right"/></a>
   </div>
 </ContentCard>

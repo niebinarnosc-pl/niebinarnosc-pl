@@ -19,19 +19,17 @@ const colorClasses = {
 };
 
 const hoverClasses = {
-    yellow: 'hover:border-yellow-100',
-    purple: 'hover:border-purple-80',
-    black: 'hover:border-black',
+    yellow: 'hover:text-black hover:btn-3d-yellow-100 hover:border-yellow-100',
+    purple: 'hover:text-white hover:btn-3d-purple-80 hover:border-purple-80',
+    black: 'hover:text-white hover:btn-3d-true-black hover:border-true-black',
 }
 ---
-<a href={to} class:list={["group relative flex gap-4 sm:gap-6 p-3 sm:p-6 flex-1 sm:h-[10.25rem] sm:min-w-[20rem] btn-3d no-underline", hoverClasses[color]]}>
-    <div class:list={["relative w-16 h-16 rounded-lg flex justify-center items-center p-2 shrink-0", colorClasses[color]]}>
+<a href={to} class:list={["btn-card duration-60 hover:delay-140 group relative flex gap-4 sm:gap-6 p-3 sm:p-6 flex-1 sm:h-[10.25rem] sm:min-w-[20rem]", hoverClasses[color]]}>
+    <div class="w-16 h-16 rounded-lg flex justify-center items-center p-2">
+        <Icon name={icon} class:list={["h-12 w-12 z-10", colorClasses[color]]} />
         <div class:list={["absolute top-3 left-3 sm:top-6 sm:left-6 w-16 h-16 rounded-lg transition-all duration-200 group-hover:top-0 group-hover:left-0 group-hover:w-full group-hover:h-full", colorClasses[color]]}></div>
-        <div class="z-10">
-            <Icon name={icon} class="h-12 w-12" />
-        </div>
     </div>
-    <div class:list={["z-10", color === 'yellow' ? 'text-black' : 'text-white']}>
+    <div class:list={["z-10 transition-all duration-200"]}>
         <h6 class="text-[1.25em] sm:text-[1.5em] mb-2 font-bold">{heading}</h6>
         <p class="m-0 font-bold">{desc}</p>
     </div>

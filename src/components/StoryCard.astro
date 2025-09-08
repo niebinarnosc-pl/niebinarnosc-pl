@@ -1,7 +1,6 @@
 ---
 import ContentCard from './ContentCard.astro';
 import Badge from './Badge.astro';
-import Button from './Button.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
 
@@ -24,6 +23,6 @@ const { story } = Astro.props;
     <PortableText value={story.body} />
   </div>
   <div slot="footer" class="hidden">
-    <Button href={`/opowiesci#${story.slug.current}`} variant="secondary">Czytaj więcej <Icon name="arrow-right" /></Button>
+    <a href={`/opowiesci#${story.slug.current}`} class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></a>
   </div>
 </ContentCard>

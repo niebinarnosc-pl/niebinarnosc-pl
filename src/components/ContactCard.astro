@@ -1,6 +1,5 @@
 ---
 import ExternalLink from "./ExternalLink.astro";
-import Button from "./Button.astro";
 
 const contactFormUrl = "https://forms.gle/cuWkGHvyWbbfbsd16"; // Hardcoded for now
 ---
@@ -14,6 +13,6 @@ const contactFormUrl = "https://forms.gle/cuWkGHvyWbbfbsd16"; // Hardcoded for n
                 <ExternalLink href={contactFormUrl} class="text-inherit font-bold underline">napisz nam o sobie</ExternalLink>.
             </span>
         </p>
-        <Button href={contactFormUrl} isExternal variant="border" class="hidden lg:flex shrink-0">Napisz nam o sobie</Button>
+        <ExternalLink href={contactFormUrl} class="btn btn-border hidden lg:flex shrink-0">Napisz nam o sobie</ExternalLink>
     </div>
 </section>

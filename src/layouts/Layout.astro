@@ -46,8 +46,10 @@ const siteName = 'niebinarnosc.pl';
 	</head>
 	<body class="flex flex-col min-h-screen relative">
 		<Header />
-		<main class="flex-1 flex relative z-10 w-full">
-			<slot />
+		<main class="flex-1 flex relative z-10 w-full mt-[1.75rem] mb-[2.88rem]">
+  			<div class="w-full max-w-[72rem] mx-auto px-4 sm:px-6">
+				<slot />
+			</div>
 		</main>
 		<Footer />
 	</body>

@@ -1,7 +1,6 @@
 ---
 import ExternalLink from './ExternalLink.astro';
 import Icon from './Icon.astro';
-import Button from './Button.astro';
 ---
 <section class="contact-form" id="kontakt">
     <h2 class="h2-decorated">Kontakt</h2>
@@ -24,7 +23,7 @@ import Button from './Button.astro';
                 </label>
                 <textarea name="text" placeholder="Tutaj wpisz swoją wiadomość" required class="p-3 bg-white rounded-xl border border-gray-40 h-32 focus:outline focus:outline-1 focus:outline-purple-100"></textarea>
                 <label class="hidden">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
-                <Button type="submit">Wyślij wiadomość</Button>
+                <button class="btn btn-primary" type="submit">Wyślij wiadomość</button>
             </form>
         </div>
     </div>

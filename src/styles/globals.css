@@ -2,6 +2,7 @@
 
 @theme {
   /* Grayscale */
+  --color-true-black: #000;
   --color-black: #2c2c2c;
   --color-gray-100: var(--color-black);
   --color-gray-80: #24252d;
@@ -33,6 +34,8 @@
   --color-yellow-10: #fefce6;
   --color-yellow-5: #fefdf2;
 
+  --text-3xl: 2rem;
+
 }
 
 @layer base {
@@ -41,17 +44,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    scroll-padding-top: 6rem; /* 96px */
-  }
-  @media (min-width: 640px) { /* sm breakpoint */
-    html {
-      scroll-padding-top: 7rem; /* 112px */
-    }
-  }
-  @media (max-width: 639px) { /* below sm breakpoint */
-    html {
-      font-size: 4.5vw;
-    }
+    @apply scroll-pt-[6rem] sm:scroll-pt-[7rem];
+    font-size: clamp(12px, 4.5vw, 16px);
   }
 
   *, *::before, *::after {
@@ -67,6 +61,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
+
+  h1 {
+    @apply sm:text-3xl;
+  };
   
   strong {
     @apply font-bold text-purple-60;
@@ -82,6 +80,64 @@
 
   blockquote p {
     @apply text-base;
+  }
+}
+
+@utility font-bold-hover-no-shift {
+  &::after {
+    display: block;
+    content: attr(data-text);
+    font-weight: 700;
+    height: 1px;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  &:hover {
+    font-weight: 700;
+  }
+}
+
+@utility btn-3d-* {
+  box-shadow: 0 4px 0 0 --value(--color-*);
+  border: 1px solid --value(--color-*);
+  transform: translateY(0);
+
+  &:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 --value(--color-*);
+  }
+}
+
+@utility card-3d-* {
+  box-shadow: 0 4px 0 0 --value(--color-*);
+  border: 1px solid --value(--color-*);
+}
+
+
+@layer components {
+  .btn {
+    @apply flex gap-2 px-8 py-3 justify-center items-center rounded-xl w-full sm:w-fit;
+    @apply whitespace-nowrap font-extrabold leading-[1.5] no-underline cursor-pointer;
+    @apply transition-all duration-100;
+  }
+  .btn-primary {
+    @apply bg-purple-100 text-white btn-3d-purple-dark-1;
+    @apply hover:bg-purple-dark-1 hover:btn-3d-purple-dark-2
+  }
+  .btn-secondary {
+    @apply bg-white text-purple-80 btn-3d-purple-60;
+    @apply hover:bg-purple-5 hover:text-purple-100 hover:btn-3d-purple-80;
+  }
+  .btn-border {
+    @apply text-white border-2 border-white;
+  }
+  .btn-card {
+    @apply bg-white text-black btn-3d-purple-10 rounded-xl no-underline;
+    @apply hover:btn-3d-purple-20;
+  }
+  .card {
+    @apply bg-white text-black card-3d-purple-10 rounded-xl;
   }
 }
 
@@ -109,41 +165,3 @@
   }
 }
 
-@utility btn-3d {
-  --btn-shadow-color: var(--color-purple-dark-1); /* Default shadow color */
-  box-shadow: 0 4px 0 0 var(--btn-shadow-color);
-  transform: translateY(0);
-  transition: box-shadow 100ms, border-color 100ms, transform 100ms, color 100ms, background-color 100ms;
-
-  &:active:not(:disabled) {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 0 var(--btn-shadow-color);
-  }
-}
-
-@utility btn {
-  display: flex;
-  gap: 0.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-  font-weight: 800;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  width: 100%;
-  text-decoration-line: none;
-
-  @media (min-width: 640px) { /* sm breakpoint */
-    width: fit-content;
-  }
-  
-  &:hover {
-    text-decoration-line: none;
-  }
-}

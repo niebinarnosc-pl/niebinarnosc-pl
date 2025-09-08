@@ -1,5 +1,5 @@
 ---
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo-full.svg';
 import { navLinks } from '../lib/navLinks';
 import Icon from './Icon.astro';
 
@@ -17,20 +17,19 @@ const pathname = Astro.url.pathname;
     :class="{ '!-top-28': !isVisible && !atTop }"
     class="sticky top-0 z-50 transition-all duration-200"
 >
-    <div class="mx-auto max-w-[72rem] px-4 sm:px-6 pt-4 sm:pt-6">
+    <div class="mx-auto max-w-[72rem] pt-6 px-6">
         <!-- Standard Header (Desktop) -->
-        <section class="hidden lg:block px-6 py-5 bg-white [box-shadow:0_4px_0_0_var(--btn-shadow-color)]" style="--btn-shadow-color: var(--color-gray-20);">
+        <section class="card hidden lg:block px-6 py-5">
             <div class="flex items-center justify-between">
                 <a href="/">
                     <img class="h-6" src={logo.src} alt="niebinarnosc.pl" />
                 </a>
-                <nav class="flex justify-center gap-8">
-                    {navLinks.slice(0, -1).map(({ text, route }) => {
+                <nav class="flex justify-around gap-7">
+                    {navLinks.map(({ text, route }) => {
                         const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
-                        return <a href={route} class:list={["font-medium text-purple-dark-1 hover:text-indigo hover:font-bold", { 'text-indigo font-bold': isActive }]}>{text}</a>
+                        return <a href={route} class:list={["font-medium text-purple-dark-1 no-underline hover:text-indigo fake-bold font-bold-hover-no-shift", { 'text-indigo font-bold': isActive }]} data-text={text}>{text}</a>
                     })}
                 </nav>
-                <a href="/#kontakt" class="btn btn-3d bg-white text-purple-80 border border-purple-60 hover:text-purple-100 hover:border-purple-80 hover:bg-purple-5 !py-2 !px-4" style="--btn-shadow-color: var(--color-purple-20);">{navLinks.at(-1)?.text}</a>
             </div>
         </section>
 
