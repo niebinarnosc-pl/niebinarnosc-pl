@@ -1,5 +1,6 @@
 ---
-import logo from '../assets/logo-full.svg';
+import logo from '../assets/logo.svg';
+import logoFull from '../assets/logo-full.svg';
 import { navLinks } from '../lib/navLinks';
 import Icon from './Icon.astro';
 
@@ -22,7 +23,7 @@ const pathname = Astro.url.pathname;
         <section class="card hidden lg:block px-6 py-5">
             <div class="flex items-center justify-between">
                 <a href="/">
-                    <img class="h-6" src={logo.src} alt="niebinarnosc.pl" />
+                    <img class="h-6" src={logoFull.src} alt="niebinarnosc.pl" />
                 </a>
                 <nav class="flex justify-around gap-7">
                     {navLinks.map(({ text, route }) => {
@@ -35,8 +36,7 @@ const pathname = Astro.url.pathname;
 
         <!-- Mobile Header (Top) -->
         <section 
-            class="lg:hidden flex flex-col p-4 sm:p-6 bg-white [box-shadow:0_4px_0_0_var(--btn-shadow-color)]" 
-            style="--btn-shadow-color: var(--color-gray-20);"
+            class="card lg:hidden flex flex-col p-4"
             @click.outside="mobileNavExpanded = false"
         >
             <div class="flex items-center justify-between h-8">
@@ -48,7 +48,7 @@ const pathname = Astro.url.pathname;
                     @click="mobileNavExpanded = !mobileNavExpanded" 
                     aria-label="Menu"
                 >
-                    <Icon name="menu" />
+                    <Icon name="menu" size={"1.3em"}/>
                 </button>
             </div>
             <div 
@@ -73,18 +73,3 @@ const pathname = Astro.url.pathname;
         </section>
     </div>
 </header>
-
-<!-- Mobile Bottom Buttons -->
-<section class="sticky bottom-0 z-40 lg:hidden bg-white border-t border-purple-60 px-2">
-    <nav class="w-full flex justify-center">
-        {navLinks.slice(0, 5).map(({ text, route, icon }) => {
-            const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
-            return (
-                <a href={route} class:list={["flex flex-col items-center gap-[0.25em] p-[0.5em_0.75em] text-gray-80 text-xs sm:text-lg leading-normal", { 'text-purple-100 bg-purple-5 font-bold': isActive }]}>
-                    <Icon name={icon} class="text-[1.5em]" />
-                    <span>{text}</span>
-                </a>
-            )
-        })}
-    </nav>
-</section>
