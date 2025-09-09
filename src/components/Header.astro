@@ -15,10 +15,10 @@ const pathname = Astro.url.pathname;
         if (!isVisible) { mobileNavExpanded = false };
         prevY = newY;
     "
-    :class="{ '!-top-28': !isVisible && !atTop }"
-    class="sticky top-0 z-50 transition-all duration-200"
+    :class="{ '-translate-y-full': !isVisible && !atTop }"
+    class="fixed w-full top-0 z-50 transition-transform duration-200"
 >
-    <div class="mx-auto max-w-[72rem] pt-6 px-6">
+    <div class="mx-auto max-w-[72rem] pt-4 px-4 sm:pt-6 sm:px-6">
         <!-- Standard Header (Desktop) -->
         <section class="card hidden lg:block px-6 py-5">
             <div class="flex items-center justify-between">
@@ -36,7 +36,7 @@ const pathname = Astro.url.pathname;
 
         <!-- Mobile Header (Top) -->
         <section 
-            class="card lg:hidden flex flex-col p-4"
+            class="card lg:hidden flex flex-col py-4 px-6"
             @click.outside="mobileNavExpanded = false"
         >
             <div class="flex items-center justify-between h-8">
@@ -53,9 +53,13 @@ const pathname = Astro.url.pathname;
             </div>
             <div 
                 x-show="mobileNavExpanded"
-                x-transition:enter="grid-rows-[1fr] transition-[grid-template-rows] duration-200"
-                x-transition:leave="grid-rows-[0fr] transition-[grid-template-rows] duration-200"
-                class="grid grid-rows-[0fr]"
+                x-transition:enter="transition-[grid-template-rows] duration-200"
+                x-transition:enter-start="grid-rows-[0fr]"
+                x-transition:enter-end="grid-rows-[1fr]"
+                x-transition:leave="transition-[grid-template-rows] duration-200"
+                x-transition:leave-start="grid-rows-[1fr]"
+                x-transition:leave-end="grid-rows-[0fr]"
+                class="grid"
             >
                 <nav class="overflow-hidden pl-8">
                     <div class="h-3"></div>
@@ -63,7 +67,7 @@ const pathname = Astro.url.pathname;
                         const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
                         return (
                             <a href={route} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min font-medium flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
-                                <Icon name={icon} />
+                                <Icon name={icon} size={"1.3em"} />
                                 <span>{text}</span>
                             </a>
                         )

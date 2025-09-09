@@ -63,7 +63,7 @@
   }
 
   h1 {
-    @apply sm:text-3xl;
+    @apply text-xl sm:text-3xl;
   };
   
   strong {

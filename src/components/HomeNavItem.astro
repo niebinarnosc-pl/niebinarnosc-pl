@@ -24,7 +24,7 @@ const hoverClasses = {
     black: 'hover:text-white hover:btn-3d-true-black hover:border-true-black',
 }
 ---
-<a href={to} class:list={["btn-card duration-60 hover:delay-140 group relative flex gap-4 sm:gap-6 p-3 sm:p-6 flex-1 sm:h-[10.25rem] sm:min-w-[20rem]", hoverClasses[color]]}>
+<a href={to} class:list={["btn-card duration-60 hover:delay-140 group relative flex gap-4 sm:gap-6 p-3 sm:p-6 flex-1 sm:min-h-[10.25rem] sm:min-w-[20rem]", hoverClasses[color]]}>
     <div class="w-16 h-16 rounded-lg flex justify-center items-center p-2">
         <Icon name={icon} class:list={["h-12 w-12 z-10", colorClasses[color]]} />
         <div class:list={["absolute top-3 left-3 sm:top-6 sm:left-6 w-16 h-16 rounded-lg transition-all duration-200 group-hover:top-0 group-hover:left-0 group-hover:w-full group-hover:h-full", colorClasses[color]]}></div>

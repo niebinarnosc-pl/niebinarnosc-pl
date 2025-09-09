@@ -3,15 +3,15 @@ import ExternalLink from "./ExternalLink.astro";
 
 const contactFormUrl = "https://forms.gle/cuWkGHvyWbbfbsd16"; // Hardcoded for now
 ---
-<section class="flex flex-col gap-3 sm:gap-6 p-4 sm:p-6 bg-purple-100 text-white my-6 sm:rounded-xl">
+<section class="flex flex-col gap-3 sm:gap-6 p-4 sm:p-6 bg-purple-100 text-white my-6 sm:rounded-xl -mx-4 sm:mx-0">
     <h4 class="text-inherit m-0 text-base sm:text-2xl font-bold">Opowiedz nam swoją historię</h4>
     <div class="flex gap-6 items-center">
         <p class="m-0 text-sm sm:text-base">
-            <span>Jesteś osobą niebinarną? Chcesz, aby Twoja opowieść pojawiła się na stronie?</span>
-            <span class="hidden lg:inline"><br/>Podziel się nią i </span>
+            <span>Jesteś osobą niebinarną? Chcesz, aby Twoja opowieść pojawiła się na stronie? Podziel się nią i </span>
             <span class="lg:hidden">
-                <ExternalLink href={contactFormUrl} class="text-inherit font-bold underline">napisz nam o sobie</ExternalLink>.
+                <ExternalLink href={contactFormUrl} class="text-inherit font-bold underline">napisz nam o sobie.</ExternalLink>
             </span>
+            <span class="hidden lg:inline">napisz nam o sobie.</span>
         </p>
         <ExternalLink href={contactFormUrl} class="btn btn-border hidden lg:flex shrink-0">Napisz nam o sobie</ExternalLink>
     </div>
