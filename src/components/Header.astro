@@ -7,16 +7,15 @@ import Icon from './Icon.astro';
 const pathname = Astro.url.pathname;
 ---
 <header 
-    x-data="{ atTop: true, prevY: 0, isVisible: true, mobileNavExpanded: false }" 
-    @scroll.window.throttle.100ms="
+    x-data="{ prevY: 0, isVisible: true, mobileNavExpanded: false }" 
+    @scroll.window.throttle.50ms="
         newY = window.scrollY;
-        atTop = newY <= 10;
-        isVisible = atTop || newY < prevY;
+        isVisible = newY < prevY;
         if (!isVisible) { mobileNavExpanded = false };
         prevY = newY;
     "
-    :class="{ '-translate-y-full': !isVisible && !atTop }"
-    class="fixed w-full top-0 z-50 transition-transform duration-200"
+    :class="!isVisible ? '-top-[7rem]' : 'top-0'"
+    class="sticky w-full z-50 transition-top duration-200 h-0"
 >
     <div class="mx-auto max-w-[72rem] pt-4 px-4 sm:pt-6 sm:px-6">
         <!-- Standard Header (Desktop) -->
