@@ -1,5 +1,4 @@
 ---
-import Badge from "./Badge.astro";
 import slugify from "../lib/slugify";
 
 interface Props {
@@ -11,10 +10,10 @@ interface Props {
 const { basePath, tags, active } = Astro.props;
 ---
 <div class="flex gap-3 flex-wrap">
-    <Badge href={basePath} variant={!active ? 'selected' : 'normal'}>Wszystko</Badge>
+    <a href={basePath} class:list={["badge", !active ? 'badge-selected' : 'badge-normal']}>Wszystko</a>
     {tags.map(tag => (
-        <Badge href={`${basePath}/${slugify(tag)}`} variant={active === tag ? 'selected' : 'normal'}>
+        <a href={`${basePath}/${slugify(tag)}`} class:list={["badge", active === tag ? 'badge-selected' : 'badge-normal']}>
             {tag}
-        </Badge>
+        </a>
     ))}
 </div>

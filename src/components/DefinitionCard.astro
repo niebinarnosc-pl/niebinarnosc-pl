@@ -23,16 +23,12 @@ const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieś
     <div class="aspect-square bg-gray-10 rounded-xl"></div>
   </div>
   <div slot="header">
-    <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{definition.title}</h4>
+    <h3 class="group-hover:text-purple-80 transition-colors">{definition.title}</h3>
   </div>
   <div slot="body">
     <PortableText value={isSummary ? definition.excerpt : definition.body} />
   </div>
   <div slot="footer">
-    {isSummary ? (
-        <span class="btn btn-secondary">Zobacz opowieści <Icon name="arrow-right"/></span>
-    ) : (
-        <a href={footerLink} class="btn btn-secondary">{footerText} <Icon name="arrow-right"/></a>
-    )}
+    {!isSummary && <a href={footerLink} class="btn btn-secondary ml-auto">{footerText} <Icon name="arrow-right"/></a>}
   </div>
 </ContentCard>

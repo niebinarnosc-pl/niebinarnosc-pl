@@ -10,7 +10,7 @@ const definitions = await sanityClient.fetch(`*[_type == "definition" && draft !
     <h1 class="text-xl sm:text-3xl text-purple-dark-2">Definicje</h1>
     <p class="max-w-2xl font-bold text-gray-60">Czym jest niebinarność i inne.</p>
   </header>
-  <div class="flex flex-col gap-4">
+  <div class="content-container">
       {definitions.map(def => <DefinitionCard definition={def} />)}
   </div>
 </Layout>

@@ -22,16 +22,16 @@ const news = await sanityClient.fetch(`
   <HomeNav />
   <section>
     <h2 class="h2-decorated">Niusy</h2>
-    <div class="flex flex-col gap-8 mb-16">
+    <div class="flex flex-col gap-4 sm:gap-8 mb-16">
       {news.map(item => {
         if (item._type === 'definition') {
-          return <DefinitionCard definition={item} />;
+          return <DefinitionCard definition={item} variant='summary' />;
         }
         if (item._type === 'story') {
-          return <StoryCard story={item} />;
+          return <StoryCard story={item} variant='summary' />;
         }
         if (item._type === 'representation') {
-          return <RepresentationCard rep={item} />;
+          return <RepresentationCard rep={item} variant='summary' />;
         }
         return null;
       })}

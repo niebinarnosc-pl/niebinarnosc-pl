@@ -10,28 +10,30 @@ const isLink = !!href;
 <Tag 
   href={href}
   class:list={[
-    isLink ? "btn-card group" : "card",
+    isLink ? "btn-card group" : "",
     isLink ? "block" : "", // `a` tag needs to be block-level
     className,
   ]}
 >
   <article class="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
-    <div class="hidden lg:block w-[9rem] shrink-0">
-      <slot name="thumbnail" />
+    <div class:list={["hidden lg:block", !isLink && "pr-6 border-r border-purple-10"]}>
+      <div class="w-[9rem]">
+        <slot name="thumbnail" />
+      </div>
     </div>
-    <div class="flex-1 flex flex-col gap-4">
+    <div class="flex-1 flex flex-col gap-6">
       <header class="flex gap-4">
-        <div class="lg:hidden w-[4.5rem] shrink-0">
+        <div class="lg:hidden w-[4.5rem]">
           <slot name="thumbnail" />
         </div>
         <div class="flex-1 flex flex-col gap-2">
             <slot name="header" />
         </div>
       </header>
-      <div class="prose max-w-none text-black">
+      <div class="prose max-w-2xl text-black">
         <slot name="body" />
       </div>
-      <footer class="mt-auto">
+      <footer class="mt-auto max-w-2xl">
         <slot name="footer" />
       </footer>
     </div>

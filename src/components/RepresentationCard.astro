@@ -1,6 +1,5 @@
 ---
 import ContentCard from './ContentCard.astro';
-import Badge from './Badge.astro';
 import slugify from '../lib/slugify';
 import Icon from './Icon.astro';
 
@@ -19,24 +18,24 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
         <!-- TODO: Thumbnail component -->
         <div class="aspect-video bg-gray-10 rounded-xl"></div>
     </div>
-    <div slot="header">
-        <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{rep.title}</h4>
-        {rep.authors && <p class="text-sm">{rep.authors.map(a => a.name).join(', ')}</p>}
-        {rep.category && <Badge href={`/reprezentacja/${slugify(rep.category)}`}>{rep.category}</Badge>}
-    </div>
+    <Fragment slot="header">
+        <h3 class="group-hover:text-purple-80 transition-colors">{rep.title}</h3>
+        {rep.authors && !isSummary && <p class="m-0">{rep.authors.map(a => a.name).join(', ')}</p>}
+        {rep.category && (isSummary ?
+            <span class="badge badge-normal mr-auto">{rep.category}</span> :
+            <a class="badge badge-normal mr-auto" href={`/reprezentacja/${slugify(rep.category)}`}>{rep.category}</a>
+        )}
+    </Fragment>
     <div slot="body">
         {isSummary ? (
-            <p>{rep.excerpt}</p>
+            <p>{rep.storyDescription}</p>
         ) : (
             <>
-                <h5 class="font-bold">Opis fabuły</h5>
+                <h4 class="font-bold">Opis fabuły</h5>
                 <p>{rep.storyDescription}</p>
-                <h5 class="font-bold">Reprezentacja</h5>
+                <h4 class="font-bold">Reprezentacja</h5>
                 <p>{rep.representationDescription}</p>
             </>
         )}
-    </div>
-    <div slot="footer">
-        {isSummary && <span class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></span>}
     </div>
 </ContentCard>

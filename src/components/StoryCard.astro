@@ -1,6 +1,5 @@
 ---
 import ContentCard from './ContentCard.astro';
-import Badge from './Badge.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
 
@@ -23,7 +22,10 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
     <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{story.title}</h4>
     {story.definitions && story.definitions.length > 0 && (
         <div class="flex flex-wrap gap-2">
-            {story.definitions.map(def => def && <Badge href={`/definicje/${def.slug.current}`}>{def.title}</Badge>)}
+            {story.definitions.map(def => def && isSummary ?
+              <span class="badge badge-normal">{def.title}</span> :
+              <a class="badge badge-normal" href={`/definicje/${def.slug.current}`}>{def.title}</a>
+            )}
         </div>
     )}
   </div>
