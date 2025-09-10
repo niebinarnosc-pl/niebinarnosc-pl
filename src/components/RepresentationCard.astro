@@ -2,23 +2,41 @@
 import ContentCard from './ContentCard.astro';
 import Badge from './Badge.astro';
 import slugify from '../lib/slugify';
+import Icon from './Icon.astro';
 
-const { rep } = Astro.props;
+interface Props {
+    rep: any; // TODO: Replace with a proper type from Sanity
+    variant?: 'full' | 'summary';
+}
+
+const { rep, variant = 'full' } = Astro.props;
+const isSummary = variant === 'summary';
+
+const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 ---
-<ContentCard>
+<ContentCard href={href}>
     <div slot="thumbnail">
         <!-- TODO: Thumbnail component -->
         <div class="aspect-video bg-gray-10 rounded-xl"></div>
     </div>
     <div slot="header">
-        <h4 class="text-xl font-bold">{rep.title}</h4>
+        <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{rep.title}</h4>
         {rep.authors && <p class="text-sm">{rep.authors.map(a => a.name).join(', ')}</p>}
         {rep.category && <Badge href={`/reprezentacja/${slugify(rep.category)}`}>{rep.category}</Badge>}
     </div>
     <div slot="body">
-        <h5 class="font-bold">Opis fabuły</h5>
-        <p>{rep.storyDescription}</p>
-        <h5 class="font-bold">Reprezentacja</h5>
-        <p>{rep.representationDescription}</p>
+        {isSummary ? (
+            <p>{rep.excerpt}</p>
+        ) : (
+            <>
+                <h5 class="font-bold">Opis fabuły</h5>
+                <p>{rep.storyDescription}</p>
+                <h5 class="font-bold">Reprezentacja</h5>
+                <p>{rep.representationDescription}</p>
+            </>
+        )}
+    </div>
+    <div slot="footer">
+        {isSummary && <span class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></span>}
     </div>
 </ContentCard>

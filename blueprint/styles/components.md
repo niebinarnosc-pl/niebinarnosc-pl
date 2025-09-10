@@ -105,6 +105,28 @@ The header has three parts: Desktop, Mobile (Top), and Mobile (Bottom Nav). Alpi
     *   The icon wrapper is `relative` with a `z-10`.
     *   The expanding background `div` is `absolute` and transitions its `width` and `height` from fixed values to `100%` on `group-hover`. The link needs to be a `group`.
 
+## Content Cards
+
+Content cards are used throughout the site to display summaries of definitions, stories, and representation entries. The implementation uses a base layout component (`src/components/ContentCard.astro`) with specific card components for each content type.
+
+### Base Component (`ContentCard.astro`)
+
+*   **Purpose**: Provides the shared responsive layout (flexbox, padding, gaps) and common slots (`thumbnail`, `header`, `body`, `footer`).
+*   **Props**:
+    *   `href?: string`: If provided, the entire card becomes an `<a>` tag, styled as a clickable button-like card.
+*   **Styling**:
+    *   **Standard View**: Uses the `.card` utility class for a white background with a 3D border.
+    *   **Link View (`href` provided)**: Uses the `.btn-card` utility class, which adds different border/shadow colors on hover. It also adds the `group` class to enable styling of child elements on hover (e.g., `group-hover:text-purple-80` on headings).
+
+### Specific Card Components (e.g., `DefinitionCard.astro`)
+
+*   **Purpose**: Provide the content and styling variations for a specific content type.
+*   **Props**:
+    *   `variant?: 'full' | 'summary'`: Controls the presentation.
+        *   `'summary'`: Renders a compact view with an excerpt. Passes an `href` to `ContentCard` to make it a link. Displays a decorative "Read more" button in the footer.
+        *   `'full'`: Renders the full content view with functional buttons in the footer.
+*   **Styling**: Specific cards are responsible for type-specific styles, such as the `aspect-square` or `aspect-video` class on the thumbnail element they pass into the `thumbnail` slot.
+
 ---
 ## Mentioned by
 

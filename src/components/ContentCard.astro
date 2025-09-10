@@ -1,7 +1,20 @@
 ---
-import Card from './Card.astro';
+interface Props {
+  href?: string;
+  class?: string;
+}
+const { href, class: className } = Astro.props;
+const Tag = href ? 'a' : 'div';
+const isLink = !!href;
 ---
-<Card class="p-0 sm:p-0">
+<Tag 
+  href={href}
+  class:list={[
+    isLink ? "btn-card group" : "card",
+    isLink ? "block" : "", // `a` tag needs to be block-level
+    className,
+  ]}
+>
   <article class="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
     <div class="hidden lg:block w-[9rem] shrink-0">
       <slot name="thumbnail" />
@@ -23,4 +36,4 @@ import Card from './Card.astro';
       </footer>
     </div>
   </article>
-</Card>
+</Tag>

@@ -3,20 +3,36 @@ import ContentCard from './ContentCard.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
 
-const { definition } = Astro.props;
+interface Props {
+    definition: any; // TODO: Replace with a proper type from Sanity
+    variant?: 'full' | 'summary';
+    singleDefinition?: boolean;
+}
+
+const { definition, variant = 'full', singleDefinition = false } = Astro.props;
+const isSummary = variant === 'summary';
+
+const href = isSummary ? `/definicje/${definition.slug.current}` : undefined;
+
+const footerLink = singleDefinition ? "/definicje/" : `/definicje/${definition.slug.current}`;
+const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieści";
 ---
-<ContentCard>
+<ContentCard href={href}>
   <div slot="thumbnail">
     <!-- TODO: Thumbnail component -->
     <div class="aspect-square bg-gray-10 rounded-xl"></div>
   </div>
   <div slot="header">
-    <h4 class="text-xl font-bold">{definition.title}</h4>
+    <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{definition.title}</h4>
   </div>
   <div slot="body">
-    <PortableText value={definition.body} />
+    <PortableText value={isSummary ? definition.excerpt : definition.body} />
   </div>
   <div slot="footer">
-     <a href={`/definicje/${definition.slug.current}`} class="btn btn-secondary">Zobacz opowieści <Icon name="arrow-right"/></a>
+    {isSummary ? (
+        <span class="btn btn-secondary">Zobacz opowieści <Icon name="arrow-right"/></span>
+    ) : (
+        <a href={footerLink} class="btn btn-secondary">{footerText} <Icon name="arrow-right"/></a>
+    )}
   </div>
 </ContentCard>

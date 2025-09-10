@@ -4,15 +4,23 @@ import Badge from './Badge.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
 
-const { story } = Astro.props;
+interface Props {
+    story: any; // TODO: Replace with a proper type from Sanity
+    variant?: 'full' | 'summary';
+}
+
+const { story, variant = 'full' } = Astro.props;
+const isSummary = variant === 'summary';
+
+const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
 ---
-<ContentCard>
+<ContentCard href={href}>
   <div slot="thumbnail">
     <!-- TODO: Thumbnail component -->
     <div class="aspect-square bg-gray-10 rounded-xl"></div>
   </div>
   <div slot="header">
-    <h4 class="text-xl font-bold">{story.title}</h4>
+    <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{story.title}</h4>
     {story.definitions && story.definitions.length > 0 && (
         <div class="flex flex-wrap gap-2">
             {story.definitions.map(def => def && <Badge href={`/definicje/${def.slug.current}`}>{def.title}</Badge>)}
@@ -20,9 +28,9 @@ const { story } = Astro.props;
     )}
   </div>
   <div slot="body">
-    <PortableText value={story.body} />
+    <PortableText value={isSummary ? story.excerpt : story.body} />
   </div>
-  <div slot="footer" class="hidden">
-    <a href={`/opowiesci#${story.slug.current}`} class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></a>
+  <div slot="footer">
+    {isSummary && <span class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></span>}
   </div>
 </ContentCard>
