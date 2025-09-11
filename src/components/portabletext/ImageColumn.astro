@@ -1,0 +1,18 @@
+---
+import { urlFor } from "../../lib/image";
+import { PortableText } from "astro-portabletext";
+import { Image } from "astro:assets";
+
+const { node } = Astro.props;
+
+const imageUrl = node.image ? urlFor(node.image).width(800).auto('format').url() : '';
+const altText = node.image?.alt || '';
+---
+<div class:list={["flex flex-col lg:flex-row items-center gap-4 lg:gap-14", { "lg:flex-row-reverse": node.reverse }]}>
+    <div class="lg:w-1/2">
+        {imageUrl && <Image src={imageUrl} alt={altText} width={800} height={600} class="rounded-xl w-full h-auto object-cover max-h-[22.5rem] lg:max-h-full" />}
+    </div>
+    <div class="lg:w-1/2">
+        <PortableText value={node.content} />
+    </div>
+</div>

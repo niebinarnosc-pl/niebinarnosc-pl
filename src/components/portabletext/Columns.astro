@@ -1,0 +1,12 @@
+---
+import { PortableText } from "astro-portabletext";
+const { node } = Astro.props;
+---
+<div class:list={["flex flex-col lg:flex-row gap-4 lg:gap-14", { "lg:flex-row-reverse": node.reverse }]}>
+    <div class="flex-1">
+        <PortableText value={node.left_content} />
+    </div>
+    <div class="flex-1">
+        <PortableText value={node.right_content} />
+    </div>
+</div>

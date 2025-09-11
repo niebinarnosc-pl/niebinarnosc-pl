@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client';
+import { PortableText } from 'astro-portabletext';
+import Columns from '../components/portabletext/Columns.astro';
+import ImageColumn from '../components/portabletext/ImageColumn.astro';
+import HorizontalRule from '../components/portabletext/HorizontalRule.astro';
+
+export async function getStaticPaths() {
+    const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current)].slug.current`);
+    return slugs.map((slug: string) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+const query = `*[_type == "page" && slug.current == $slug][0]`;
+const page = await sanityClient.fetch(query, { slug });
+
+if (!page) {
+    return Astro.redirect('/404');
+}
+
+const portableTextComponents = {
+    type: {
+        columns: Columns,
+        imageColumn: ImageColumn,
+        hr: HorizontalRule,
+    }
+}
+---
+<Layout>
+  <header class="flex flex-col gap-4 mb-8">
+    <h1 class="text-xl sm:text-3xl text-purple-dark-2">{page.title}</h1>
+    {page.subheading && <p class="text-lg sm:text-2xl text-gray-60">{page.subheading}</p>}
+  </header>
+  
+  <article class="prose max-w-none mb-8 bg-white p-4 sm:p-6 rounded-xl">
+    <PortableText value={page.body} components={portableTextComponents} />
+  </article>
+</Layout>

@@ -92,5 +92,20 @@ export default defineType({
         },
       ],
     }),
+    defineArrayMember({
+      name: 'hr',
+      title: 'Horizontal Rule',
+      type: 'object',
+      fields: [
+        {
+          name: 'placeholder',
+          type: 'string',
+          hidden: true,
+        },
+      ],
+      preview: {
+        prepare: () => ({title: '---'}),
+      },
+    }),
   ],
 })
