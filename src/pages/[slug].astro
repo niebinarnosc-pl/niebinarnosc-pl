@@ -31,10 +31,10 @@ const portableTextComponents = {
 <Layout>
   <header class="flex flex-col gap-4 mb-8">
     <h1 class="text-xl sm:text-3xl text-purple-dark-2">{page.title}</h1>
-    {page.subheading && <p class="text-lg sm:text-2xl text-gray-60">{page.subheading}</p>}
+    {page.subheading && <p class="font-bold text-gray-60">{page.subheading}</p>}
   </header>
   
-  <article class="prose max-w-none mb-8 bg-white p-4 sm:p-6 rounded-xl">
+  <article class="mb-8 bg-white -mx-4 sm:mx-0 py-8 px-4 lg:py-16 lg:px-14 sm:rounded-xl">
     <PortableText value={page.body} components={portableTextComponents} />
   </article>
 </Layout>

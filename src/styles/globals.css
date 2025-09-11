@@ -37,6 +37,7 @@
   /* Overrides */
   --text-3xl: 2rem;
   --container-2xl: 40rem;
+  --container-3xl: 50rem;
 }
 
 @layer base {
@@ -65,7 +66,15 @@
 
   h1 {
     @apply text-xl sm:text-3xl;
-  };
+  }
+
+  h2 {
+    @apply text-lg sm:text-2xl mb-4;
+  }
+
+  h2:not(:first-child) {
+    @apply mt-8;
+  }
 
   h3 {
     @apply text-lg sm:text-2xl;
@@ -76,7 +85,7 @@
   }
   
   strong {
-    @apply font-bold text-purple-60;
+    @apply font-bold;
   }
 
   a {
@@ -84,15 +93,19 @@
   }
 
   blockquote {
-    @apply text-lg sm:text-2xl leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-6;
+    @apply leading-normal border-l-[0.3em] border-purple-100 bg-purple-5 my-6 py-2 px-5;
   }
 
-  blockquote p {
-    @apply text-base;
+  p {
+    @apply max-w-3xl;
   }
 
   p:not(:last-child) {
     @apply mb-4;
+  }
+
+  ul {
+    @apply list-disc pl-6 my-4;
   }
 }
 

@@ -8,11 +8,11 @@ const { node } = Astro.props;
 const imageUrl = node.image ? urlFor(node.image).width(800).auto('format').url() : '';
 const altText = node.image?.alt || '';
 ---
-<div class:list={["flex flex-col lg:flex-row items-center gap-4 lg:gap-14", { "lg:flex-row-reverse": node.reverse }]}>
-    <div class="lg:w-1/2">
-        {imageUrl && <Image src={imageUrl} alt={altText} width={800} height={600} class="rounded-xl w-full h-auto object-cover max-h-[22.5rem] lg:max-h-full" />}
+<div class:list={["relative flex flex-col lg:flex-row items-center gap-4 lg:gap-14 mb-6 lg:mb-12", { "lg:flex-row-reverse": node.reverse }]}>
+    <div class="lg:flex-1 w-full">
+        {imageUrl && <Image src={imageUrl} alt={altText} width={800} class="rounded-xl w-full object-cover max-h-[12.5rem] sm:max-h-[22.5rem] lg:max-h-full lg:h-full lg:absolute lg:top-0 lg:w-[calc(50%-1.75rem)]" />}
     </div>
-    <div class="lg:w-1/2">
+    <div class="lg:flex-1 w-full">
         <PortableText value={node.content} />
     </div>
 </div>
