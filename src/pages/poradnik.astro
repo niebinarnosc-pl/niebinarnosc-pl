@@ -8,7 +8,7 @@ const page = await sanityClient.fetch(`*[_type == "page" && slug.current == "por
 <Layout>
   <header>
     <h1>{page.title}</h1>
-    <p>Słyszał_ś o „tych dziwnych zaimkach” i czujesz się tym trochę skołowan_? Może znasz osobę niebinarną i chcesz wiedzieć, jak się do niej zwracać? Albo próbujesz dowiedzieć się jak być osobą sojuszniczą? W każdym z tych przypadków trafił_ś idealnie. Dzięki, że jesteś tu z nami.</p>
+    <p>{page.subheading}</p>
   </header>
   <article>
       <PortableText value={page.body} />
