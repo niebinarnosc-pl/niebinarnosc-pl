@@ -27,7 +27,7 @@ const pathname = Astro.url.pathname;
                 <nav class="flex justify-around gap-7">
                     {navLinks.map(({ text, route }) => {
                         const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
-                        return <a href={route} class:list={["font-medium text-purple-dark-1 no-underline hover:text-indigo fake-bold font-bold-hover-no-shift", { 'text-indigo font-bold': isActive }]} data-text={text}>{text}</a>
+                        return <a href={route} class:list={["no-underline hover:text-indigo fake-bold font-bold-hover-no-shift", isActive ? 'text-indigo font-bold' : 'text-purple-dark-1']} data-text={text}>{text}</a>
                     })}
                 </nav>
             </div>
@@ -65,7 +65,7 @@ const pathname = Astro.url.pathname;
                     {navLinks.map(({ text, route, icon }) => {
                         const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
                         return (
-                            <a href={route} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min font-medium flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
+                            <a href={route} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
                                 <Icon name={icon} size={"1.3em"} />
                                 <span>{text}</span>
                             </a>
