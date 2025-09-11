@@ -5,6 +5,13 @@ import {media} from 'sanity-plugin-media'
 import { dashboardTool } from "@sanity/dashboard";
 import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify";
 
+import blockContent from './sanity/schemas/blockContent'
+import story from './sanity/schemas/story'
+import definition from './sanity/schemas/definition'
+import representation from './sanity/schemas/representation'
+import author from './sanity/schemas/author'
+import page from './sanity/schemas/page'
+
 const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET;
 const netlifyId = import.meta.env.PUBLIC_SANITY_STUDIO_NETLIFY_ID;
@@ -46,4 +53,15 @@ export default defineConfig({
       ]
     })
   ],
+
+  schema: {
+    types: [
+      page,
+      story,
+      definition,
+      representation,
+      author,
+      blockContent,
+    ],
+  },
 })
