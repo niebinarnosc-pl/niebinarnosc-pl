@@ -1,7 +1,6 @@
 ---
 import logo from '../assets/logo.svg';
 import logoFull from '../assets/logo-full.svg';
-import { navLinks } from '../lib/navLinks';
 import Icon from './Icon.astro';
 
 const pathname = Astro.url.pathname;
@@ -25,10 +24,7 @@ const pathname = Astro.url.pathname;
                     <img class="h-6" src={logoFull.src} alt="niebinarnosc.pl" />
                 </a>
                 <nav class="flex justify-around gap-7">
-                    {navLinks.map(({ text, route }) => {
-                        const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
-                        return <a href={route} class:list={["no-underline hover:text-indigo fake-bold font-bold-hover-no-shift", isActive ? 'text-indigo font-bold' : 'text-purple-dark-1']} data-text={text}>{text}</a>
-                    })}
+                    {/* NAVLINKS WILL BE POPULATED FROM siteSettings PROP */}
                 </nav>
             </div>
         </section>
@@ -62,15 +58,7 @@ const pathname = Astro.url.pathname;
             >
                 <nav class="overflow-hidden pl-8">
                     <div class="h-3"></div>
-                    {navLinks.map(({ text, route, icon }) => {
-                        const isActive = pathname === route || (route.length > 1 && pathname.startsWith(route));
-                        return (
-                            <a href={route} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
-                                <Icon name={icon} size={"1.3em"} />
-                                <span>{text}</span>
-                            </a>
-                        )
-                    })}
+                    {/* NAVLINKS WILL BE POPULATED FROM siteSettings PROP */}
                 </nav>
             </div>
         </section>

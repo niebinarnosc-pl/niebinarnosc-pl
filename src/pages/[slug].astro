@@ -7,7 +7,7 @@ import ImageColumn from '../components/portabletext/ImageColumn.astro';
 import HorizontalRule from '../components/portabletext/HorizontalRule.astro';
 
 export async function getStaticPaths() {
-    const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current)].slug.current`);
+    const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current) && defined(body)].slug.current`);
     return slugs.map((slug: string) => ({ params: { slug } }));
 }
 

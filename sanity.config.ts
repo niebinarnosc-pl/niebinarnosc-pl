@@ -11,6 +11,12 @@ import definition from './sanity/schemas/definition'
 import representation from './sanity/schemas/representation'
 import author from './sanity/schemas/author'
 import page from './sanity/schemas/page'
+import siteSettings from './sanity/schemas/siteSettings'
+import link from './sanity/schemas/objects/link'
+import socialLink from './sanity/schemas/objects/socialLink'
+import headerNavLink from './sanity/schemas/objects/headerNavLink'
+import homeNavLink from './sanity/schemas/objects/homeNavLink'
+import homeNavRow from './sanity/schemas/objects/homeNavRow'
 
 const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET;
@@ -33,6 +39,22 @@ export default defineConfig({
 
   plugins: [
     structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.listItem()
+              .title('Site Settings')
+              .child(
+                S.document()
+                  .schemaType('siteSettings')
+                  .documentId('siteSettings')
+              ),
+            S.divider(),
+            ...S.documentTypeListItems().filter(
+              listItem => !['siteSettings'].includes(listItem.getId() || '')
+            )
+          ])
     }),
     visionTool(),
     media(),
@@ -56,12 +78,21 @@ export default defineConfig({
 
   schema: {
     types: [
+      // singletons
+      siteSettings,
+      // documents
       page,
       story,
       definition,
       representation,
       author,
+      // objects
       blockContent,
+      link,
+      socialLink,
+      headerNavLink,
+      homeNavLink,
+      homeNavRow,
     ],
   },
 })
