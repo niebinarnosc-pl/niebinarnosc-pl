@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
-const siteSettings = {} // await sanityClient.fetch(siteSettingsQuery);
+const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 
 const pageSeo = {
 	id: page?.id,
@@ -45,12 +45,12 @@ const siteName = 'niebinarnosc.pl';
         />
 	</head>
 	<body class="flex flex-col min-h-screen relative">
-		<Header />
+		<Header siteSettings={siteSettings} />
 		<main class="flex-1 flex relative z-10 w-full mt-[6.5rem] sm:mt-[7.5rem] mb-[1.5rem] sm:mb-[2.88rem]">
   			<div class="w-full max-w-[72rem] mx-auto px-4 lg:px-6">
 				<slot />
 			</div>
 		</main>
-		<Footer />
+		<Footer siteSettings={siteSettings} />
 	</body>
 </html>

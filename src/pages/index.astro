@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
+import { siteSettingsQuery } from '../lib/queries';
 import HomeHeader from '../components/HomeHeader.astro';
 import HomeNav from '../components/HomeNav.astro';
 import ContactForm from '../components/ContactForm.astro';
@@ -16,10 +17,11 @@ const news = await sanityClient.fetch(`
     }
   }
 `);
+const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 ---
 <Layout>
-  <HomeHeader />
-  <HomeNav />
+  <HomeHeader siteSettings={siteSettings} />
+  <HomeNav siteSettings={siteSettings} />
   <section>
     <h2 class="h2-decorated">Niusy</h2>
     <div class="flex flex-col gap-4 sm:gap-8 mb-16">
@@ -37,5 +39,5 @@ const news = await sanityClient.fetch(`
       })}
     </div>
   </section>
-  <ContactForm />
+  <ContactForm siteSettings={siteSettings} />
 </Layout>

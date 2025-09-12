@@ -1,17 +1,22 @@
 ---
 import ExternalLink from './ExternalLink.astro';
 import Icon from './Icon.astro';
+
+const { siteSettings } = Astro.props;
+const email = siteSettings?.email;
 ---
 <section class="contact-form" id="kontakt">
     <h2 class="h2-decorated">Kontakt</h2>
     <div class="flex flex-col lg:flex-row gap-6">
         <div class="flex-1">
             <p>Masz do nas pytania? Szukasz pomocy? Napisz do nas na maila lub wypełnij formularz.</p>
-            <p>
-                <ExternalLink href="mailto:kontakt@niebinarnosc.pl" class="flex items-center gap-3 text-purple-100 font-medium">
-                    <Icon name="email" size="1.3em"/>kontakt@niebinarnosc.pl
-                </ExternalLink>
-            </p>
+            {email && (
+                <p>
+                    <ExternalLink href={`mailto:${email}`} class="flex items-center gap-3 text-purple-100 font-medium">
+                        <Icon name="email" size="1.3em"/>{email}
+                    </ExternalLink>
+                </p>
+            )}
         </div>
         <div class="flex-1">
             <form name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-3 lg:max-w-[35.25rem] w-full">

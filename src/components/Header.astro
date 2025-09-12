@@ -1,9 +1,14 @@
 ---
-import logo from '../assets/logo.svg';
-import logoFull from '../assets/logo-full.svg';
+import { urlFor } from '../lib/image';
+import { getLinkUrl } from '../lib/links';
 import Icon from './Icon.astro';
 
+const { siteSettings } = Astro.props;
 const pathname = Astro.url.pathname;
+
+const logo = siteSettings?.logo;
+const logoFull = siteSettings?.logoFull;
+const navLinks = siteSettings?.headerNavLinks || [];
 ---
 <header 
     x-data="{ prevY: 0, isVisible: true, mobileNavExpanded: false }" 
@@ -21,10 +26,14 @@ const pathname = Astro.url.pathname;
         <section class="card hidden lg:block px-6 py-5">
             <div class="flex items-center justify-between">
                 <a href="/">
-                    <img class="h-6" src={logoFull.src} alt="niebinarnosc.pl" />
+                    <img class="h-6" src={urlFor(logoFull).url()} alt="niebinarnosc.pl" />
                 </a>
                 <nav class="flex justify-around gap-7">
-                    {/* NAVLINKS WILL BE POPULATED FROM siteSettings PROP */}
+                    {navLinks.map(({ link, icon }) => {
+                        const href = getLinkUrl(link);
+                        const isActive = pathname === href || (href.length > 1 && pathname.startsWith(href));
+                        return <a href={href} class:list={["no-underline hover:text-indigo fake-bold font-bold-hover-no-shift", isActive ? 'text-indigo font-bold' : 'text-purple-dark-1']} data-text={link.title}>{link.title}</a>
+                    })}
                 </nav>
             </div>
         </section>
@@ -36,7 +45,7 @@ const pathname = Astro.url.pathname;
         >
             <div class="flex items-center justify-between h-8">
                 <a href="/" class="h-full">
-                    <img class="h-full" src={logo.src} alt="niebinarnosc.pl"/>
+                    <img class="h-full" src={urlFor(logo).url()} alt="niebinarnosc.pl"/>
                 </a>
                 <button 
                     class="text-purple-dark-1 text-2xl sm:text-[2rem]" 
@@ -58,7 +67,16 @@ const pathname = Astro.url.pathname;
             >
                 <nav class="overflow-hidden pl-8">
                     <div class="h-3"></div>
-                    {/* NAVLINKS WILL BE POPULATED FROM siteSettings PROP */}
+                    {navLinks.map(({ link, icon }) => {
+                        const href = getLinkUrl(link);
+                        const isActive = pathname === href || (href.length > 1 && pathname.startsWith(href));
+                        return (
+                            <a href={href} @click="mobileNavExpanded = false" class:list={["text-purple-dark-1 text-lg sm:text-2xl py-5 w-min flex items-center gap-2 whitespace-nowrap", { 'underline font-bold': isActive }]}>
+                                <Icon name={icon} size={"1.3em"} />
+                                <span>{link.title}</span>
+                            </a>
+                        )
+                    })}
                 </nav>
             </div>
         </section>

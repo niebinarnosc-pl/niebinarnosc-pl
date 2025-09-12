@@ -2,6 +2,11 @@
 import quote from '../assets/quote.svg';
 import ExternalLink from './ExternalLink.astro';
 import Icon from './Icon.astro';
+
+const { siteSettings } = Astro.props;
+const socialLinks = siteSettings?.socialLinks?.filter(
+    link => ['logo-instagram', 'logo-facebook'].includes(link.icon)
+) || [];
 ---
 <header class="relative mx-4 flex flex-col gap-4">
     <img src={quote.src} alt="Cudzysłów" class="absolute top-0 left-0 opacity-15 max-w-[30%]" />
@@ -14,7 +19,10 @@ import Icon from './Icon.astro';
         </ExternalLink>
     </div>
     <div class="text-purple-60 my-3 flex justify-center sm:justify-end">
-        <ExternalLink href="https://www.instagram.com/niebinarnosc.pl/" class="p-3 sm:p-1"><Icon name="logo-instagram" size="2em" /></ExternalLink>
-        <ExternalLink href="https://www.facebook.com/niebinarnoscpl" class="p-3 sm:p-1"><Icon name="logo-facebook" size="2em" /></ExternalLink>
+        {socialLinks.map(({ url, icon }) => (
+            <ExternalLink href={url} class="p-3 sm:p-1">
+                <Icon name={icon} size="2em" />
+            </ExternalLink>
+        ))}
     </div>
 </header>
