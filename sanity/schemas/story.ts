@@ -20,30 +20,13 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
-    }),
-    defineField({
-        name: 'author',
-        title: 'Author',
-        type: 'string',
-    }),
-    defineField({
-      name: 'thumbnail',
-      title: 'Thumbnail',
+      name: 'photo',
+      title: 'Photo',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'fullPhoto',
-      title: 'Full Photo',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      description: 'WAŻNE: użyj "Crop image", żeby przyciąć miniaturkę!'
     }),
     defineField({
       name: 'definitions',
@@ -55,19 +38,13 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-    }),
-    defineField({
-        name: 'draft',
-        title: 'Draft',
-        type: 'boolean',
-        initialValue: true,
     })
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author',
-      media: 'thumbnail',
+      author: 'title',
+      media: 'photo',
     },
   },
 })

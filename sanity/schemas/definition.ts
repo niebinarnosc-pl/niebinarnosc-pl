@@ -25,35 +25,23 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'fullPhoto',
-      title: 'Full Photo',
+      name: 'photo',
+      title: 'Photo',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
     defineField({
-      name: 'priority',
-      title: 'Priority',
-      type: 'number',
-      description: 'A higher number means it appears first in the list.',
-      initialValue: 0,
-    }),
-    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-    }),
-    defineField({
-        name: 'draft',
-        title: 'Draft',
-        type: 'boolean',
-        initialValue: true,
     })
   ],
   preview: {
     select: {
       title: 'title',
+      media: 'photo',
       subtitle: 'titleEn',
     },
   },

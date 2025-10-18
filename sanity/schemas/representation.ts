@@ -25,8 +25,8 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'fullPhoto',
-      title: 'Full Photo',
+      name: 'photo',
+      title: 'Photo',
       type: 'image',
       options: {
         hotspot: true,
@@ -56,18 +56,12 @@ export default defineType({
       name: 'representationDescription',
       title: 'Representation Description',
       type: 'text',
-    }),
-    defineField({
-        name: 'draft',
-        title: 'Draft',
-        type: 'boolean',
-        initialValue: true,
     })
   ],
   preview: {
     select: {
       title: 'title',
-      media: 'fullPhoto',
+      media: 'photo',
     },
   },
 })
