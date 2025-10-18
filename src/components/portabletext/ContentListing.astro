@@ -9,8 +9,8 @@ const {
   contentType,
   sortBy = 'date',
   sortOrder = 'desc',
-  pinnedItems = [],
 } = node;
+const pinnedItems = node.pinnedItems || [];
 
 const pinnedIds = pinnedItems.map(item => item._id);
 
