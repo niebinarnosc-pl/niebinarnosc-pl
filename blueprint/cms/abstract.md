@@ -7,19 +7,19 @@ This document provides a framework-agnostic description of the project's content
 ### 1. Story
 
 Represents personal stories and experiences.
-*   **Fields**: Title, Slug, Date, Thumbnail Image, Full-size Image, Body (rich text), Author, related Definitions (references).
+*   **Fields**: Title, Slug, Thumbnail Image, Full-size Image, Body (rich text), Author, related Definitions (references).
 *   **Purpose**: To share personal narratives related to non-binary identity.
 
 ### 2. Definition
 
 Represents a single term and its definition.
-*   **Fields**: Title, English Title (optional), Slug, Date, Featured Image, Body (rich text).
+*   **Fields**: Title, English Title (optional), Slug, Featured Image, Body (rich text).
 *   **Purpose**: To build a glossary of terms related to gender identity.
 
 ### 3. Representation
 
 Represents an instance of non-binary representation in media (e.g., books, series).
-*   **Fields**: Title, Slug, Date, Featured Image, Author(s), Category (e.g., "Serial", "Książka"), Story Description, Representation Description.
+*   **Fields**: Title, Slug, Featured Image, Author(s), Category (e.g., "Serial", "Książka"), Story Description, Representation Description.
 *   **Purpose**: To create a curated list of media featuring non-binary characters or themes.
 
 ## Content Types (Singletons)

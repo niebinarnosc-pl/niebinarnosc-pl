@@ -9,7 +9,6 @@ This document describes the technical implementation of the content model using 
 Defines the `story` document type.
 *   `title`: `string`
 *   `slug`: `slug` (auto-generated from title)
-*   `date`: `datetime`
 *   `thumbnail`: `image`
 *   `fullPhoto`: `image`
 *   `author`: `string` (The original `stories` didn't have authors, so this is a simple string for now)
@@ -30,7 +29,6 @@ Defines the `definition` document type.
 Defines the `representation` document type.
 *   `title`: `string`
 *   `slug`: `slug` (auto-generated from title)
-*   `date`: `datetime`
 *   `fullPhoto`: `image`
 *   `authors`: `array` of `author` objects.
 *   `category`: `string` (with a predefined list of options: "Serial", "Książka", etc.)

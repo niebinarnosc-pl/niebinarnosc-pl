@@ -20,11 +20,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
-    }),
-    defineField({
       name: 'photo',
       title: 'Photo',
       type: 'image',

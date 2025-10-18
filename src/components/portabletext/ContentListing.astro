@@ -14,7 +14,7 @@ const pinnedItems = node.pinnedItems || [];
 
 const pinnedIds = pinnedItems.map(item => item._id);
 
-const sortField = sortBy === 'title' ? 'title' : 'date';
+const sortField = sortBy === 'title' ? 'title' : '_createdAt';
 const ordering = `order(${sortField} ${sortOrder})`;
 const pinnedFilter = pinnedIds.length > 0 ? `&& !(_id in $pinnedIds)` : '';
 
