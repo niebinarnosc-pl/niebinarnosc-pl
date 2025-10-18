@@ -25,6 +25,13 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'preBody',
+      title: 'Pre-Body Components',
+      type: 'array',
+      description: 'Components that appear before the main content area (e.g., contact cards).',
+      of: [{type: 'contactCardWidget'}, {type: 'representationHeaderWidget'}],
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',

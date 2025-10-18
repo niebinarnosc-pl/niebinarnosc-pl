@@ -16,9 +16,7 @@ This document provides a framework-agnostic overview of the website's pages, bas
 ### 2. Definitions (`/definicje`)
 
 *   **Purpose**: A listing page for all glossary terms.
-*   **Content**:
-    *   A page header.
-    *   A grid or list of all `Definition` items, sorted by priority.
+*   **Implementation**: A `Page` document from the CMS with the slug `definicje`. Its body contains a `contentListing` block configured to show "Definitions".
 
 ### 3. Single Definition (`/definicje/[slug]`)
 
@@ -31,28 +29,22 @@ This document provides a framework-agnostic overview of the website's pages, bas
 ### 4. Stories (`/opowiesci`)
 
 *   **Purpose**: A listing page for all personal stories.
-*   **Content**:
-    *   A page header.
-    *   A "Contact Card".
-    *   A grid or list of all `Story` items.
+*   **Implementation**: A `Page` document from the CMS with the slug `opowiesci`. It uses a `contactCardWidget` in its `preBody` and a `contentListing` block (for "Stories") in its `body`.
 
 ### 5. Representation (`/reprezentacja`)
 
 *   **Purpose**: A listing page for all media representations.
-*   **Content**:
-    *   A page header with a call-to-action to suggest new entries.
-    *   A filter/tag selector for the different media `category` values.
-    *   A grid or list of `Representation` items, filterable by category.
+*   **Implementation**: A `Page` document from the CMS with the slug `reprezentacja`. It uses a `representationHeaderWidget` in its `preBody` and a `contentListing` block (for "Representations") in its `body`.
 
 ### 6. History (`/historia`)
 
 *   **Purpose**: A static page detailing the history of non-binary identities and terminology.
-*   **Content**: The content of the "History" singleton `Page` from the CMS.
+*   **Implementation**: A `Page` document from the CMS with the slug `historia`.
 
 ### 7. Guide (`/poradnik`)
 
 *   **Purpose**: A static guide for allies.
-*   **Content**: The content of the "Guide" singleton `Page` from the CMS, which includes two-column layouts.
+*   **Implementation**: A `Page` document from the CMS with the slug `poradnik`, which utilizes two-column layouts in its body.
 
 ### 8. 404 Not Found
 

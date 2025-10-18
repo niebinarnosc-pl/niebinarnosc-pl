@@ -17,6 +17,9 @@ import socialLink from './sanity/schemas/objects/socialLink'
 import headerNavLink from './sanity/schemas/objects/headerNavLink'
 import homeNavLink from './sanity/schemas/objects/homeNavLink'
 import homeNavRow from './sanity/schemas/objects/homeNavRow'
+import contactCardWidget from './sanity/schemas/objects/contactCardWidget'
+import representationHeaderWidget from './sanity/schemas/objects/representationHeaderWidget'
+import contentListing from './sanity/schemas/objects/contentListing'
 
 const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET;
@@ -93,6 +96,9 @@ export default defineConfig({
       headerNavLink,
       homeNavLink,
       homeNavRow,
+      contactCardWidget,
+      representationHeaderWidget,
+      contentListing,
     ],
   },
 })

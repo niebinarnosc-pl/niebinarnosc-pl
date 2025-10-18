@@ -5,9 +5,14 @@ import { PortableText } from 'astro-portabletext';
 import Columns from '../components/portabletext/Columns.astro';
 import ImageColumn from '../components/portabletext/ImageColumn.astro';
 import HorizontalRule from '../components/portabletext/HorizontalRule.astro';
+import ContentListing from '../components/portabletext/ContentListing.astro';
+
+// Pre-body components
+import ContactCardWidget from '../components/page/ContactCardWidget.astro';
+import RepresentationHeaderWidget from '../components/page/RepresentationHeaderWidget.astro';
 
 export async function getStaticPaths() {
-    const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current) && defined(body)].slug.current`);
+    const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current)].slug.current`);
     return slugs.map((slug: string) => ({ params: { slug } }));
 }
 
@@ -25,7 +30,13 @@ const portableTextComponents = {
         columns: Columns,
         imageColumn: ImageColumn,
         hr: HorizontalRule,
+        contentListing: ContentListing,
     }
+}
+
+const preBodyComponents = {
+    contactCardWidget: ContactCardWidget,
+    representationHeaderWidget: RepresentationHeaderWidget,
 }
 ---
 <Layout>
@@ -34,7 +45,14 @@ const portableTextComponents = {
     {page.subheading && <p class="font-bold text-gray-60">{page.subheading}</p>}
   </header>
   
-  <article class="mb-8 bg-white -mx-4 sm:mx-0 py-8 px-4 lg:py-16 lg:px-14 sm:rounded-xl">
-    <PortableText value={page.body} components={portableTextComponents} />
-  </article>
+  {page.preBody && page.preBody.map(widget => {
+      const Component = preBodyComponents[widget._type];
+      return <Component widget={widget} />;
+  })}
+  
+  {page.body && page.body.length > 0 &&
+    <article class="mb-8 bg-white -mx-4 sm:mx-0 py-8 px-4 lg:py-16 lg:px-14 sm:rounded-xl">
+      <PortableText value={page.body} components={portableTextComponents} />
+    </article>
+  }
 </Layout>

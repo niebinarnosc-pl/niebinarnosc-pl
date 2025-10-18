@@ -107,5 +107,8 @@ export default defineType({
         prepare: () => ({title: '---'}),
       },
     }),
+    defineArrayMember({
+      type: 'contentListing',
+    }),
   ],
 })

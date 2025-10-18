@@ -29,8 +29,8 @@ These content types represent unique, single pages on the website.
 ### 1. Page
 
 A generic page type used for creating singleton content pages.
-*   **Fields**: Title, Slug, Body (rich text).
-*   **Instances**: This will be used for the "Historia" (History) and "Poradnik" (Guide) pages.
+*   **Fields**: Title, Slug, Pre-Body Components (optional, for widgets like contact cards), Body (a flexible content builder with rich text, content listings, etc.).
+*   **Instances**: This is used for all main pages, including "Historia" (History), "Poradnik" (Guide), "Opowieści" (Stories), "Definicje" (Definitions), and "Reprezentacja" (Representation).
 
 ## Reusable Content Objects
 
@@ -46,3 +46,4 @@ The `body` field for all content types will be a rich text editor that supports:
 *   Standard formatting (bold, italics, lists, links).
 *   Images.
 *   **Custom "Columns" Component**: A two-column layout object that can be inserted into the text. It will contain a left column, a right column (both with rich text), and an option to reverse the order on desktop. This is necessary to recreate the layout from the "Poradnik" page.
+*   **Custom "Content Listing" Component**: A block that renders a list of other content types (e.g., a list of all Stories).

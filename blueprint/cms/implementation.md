@@ -45,20 +45,32 @@ Defines the reusable `author` object type.
 
 ### `page.ts`
 
-A generic schema for singleton pages like "Historia" and "Poradnik".
+A generic schema for all pages, including content pages and list pages.
 *   `title`: `string`
 *   `slug`: `slug`
+*   `preBody`: `array` of widgets (`contactCardWidget`, `representationHeaderWidget`) to be rendered before the main content.
 *   `body`: `blockContent`
+
+### `contactCardWidget.ts` (object)
+
+A simple object to indicate where a `ContactCard` should be rendered.
+
+### `representationHeaderWidget.ts` (object)
+
+An object to render the header for the representation page, including a configurable link for content suggestions.
+
+### `contentListing.ts` (object)
+
+An object that can be inserted into `blockContent` to render a list of a specific content type (Stories, Definitions, or Representations).
 
 ### `blockContent.ts`
 
 This schema defines the custom Portable Text editor configuration.
 *   It will be an `array` of `block` types.
 *   It will include standard decorators and list styles.
-*   It will define a custom object type named `columns` that can be added to the array. This `columns` object will have three fields:
-    *   `left_content`: `array` of `block` (a nested, simple portable text editor).
-    *   `right_content`: `array` of `block` (another nested editor).
-    *   `reverse`: `boolean` to control the column order.
+*   It will define custom object types that can be added to the array:
+    *   `columns`: Has `left_content`, `right_content`, and a `reverse` boolean.
+    *   `contentListing`: Allows choosing a content type to display in a list.
 
 ## Studio Configuration (`sanity.config.ts`)
 
