@@ -12,8 +12,5 @@
   x-trap.inert.noscroll="lightboxOpen"
   style="display: none;"
 >
-  <figure class="max-w-full max-h-full" @click.stop>
-    <img :src="lightboxImage" :alt="lightboxAlt" class="max-w-full max-h-[90vh] object-contain">
-    <figcaption x-show="lightboxAlt" x-text="lightboxAlt" class="text-white text-center p-2"></figcaption>
-  </figure>
+  <img :src="lightboxImage" :alt="lightboxAlt" class="max-w-[85vw] max-h-[85vh] w-full h-full object-contain">
 </div>

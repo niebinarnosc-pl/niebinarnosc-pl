@@ -21,7 +21,7 @@ const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieś
 ---
 <ContentCard href={href}>
   <div slot="thumbnail">
-    <Thumbnail image={definition.photo} placeholder={placeholderImage} alt={definition.title} aspectRatio="square" />
+    <Thumbnail image={definition.photo} placeholder={placeholderImage} alt={definition.title} isSquare isLightbox />
   </div>
   <div slot="header">
     <h3 class="group-hover:text-purple-80 transition-colors">{definition.title}</h3>

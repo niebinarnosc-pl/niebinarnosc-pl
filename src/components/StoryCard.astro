@@ -17,7 +17,7 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
 ---
 <ContentCard href={href}>
   <div slot="thumbnail">
-    <Thumbnail image={story.photo} placeholder={placeholderImage} alt={story.title} aspectRatio="square" isLightbox={true} />
+    <Thumbnail image={story.photo} placeholder={placeholderImage} alt={story.title} isSquare isLightbox={true} />
   </div>
   <div slot="header">
     <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{story.title}</h4>

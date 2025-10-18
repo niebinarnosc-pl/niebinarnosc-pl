@@ -17,7 +17,7 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 ---
 <ContentCard href={href}>
     <div slot="thumbnail">
-        <Thumbnail image={rep.photo} placeholder={placeholderImage} alt={rep.title} aspectRatio="video" />
+        <Thumbnail image={rep.photo} placeholder={placeholderImage} alt={rep.title} />
     </div>
     <Fragment slot="header">
         <h3 class="group-hover:text-purple-80 transition-colors">{rep.title}</h3>
