@@ -18,7 +18,7 @@ const imageAlt = image?.alt || image?.asset?.altText || alt;
 let imageUrlBuilder = imageSource ? urlFor(imageSource).auto('format').width(360) : null;
 
 const imageUrl = imageUrlBuilder ? imageUrlBuilder.url() : null;
-const fullImageUrl = image ? urlFor(image.asset).auto('format').url() : null;
+const fullImageUrl = image ? urlFor(image.asset).width(1600).auto('format').url() : null;
 const clickHandler = isLightbox && fullImageUrl ? `$dispatch('open-lightbox', { image: '${fullImageUrl}', alt: '${imageAlt}' })` : ''
 ---
 {imageUrl ? (
