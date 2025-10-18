@@ -7,6 +7,7 @@ import '@fontsource/noto-sans/800.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Seo from '../components/Seo.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { sanityClient } from 'sanity:client';
 import { siteSettingsQuery } from '../lib/queries';
 
@@ -36,6 +37,8 @@ const siteName = 'niebinarnosc.pl';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/trap@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 		<Seo
             pageSeo={pageSeo}
             siteSeo={siteSeo}
@@ -44,7 +47,15 @@ const siteName = 'niebinarnosc.pl';
             siteSettings={siteSettings}
         />
 	</head>
-	<body class="flex flex-col min-h-screen relative">
+	<body
+		class="flex flex-col min-h-screen relative"
+		x-data="{ lightboxOpen: false, lightboxImage: '', lightboxAlt: '' }"
+        @open-lightbox.window="
+            lightboxOpen = true;
+            lightboxImage = $event.detail.image;
+            lightboxAlt = $event.detail.alt;
+        "
+	>
 		<Header siteSettings={siteSettings} />
 		<main class="flex-1 flex relative z-10 w-full mt-[6.5rem] sm:mt-[7.5rem] mb-[1.5rem] sm:mb-[2.88rem]">
   			<div class="w-full max-w-[72rem] mx-auto px-4 lg:px-6">
@@ -52,5 +63,6 @@ const siteName = 'niebinarnosc.pl';
 			</div>
 		</main>
 		<Footer siteSettings={siteSettings} />
+		<Lightbox />
 	</body>
 </html>

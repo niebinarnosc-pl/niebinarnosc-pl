@@ -2,21 +2,22 @@
 import ContentCard from './ContentCard.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
+import Thumbnail from './Thumbnail.astro';
 
 interface Props {
     story: any; // TODO: Replace with a proper type from Sanity
     variant?: 'full' | 'summary';
+    placeholderImage?: any;
 }
 
-const { story, variant = 'full' } = Astro.props;
+const { story, variant = 'full', placeholderImage } = Astro.props;
 const isSummary = variant === 'summary';
 
 const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
 ---
 <ContentCard href={href}>
   <div slot="thumbnail">
-    <!-- TODO: Thumbnail component -->
-    <div class="aspect-square bg-gray-10 rounded-xl"></div>
+    <Thumbnail image={story.photo} placeholder={placeholderImage} alt={story.title} aspectRatio="square" isLightbox={true} />
   </div>
   <div slot="header">
     <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{story.title}</h4>

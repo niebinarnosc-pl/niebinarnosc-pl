@@ -2,14 +2,16 @@
 import ContentCard from './ContentCard.astro';
 import Icon from './Icon.astro';
 import { PortableText } from 'astro-portabletext';
+import Thumbnail from './Thumbnail.astro';
 
 interface Props {
     definition: any; // TODO: Replace with a proper type from Sanity
     variant?: 'full' | 'summary';
     singleDefinition?: boolean;
+    placeholderImage?: any;
 }
 
-const { definition, variant = 'full', singleDefinition = false } = Astro.props;
+const { definition, variant = 'full', singleDefinition = false, placeholderImage } = Astro.props;
 const isSummary = variant === 'summary';
 
 const href = isSummary ? `/definicje/${definition.slug.current}` : undefined;
@@ -19,8 +21,7 @@ const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieś
 ---
 <ContentCard href={href}>
   <div slot="thumbnail">
-    <!-- TODO: Thumbnail component -->
-    <div class="aspect-square bg-gray-10 rounded-xl"></div>
+    <Thumbnail image={definition.photo} placeholder={placeholderImage} alt={definition.title} aspectRatio="square" />
   </div>
   <div slot="header">
     <h3 class="group-hover:text-purple-80 transition-colors">{definition.title}</h3>

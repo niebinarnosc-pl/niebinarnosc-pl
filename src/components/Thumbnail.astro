@@ -1,0 +1,58 @@
+---
+import { urlFor } from '../lib/image';
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+interface Props {
+  image?: SanityImageSource & { alt?: string, asset?: { altText?: string }, hotspot?: any, crop?: any };
+  placeholder?: SanityImageSource;
+  alt?: string;
+  aspectRatio?: 'square' | 'video';
+  isLightbox?: boolean;
+}
+
+const { image, placeholder, alt = '', aspectRatio = 'video', isLightbox = false } = Astro.props;
+
+const imageSource = image || placeholder;
+const imageAlt = image?.alt || image?.asset?.altText || alt;
+
+let imageUrlBuilder = imageSource ? urlFor(imageSource).auto('format').width(360) : null;
+
+if (imageUrlBuilder) {
+    if (aspectRatio === 'square') {
+        imageUrlBuilder = imageUrlBuilder.height(360).fit('crop');
+        if (image?.hotspot) {
+            imageUrlBuilder = imageUrlBuilder.crop('hotspot');
+        }
+    } else {
+        imageUrlBuilder = imageUrlBuilder.height(203).fit('crop'); // 16:9 for 360px width
+        if (image?.hotspot) {
+            imageUrlBuilder = imageUrlBuilder.crop('hotspot');
+        }
+    }
+}
+
+const imageUrl = imageUrlBuilder ? imageUrlBuilder.url() : null;
+const fullImageUrl = image ? urlFor(image).auto('format').url() : null;
+
+const clickHandler = isLightbox && fullImageUrl ? JSON.stringify({
+    '@click'() {
+        this.$dispatch('open-lightbox', { image: fullImageUrl, alt: imageAlt });
+    }
+}) : '{}';
+---
+{imageUrl ? (
+  <div class:list={["relative w-full", aspectRatio === 'square' ? 'aspect-square' : 'aspect-video']}>
+    <img
+      src={imageUrl}
+      alt={imageAlt}
+      loading="lazy"
+      class:list={[
+        "rounded-xl object-cover w-full h-full",
+        isLightbox && "cursor-pointer"
+      ]}
+      x-data={clickHandler}
+    />
+  </div>
+) : (
+  <div class:list={["bg-gray-10 rounded-xl", aspectRatio === 'square' ? 'aspect-square' : 'aspect-video']}></div>
+)}

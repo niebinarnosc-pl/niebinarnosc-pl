@@ -2,21 +2,22 @@
 import ContentCard from './ContentCard.astro';
 import slugify from '../lib/slugify';
 import Icon from './Icon.astro';
+import Thumbnail from './Thumbnail.astro';
 
 interface Props {
     rep: any; // TODO: Replace with a proper type from Sanity
     variant?: 'full' | 'summary';
+    placeholderImage?: any;
 }
 
-const { rep, variant = 'full' } = Astro.props;
+const { rep, variant = 'full', placeholderImage } = Astro.props;
 const isSummary = variant === 'summary';
 
 const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 ---
 <ContentCard href={href}>
     <div slot="thumbnail">
-        <!-- TODO: Thumbnail component -->
-        <div class="aspect-video bg-gray-10 rounded-xl"></div>
+        <Thumbnail image={rep.photo} placeholder={placeholderImage} alt={rep.title} aspectRatio="video" />
     </div>
     <Fragment slot="header">
         <h3 class="group-hover:text-purple-80 transition-colors">{rep.title}</h3>

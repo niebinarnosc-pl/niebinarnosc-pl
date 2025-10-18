@@ -1,0 +1,19 @@
+---
+---
+<div
+  class="fixed inset-0 z-[999] bg-black/80 flex items-center justify-center p-4"
+  x-show="lightboxOpen"
+  x-transition
+  @click="lightboxOpen = false"
+  @keydown.escape.window="lightboxOpen = false"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image lightbox"
+  x-trap.inert.noscroll="lightboxOpen"
+  style="display: none;"
+>
+  <figure class="max-w-full max-h-full" @click.stop>
+    <img :src="lightboxImage" :alt="lightboxAlt" class="max-w-full max-h-[90vh] object-contain">
+    <figcaption x-show="lightboxAlt" x-text="lightboxAlt" class="text-white text-center p-2"></figcaption>
+  </figure>
+</div>
