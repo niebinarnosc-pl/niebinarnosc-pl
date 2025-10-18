@@ -15,7 +15,7 @@ const isLink = !!href;
     className,
   ]}
 >
-  <article class="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
+  <section class="flex flex-col lg:flex-row gap-6">
     <div class:list={["hidden lg:block", !isLink && "pr-6 border-r border-purple-10"]}>
       <div class="w-[9rem]">
         <slot name="thumbnail" />
@@ -37,5 +37,5 @@ const isLink = !!href;
         <slot name="footer" />
       </footer>
     </div>
-  </article>
+  </section>
 </Tag>

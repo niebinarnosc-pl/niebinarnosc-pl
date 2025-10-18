@@ -51,7 +51,7 @@ const preBodyComponents = {
   })}
   
   {page.body && page.body.length > 0 &&
-    <article class="mb-8 bg-white -mx-4 sm:mx-0 py-8 px-4 lg:py-16 lg:px-14 sm:rounded-xl">
+    <article class="content-container">
       <PortableText value={page.body} components={portableTextComponents} />
     </article>
   }

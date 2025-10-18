@@ -20,7 +20,7 @@ if (contentType === 'story') {
     items = await sanityClient.fetch(`*[_type == "representation" && draft != true] | order(date desc)`);
 }
 ---
-<div class="content-container">
+<div class="flex flex-col gap-4 sm:gap-8">
     {contentType === 'definition' && items.map(item => <DefinitionCard definition={item} />)}
     {contentType === 'story' && items.map(item => <StoryCard story={item} />)}
     {contentType === 'representation' && items.map(item => <RepresentationCard rep={item} />)}

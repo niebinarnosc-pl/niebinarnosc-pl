@@ -170,7 +170,7 @@
     @apply bg-white text-black card-3d-purple-10 rounded-xl;
   }
   .content-container {
-    @apply flex flex-col gap-4 sm:gap-8 bg-white mb-12 sm:mb-16 py-4 sm:p-6 lg:p-10 sm:rounded-xl -mx-4 sm:mx-0;
+    @apply bg-white mb-12 sm:mb-16 py-8 px-4 sm:p-12 lg:p-16 sm:rounded-xl -mx-4 sm:mx-0;
   }
   .badge {
     @apply inline-flex h-8 px-3 py-1 justify-center items-center whitespace-nowrap text-sm font-medium rounded-full border-none transition-colors duration-100 no-underline;
