@@ -19,13 +19,53 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'sortBy',
+      title: 'Sort by',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Date', value: 'date'},
+          {title: 'Title (alphabetical)', value: 'title'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'date',
+    }),
+    defineField({
+      name: 'sortOrder',
+      title: 'Sort order',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Descending', value: 'desc'},
+          {title: 'Ascending', value: 'asc'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'desc',
+    }),
+    defineField({
+      name: 'pinnedItems',
+      title: 'List on top',
+      type: 'array',
+      description: 'These items will be shown at the top of the list, ignoring sorting.',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'story'}, {type: 'definition'}, {type: 'representation'}],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {
       contentType: 'contentType',
     },
     prepare({contentType}) {
-      const title = contentType ? `List of: ${contentType.charAt(0).toUpperCase() + contentType.slice(1)}s` : 'Content Listing';
+      const title = contentType
+        ? `List of: ${contentType.charAt(0).toUpperCase() + contentType.slice(1)}s`
+        : 'Content Listing'
       return {
         title: title,
       }

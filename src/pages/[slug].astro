@@ -18,7 +18,20 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const query = `*[_type == "page" && slug.current == $slug][0]`;
+const query = `*[_type == "page" && slug.current == $slug][0]{
+    ...,
+    body[]{
+        ...,
+        _type == "contentListing" => {
+            "pinnedItems": pinnedItems[]->{
+                ...,
+                _type == "story" => {
+                    "definitions": definitions[]->{title, slug}
+                }
+            }
+        }
+    }
+}`;
 const page = await sanityClient.fetch(query, { slug });
 
 if (!page) {

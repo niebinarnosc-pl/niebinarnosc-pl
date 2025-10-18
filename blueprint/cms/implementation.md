@@ -23,7 +23,6 @@ Defines the `definition` document type.
 *   `titleEn`: `string` (optional English title)
 *   `slug`: `slug` (auto-generated from title)
 *   `fullPhoto`: `image`
-*   `priority`: `number` (for sorting)
 *   `body`: `blockContent`
 
 ### `representation.ts`
@@ -61,7 +60,11 @@ An object to render the header for the representation page, including a configur
 
 ### `contentListing.ts` (object)
 
-An object that can be inserted into `blockContent` to render a list of a specific content type (Stories, Definitions, or Representations).
+An object that can be inserted into `blockContent` to render a list of content.
+*   `contentType`: `string` (select from 'story', 'definition', 'representation').
+*   `sortBy`: `string` (select from 'date', 'title').
+*   `sortOrder`: `string` (select from 'asc', 'desc').
+*   `pinnedItems`: `array` of `reference` to pin items to the top of the list.
 
 ### `blockContent.ts`
 

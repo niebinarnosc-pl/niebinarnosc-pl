@@ -13,7 +13,7 @@ Represents personal stories and experiences.
 ### 2. Definition
 
 Represents a single term and its definition.
-*   **Fields**: Title, English Title (optional), Slug, Date, Featured Image, Priority (for ordering), Body (rich text).
+*   **Fields**: Title, English Title (optional), Slug, Date, Featured Image, Body (rich text).
 *   **Purpose**: To build a glossary of terms related to gender identity.
 
 ### 3. Representation
@@ -46,4 +46,4 @@ The `body` field for all content types will be a rich text editor that supports:
 *   Standard formatting (bold, italics, lists, links).
 *   Images.
 *   **Custom "Columns" Component**: A two-column layout object that can be inserted into the text. It will contain a left column, a right column (both with rich text), and an option to reverse the order on desktop. This is necessary to recreate the layout from the "Poradnik" page.
-*   **Custom "Content Listing" Component**: A block that renders a list of other content types (e.g., a list of all Stories).
+*   **Custom "Content Listing" Component**: A block that renders a list of other content types (e.g., a list of all Stories), with options for sorting (by date or title, ascending/descending) and pinning items to the top.

@@ -5,23 +5,44 @@ import StoryCard from '../StoryCard.astro';
 import RepresentationCard from '../RepresentationCard.astro';
 
 const { node } = Astro.props;
-const { contentType } = node;
+const {
+  contentType,
+  sortBy = 'date',
+  sortOrder = 'desc',
+  pinnedItems = [],
+} = node;
 
-let items = [];
+const pinnedIds = pinnedItems.map(item => item._id);
+
+const sortField = sortBy === 'title' ? 'title' : 'date';
+const ordering = `order(${sortField} ${sortOrder})`;
+const pinnedFilter = pinnedIds.length > 0 ? `&& !(_id in $pinnedIds)` : '';
+
+let remainingItems = [];
 if (contentType === 'story') {
-    const query = `*[_type == "story" && draft != true] | order(date desc) {
+    const query = `*[_type == "story" && draft != true ${pinnedFilter}] | ${ordering} {
         ...,
         "definitions": definitions[]->{title, slug}
     }`;
-    items = await sanityClient.fetch(query);
-} else if (contentType === 'definition') {
-    items = await sanityClient.fetch(`*[_type == "definition" && draft != true] | order(priority desc)`);
-} else if (contentType === 'representation') {
-    items = await sanityClient.fetch(`*[_type == "representation" && draft != true] | order(date desc)`);
+    remainingItems = await sanityClient.fetch(query, { pinnedIds });
+} else if (contentType === 'definition' || contentType === 'representation') {
+    const query = `*[_type == "${contentType}" && draft != true ${pinnedFilter}] | ${ordering}`;
+    remainingItems = await sanityClient.fetch(query, { pinnedIds });
 }
+
+const items = [...pinnedItems, ...remainingItems];
 ---
 <div class="flex flex-col gap-4 sm:gap-8">
-    {contentType === 'definition' && items.map(item => <DefinitionCard definition={item} />)}
-    {contentType === 'story' && items.map(item => <StoryCard story={item} />)}
-    {contentType === 'representation' && items.map(item => <RepresentationCard rep={item} />)}
+    {items.map(item => {
+        if (item._type === 'definition') {
+            return <DefinitionCard definition={item} />;
+        }
+        if (item._type === 'story') {
+            return <StoryCard story={item} />;
+        }
+        if (item._type === 'representation') {
+            return <RepresentationCard rep={item} />;
+        }
+        return null;
+    })}
 </div>
