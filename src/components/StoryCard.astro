@@ -17,7 +17,7 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
 ---
 <ContentCard href={href}>
   <div slot="thumbnail">
-    <Thumbnail image={story.photo} placeholder={placeholderImage} alt={story.title} isSquare isLightbox={true} />
+    <Thumbnail image={story.photo} placeholder={placeholderImage} alt={story.title} isSquare isLightbox={!isSummary} />
   </div>
   <div slot="header">
     <h4 class="text-xl font-bold group-hover:text-purple-80 transition-colors">{story.title}</h4>
@@ -32,8 +32,5 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
   </div>
   <div slot="body">
     <PortableText value={isSummary ? story.excerpt : story.body} />
-  </div>
-  <div slot="footer">
-    {isSummary && <span class="btn btn-secondary">Czytaj więcej <Icon name="arrow-right" /></span>}
   </div>
 </ContentCard>

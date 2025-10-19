@@ -10,7 +10,7 @@ interface Props {
   isLightbox?: boolean;
 }
 
-const { image, placeholder, alt = '', isSquare = false, isLightbox = false } = Astro.props;
+const { image, placeholder, alt = '', isSquare = false, isLightbox = true } = Astro.props;
 
 const imageSource = image || placeholder;
 const imageAlt = image?.alt || image?.asset?.altText || alt;
@@ -29,7 +29,7 @@ const clickHandler = isLightbox && fullImageUrl ? `$dispatch('open-lightbox', { 
       loading="lazy"
       class:list={[
         "rounded-xl object-cover w-full h-full",
-        isLightbox && fullImageUrl && "cursor-pointer"
+        clickHandler && "cursor-pointer"
       ]}
       @click={clickHandler}
     />
