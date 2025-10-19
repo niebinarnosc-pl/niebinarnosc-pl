@@ -18,7 +18,7 @@ const href = isSummary ? `/definicje/${definition.slug.current}` : undefined;
 const footerLink = singleDefinition ? "/definicje/" : `/definicje/${definition.slug.current}`;
 const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieści";
 ---
-<ContentCard href={href}>
+<ContentCard id={definition.slug.current} href={href}>
   <div slot="thumbnail">
     <Thumbnail image={definition.photo} alt={definition.title} isSquare isLightbox={!isSummary} />
   </div>

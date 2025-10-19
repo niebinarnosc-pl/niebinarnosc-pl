@@ -1,9 +1,10 @@
 ---
 interface Props {
+  id?: string;
   href?: string;
   class?: string;
 }
-const { href, class: className } = Astro.props;
+const { id = "", href, class: className } = Astro.props;
 const Tag = href ? 'a' : 'div';
 const isLink = !!href;
 ---
@@ -15,7 +16,7 @@ const isLink = !!href;
     className,
   ]}
 >
-  <section class="flex flex-col lg:flex-row gap-6">
+  <section id={id} class="flex flex-col lg:flex-row gap-6">
     <div class:list={["hidden lg:block", !isLink && "pr-6 border-r border-purple-10"]}>
       <div class="w-[9rem]">
         <slot name="thumbnail" />

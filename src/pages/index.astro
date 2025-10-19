@@ -10,13 +10,19 @@ import StoryCard from '../components/StoryCard.astro';
 import RepresentationCard from '../components/RepresentationCard.astro';
 
 const news = await sanityClient.fetch(`
-  *[_type in ["story", "representation", "definition"] && draft != true] | order(date desc, _createdAt desc) [0...3] {
+  *[_type in ["story", "representation", "definition"]] | order(_createdAt desc) [0...3] {
     ...,
     _type == "story" => {
       "definitions": definitions[]->{title, slug}
-    }
+    },
+    "excerpt": select(
+      length(pt::text(body)) > 250 =>
+        array::join(string::split(pt::text(body), " ")[0..49], " ") + "…",
+      pt::text(body)
+    )
   }
 `);
+console.log(news)
 const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 ---
 <Layout>

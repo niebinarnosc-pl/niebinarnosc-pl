@@ -14,7 +14,7 @@ const isSummary = variant === 'summary';
 
 const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 ---
-<ContentCard href={href}>
+<ContentCard id={rep.slug.current} href={href}>
     <div slot="thumbnail">
         <Thumbnail image={rep.photo} alt={rep.title} isLightbox={!isSummary} />
     </div>

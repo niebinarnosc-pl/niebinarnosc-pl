@@ -14,7 +14,7 @@ const isSummary = variant === 'summary';
 
 const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
 ---
-<ContentCard href={href}>
+<ContentCard id={story.slug.current} href={href}>
   <div slot="thumbnail">
     <Thumbnail image={story.photo} alt={story.title} isSquare isLightbox={!isSummary} />
   </div>
@@ -30,6 +30,6 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
     )}
   </div>
   <div slot="body">
-    <PortableText value={isSummary ? story.excerpt : story.body} />
+    {isSummary ? <p>{story.excerpt}</p> : <PortableText value={story.body} />}
   </div>
 </ContentCard>
