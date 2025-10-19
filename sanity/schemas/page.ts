@@ -28,8 +28,8 @@ export default defineType({
       name: 'preBody',
       title: 'Pre-Body Components',
       type: 'array',
-      description: 'Components that appear before the main content area (e.g., contact cards).',
-      of: [{type: 'contactCardWidget'}, {type: 'representationHeaderWidget'}],
+      description: 'Components that appear before the main content area (e.g., cards, filters).',
+      of: [{type: 'alertCardWidget'}, {type: 'representationHeaderWidget'}],
     }),
     defineField({
       name: 'body',

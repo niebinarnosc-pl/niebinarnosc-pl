@@ -8,7 +8,7 @@ import HorizontalRule from '../components/portabletext/HorizontalRule.astro';
 import ContentListing from '../components/portabletext/ContentListing.astro';
 
 // Pre-body components
-import ContactCardWidget from '../components/page/ContactCardWidget.astro';
+import AlertCardWidget from '../components/page/AlertCardWidget.astro';
 import RepresentationHeaderWidget from '../components/page/RepresentationHeaderWidget.astro';
 
 export async function getStaticPaths() {
@@ -48,20 +48,19 @@ const portableTextComponents = {
 }
 
 const preBodyComponents = {
-    contactCardWidget: ContactCardWidget,
+    alertCardWidget: AlertCardWidget,
     representationHeaderWidget: RepresentationHeaderWidget,
 }
 ---
 <Layout>
   <header class="flex flex-col gap-4 mb-8">
     <h1 class="text-xl sm:text-3xl text-purple-dark-2">{page.title}</h1>
-    {page.subheading && <p class="font-bold text-gray-60">{page.subheading}</p>}
+    {page.subheading && <p class="font-bold text-gray-60 m-0">{page.subheading}</p>}
+    {page.preBody && page.preBody.map(widget => {
+        const Component = preBodyComponents[widget._type];
+        return <Component {...widget} />;
+    })}
   </header>
-  
-  {page.preBody && page.preBody.map(widget => {
-      const Component = preBodyComponents[widget._type];
-      return <Component widget={widget} />;
-  })}
   
   {page.body && page.body.length > 0 &&
     <article class="content-container">

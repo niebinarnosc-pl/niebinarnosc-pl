@@ -17,7 +17,7 @@ import socialLink from './sanity/schemas/objects/socialLink'
 import headerNavLink from './sanity/schemas/objects/headerNavLink'
 import homeNavLink from './sanity/schemas/objects/homeNavLink'
 import homeNavRow from './sanity/schemas/objects/homeNavRow'
-import contactCardWidget from './sanity/schemas/objects/contactCardWidget'
+import alertCardWidget from './sanity/schemas/objects/alertCardWidget'
 import representationHeaderWidget from './sanity/schemas/objects/representationHeaderWidget'
 import contentListing from './sanity/schemas/objects/contentListing'
 
@@ -96,7 +96,7 @@ export default defineConfig({
       headerNavLink,
       homeNavLink,
       homeNavRow,
-      contactCardWidget,
+      alertCardWidget,
       representationHeaderWidget,
       contentListing,
     ],

@@ -1,0 +1,21 @@
+---
+import ExternalLink from "../ExternalLink.astro";
+
+interface Props {
+    heading: string,
+    body: string,
+    buttonTitle?: string,
+    buttonUrl?: string
+}
+
+const { heading, body, buttonTitle, buttonUrl } = Astro.props
+---
+<section class="flex flex-col gap-3 sm:gap-6 p-4 sm:p-6 bg-purple-100 text-white mt-4 sm:rounded-xl -mx-4 sm:mx-0">
+    <h4 class="text-inherit m-0 text-base sm:text-2xl font-bold">{heading}</h4>
+    <div class="flex gap-6">
+        <p class="m-0 text-sm sm:text-base">
+            <span>{body}</span>
+        </p>
+        {buttonTitle && buttonUrl && <ExternalLink href={buttonUrl} class="btn btn-border flex shrink-0">{buttonTitle}</ExternalLink>}
+    </div>
+</section>

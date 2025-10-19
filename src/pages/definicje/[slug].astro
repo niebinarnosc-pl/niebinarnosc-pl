@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import { sanityClient } from 'sanity:client';
 import { PortableText } from 'astro-portabletext';
 import StoryCard from '../../components/StoryCard.astro';
-import ContactCard from '../../components/ContactCard.astro';
 
 export async function getStaticPaths() {
     const slugs = await sanityClient.fetch(`*[_type == "definition" && defined(slug.current) && draft != true].slug.current`);
@@ -46,7 +45,6 @@ if (!definition) {
       <div class="bg-white p-6 rounded-xl">
         <h4 class="text-xl font-bold">Brak opowieści :(</h4>
         <p>Niestety, nikt nie podzielił się jeszcze swoją opowieścią związaną z tym terminem.</p>
-        <ContactCard />
       </div>
     )}
   </section>

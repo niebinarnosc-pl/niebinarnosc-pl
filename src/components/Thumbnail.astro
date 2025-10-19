@@ -1,18 +1,20 @@
 ---
 import { urlFor } from '../lib/image';
+import { sanityClient } from 'sanity:client';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { siteSettingsQuery } from '../lib/queries';
 
 interface Props {
   image?: SanityImageSource & { alt?: string, asset?: { altText?: string }, hotspot?: any, crop?: any };
-  placeholder?: SanityImageSource;
   alt?: string;
   isSquare?: boolean;
   isLightbox?: boolean;
 }
 
-const { image, placeholder, alt = '', isSquare = false, isLightbox = true } = Astro.props;
+const { image, alt = '', isSquare = false, isLightbox = true } = Astro.props;
 
-const imageSource = image || placeholder;
+const siteSettings = await sanityClient.fetch(siteSettingsQuery);
+const imageSource = image || siteSettings.placeholderImage;
 const imageAlt = image?.alt || image?.asset?.altText || alt;
 
 let imageUrlBuilder = imageSource ? urlFor(imageSource).auto('format').width(360) : null;
