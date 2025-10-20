@@ -51,10 +51,10 @@ export default defineType({
       of: [{type: 'headerNavLink'}],
     }),
     defineField({
-        name: 'homeNavRows',
-        title: 'Home Page Navigation Rows',
-        type: 'array',
-        of: [{type: 'homeNavRow'}],
+      name: 'homeNavRows',
+      title: 'Home Page Navigation Rows',
+      type: 'array',
+      of: [{type: 'homeNavRow'}],
     })
   ],
   preview: {
