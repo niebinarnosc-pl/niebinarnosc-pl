@@ -10,6 +10,7 @@ import ContentListing from '../components/portabletext/ContentListing.astro';
 // Pre-body components
 import AlertCardWidget from '../components/page/AlertCardWidget.astro';
 import RepresentationHeaderWidget from '../components/page/RepresentationHeaderWidget.astro';
+import { Fragment } from 'astro/jsx-runtime';
 
 export async function getStaticPaths() {
     const slugs = await sanityClient.fetch(`*[_type == "page" && defined(slug.current)].slug.current`);
@@ -51,20 +52,26 @@ const preBodyComponents = {
     alertCardWidget: AlertCardWidget,
     representationHeaderWidget: RepresentationHeaderWidget,
 }
+
+const isRepresentationPage = page.slug.current === 'reprezentacja';
+const Wrapper = isRepresentationPage ? 'div' : Fragment;
+const wrapperProps = isRepresentationPage ? { 'x-data': `{ activeCategory: 'all' }` } : {};
 ---
 <Layout>
-  <header class="flex flex-col gap-4 mb-8">
-    <h1 class="text-xl sm:text-3xl text-purple-dark-2">{page.title}</h1>
-    {page.subheading && <p class="font-bold text-gray-60 m-0">{page.subheading}</p>}
-    {page.preBody && page.preBody.map(widget => {
-        const Component = preBodyComponents[widget._type];
-        return <Component {...widget} />;
-    })}
-  </header>
-  
-  {page.body && page.body.length > 0 &&
-    <article class="content-container">
-      <PortableText value={page.body} components={portableTextComponents} />
-    </article>
-  }
+  <Wrapper {...wrapperProps}>
+    <header class="flex flex-col gap-4 mb-8">
+      <h1 class="text-xl sm:text-3xl text-purple-dark-2">{page.title}</h1>
+      {page.subheading && <p class="font-bold text-gray-60 m-0">{page.subheading}</p>}
+      {page.preBody && page.preBody.map(widget => {
+          const Component = preBodyComponents[widget._type];
+          return <Component {...widget} />;
+      })}
+    </header>
+    
+    {page.body && page.body.length > 0 &&
+      <article class="content-container">
+        <PortableText value={page.body} components={portableTextComponents} />
+      </article>
+    }
+  </Wrapper>
 </Layout>

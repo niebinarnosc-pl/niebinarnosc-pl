@@ -13,7 +13,11 @@ const isSummary = variant === 'summary';
 
 const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 ---
-<ContentCard id={rep.slug.current} href={href}>
+<ContentCard
+    id={rep.slug.current}
+    href={href}
+    x-show={`activeCategory === 'all' || activeCategory === '${rep.category?.slug.current || ''}'`}
+>
     <div slot="thumbnail">
         <Thumbnail image={rep.photo} alt={rep.title} isLightbox={!isSummary} />
     </div>

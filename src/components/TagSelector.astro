@@ -4,18 +4,16 @@ interface Tag {
   slug: string;
 }
 interface Props {
-  basePath: string;
   tags: Tag[];
-  active?: string | null;
 }
 
-const { basePath, tags, active } = Astro.props;
+const { tags } = Astro.props;
 ---
 <div class="flex gap-3 flex-wrap">
-    <a href={basePath} class:list={["badge", !active ? 'badge-selected' : 'badge-normal']}>Wszystko</a>
+    <button type="button" @click="activeCategory = 'all'" class="badge" :class="activeCategory === 'all' ? 'badge-selected' : 'badge-normal'">Wszystko</button>
     {tags.map(tag => (
-        <a href={`${basePath}?category=${tag.slug}`} class:list={["badge", active === tag.slug ? 'badge-selected' : 'badge-normal']}>
+        <button type="button" @click={`activeCategory = '${tag.slug}'`} class="badge" :class={`activeCategory === '${tag.slug}' ? 'badge-selected' : 'badge-normal'`}>
             {tag.title}
-        </a>
+        </button>
     ))}
 </div>
