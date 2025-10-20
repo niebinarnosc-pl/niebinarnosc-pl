@@ -1,6 +1,5 @@
 ---
 import ContentCard from './ContentCard.astro';
-import Icon from './Icon.astro';
 import Thumbnail from './Thumbnail.astro';
 
 interface Props {
@@ -26,7 +25,7 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
         {rep.authors && !isSummary && <p class="m-0">{rep.authors.map(a => a.name).join(', ')}</p>}
         {rep.category && (isSummary ?
             <span class="badge badge-normal mr-auto">{rep.category.title}</span> :
-            <a class="badge badge-normal mr-auto" href={`/reprezentacja?category=${rep.category.slug.current}`}>{rep.category.title}</a>
+            <button class="badge badge-normal mr-auto" @click={`activeCategory = '${rep.category.slug.current}'`}>{rep.category.title}</button>
         )}
     </Fragment>
     <div slot="body">

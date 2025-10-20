@@ -4,7 +4,7 @@ interface Props {
   href?: string;
   class?: string;
 }
-const { id = "", href, class: className } = Astro.props;
+const { id = "", href, class: className, 'x-show': xShow } = Astro.props;
 const Tag = href ? 'a' : 'div';
 const isLink = !!href;
 ---
@@ -15,6 +15,7 @@ const isLink = !!href;
     isLink ? "block" : "", // `a` tag needs to be block-level
     className,
   ]}
+  x-show={xShow}
 >
   <section id={id} class="flex flex-col lg:flex-row gap-6">
     <div class:list={["hidden lg:block", !isLink && "pr-6 border-r border-purple-10"]}>

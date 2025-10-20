@@ -107,6 +107,10 @@
   ul {
     @apply list-disc pl-6 my-4;
   }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @utility font-bold-hover-no-shift {
@@ -178,7 +182,7 @@
   .badge-normal {
     @apply bg-purple-10 text-indigo;
   }
-  a.badge-normal {
+  a.badge-normal, button.badge-normal {
     @apply hover:bg-purple-20;
   }
   .badge-selected {
