@@ -9,6 +9,7 @@ import blockContent from './sanity/schemas/blockContent'
 import story from './sanity/schemas/story'
 import definition from './sanity/schemas/definition'
 import representation from './sanity/schemas/representation'
+import category from './sanity/schemas/category'
 import author from './sanity/schemas/author'
 import page from './sanity/schemas/page'
 import siteSettings from './sanity/schemas/siteSettings'
@@ -88,6 +89,7 @@ export default defineConfig({
       story,
       definition,
       representation,
+      category,
       author,
       // objects
       blockContent,

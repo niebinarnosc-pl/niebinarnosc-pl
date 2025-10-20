@@ -1,6 +1,5 @@
 ---
 import ContentCard from './ContentCard.astro';
-import slugify from '../lib/slugify';
 import Icon from './Icon.astro';
 import Thumbnail from './Thumbnail.astro';
 
@@ -22,8 +21,8 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
         <h3 class="group-hover:text-purple-80 transition-colors">{rep.title}</h3>
         {rep.authors && !isSummary && <p class="m-0">{rep.authors.map(a => a.name).join(', ')}</p>}
         {rep.category && (isSummary ?
-            <span class="badge badge-normal mr-auto">{rep.category}</span> :
-            <a class="badge badge-normal mr-auto" href={`/reprezentacja/${slugify(rep.category)}`}>{rep.category}</a>
+            <span class="badge badge-normal mr-auto">{rep.category.title}</span> :
+            <a class="badge badge-normal mr-auto" href={`/reprezentacja?category=${rep.category.slug}`}>{rep.category.title}</a>
         )}
     </Fragment>
     <div slot="body">

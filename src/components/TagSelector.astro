@@ -1,10 +1,12 @@
 ---
-import slugify from "../lib/slugify";
-
+interface Tag {
+  title: string;
+  slug: string;
+}
 interface Props {
   basePath: string;
-  tags: string[];
-  active?: string;
+  tags: Tag[];
+  active?: string | null;
 }
 
 const { basePath, tags, active } = Astro.props;
@@ -12,8 +14,8 @@ const { basePath, tags, active } = Astro.props;
 <div class="flex gap-3 flex-wrap">
     <a href={basePath} class:list={["badge", !active ? 'badge-selected' : 'badge-normal']}>Wszystko</a>
     {tags.map(tag => (
-        <a href={`${basePath}/${slugify(tag)}`} class:list={["badge", active === tag ? 'badge-selected' : 'badge-normal']}>
-            {tag}
+        <a href={`${basePath}?category=${tag.slug}`} class:list={["badge", active === tag.slug ? 'badge-selected' : 'badge-normal']}>
+            {tag.title}
         </a>
     ))}
 </div>

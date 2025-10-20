@@ -19,7 +19,7 @@ Represents a single term and its definition.
 ### 3. Representation
 
 Represents an instance of non-binary representation in media (e.g., books, series).
-*   **Fields**: Title, Slug, Featured Image, Author(s), Category (e.g., "Serial", "Książka"), Story Description, Representation Description.
+*   **Fields**: Title, Slug, Featured Image, Author(s), Category (reference to a Category document), Story Description, Representation Description.
 *   **Purpose**: To create a curated list of media featuring non-binary characters or themes.
 
 ## Content Types (Singletons)

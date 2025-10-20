@@ -36,11 +36,8 @@ export default defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'string',
-      options: {
-        list: ['Serial', 'Książka', 'Film', 'Inne'],
-        layout: 'radio',
-      },
+      type: 'reference',
+      to: [{type: 'category'}],
     }),
     defineField({
       name: 'storyDescription',

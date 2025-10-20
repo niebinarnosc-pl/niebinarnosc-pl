@@ -4,11 +4,11 @@ import ExternalLink from '../../components/ExternalLink.astro';
 import { sanityClient } from 'sanity:client';
 
 const { suggestionFormUrl } = Astro.props;
+const activeCategory = Astro.url.searchParams.get('category');
 
-const allCategories = await sanityClient.fetch(`*[_type == "representation" && defined(category) && draft != true].category`);
-const uniqueCategories = [...new Set(allCategories as string[])];
+const categories = await sanityClient.fetch(`*[_type == "category"]{title, "slug": slug.current} | order(title asc)`);
 ---
 <div class="flex flex-col gap-4">
     <ExternalLink href={suggestionFormUrl} class="btn btn-primary">Zaproponuj artykuł</ExternalLink>
-    {uniqueCategories && <TagSelector basePath="/reprezentacja" tags={uniqueCategories} active={undefined} />}
+    {categories && <TagSelector basePath="/reprezentacja" tags={categories} active={activeCategory} />}
 </div>

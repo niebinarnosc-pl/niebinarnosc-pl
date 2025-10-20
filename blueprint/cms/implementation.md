@@ -31,9 +31,15 @@ Defines the `representation` document type.
 *   `slug`: `slug` (auto-generated from title)
 *   `fullPhoto`: `image`
 *   `authors`: `array` of `author` objects.
-*   `category`: `string` (with a predefined list of options: "Serial", "Książka", etc.)
+*   `category`: `reference` to a `category` document.
 *   `storyDescription`: `text`
 *   `representationDescription`: `text`
+
+### `category.ts`
+
+Defines the `category` document type for representations.
+*   `title`: `string`
+*   `slug`: `slug` (auto-generated from title)
 
 ### `author.ts`
 
