@@ -18,19 +18,16 @@ const sortField = sortBy === 'title' ? 'title' : '_createdAt';
 const ordering = `order(${sortField} ${sortOrder})`;
 const pinnedFilter = pinnedIds.length > 0 ? `&& !(_id in $pinnedIds)` : '';
 
-const siteSettings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{placeholderImage}`);
-const placeholderImage = siteSettings.placeholderImage;
-
 let remainingItems = [];
 if (contentType === 'story') {
-    const query = `*[_type == "story" && draft != true ${pinnedFilter}] | ${ordering} {
+    const query = `*[_type == "story" ${pinnedFilter}] | ${ordering} {
         ...,
         photo{ ..., asset-> },
         "definitions": definitions[]->{title, slug}
     }`;
     remainingItems = await sanityClient.fetch(query, { pinnedIds });
 } else if (contentType === 'definition' || contentType === 'representation') {
-    const query = `*[_type == "${contentType}" && draft != true ${pinnedFilter}] | ${ordering} {
+    const query = `*[_type == "${contentType}" ${pinnedFilter}] | ${ordering} {
         ...,
         photo{ ..., asset-> }
     }`;
@@ -42,13 +39,13 @@ const items = [...pinnedItems, ...remainingItems];
 <div class="flex flex-col gap-4 sm:gap-8">
     {items.map(item => {
         if (item._type === 'definition') {
-            return <DefinitionCard definition={item} placeholderImage={placeholderImage} />;
+            return <DefinitionCard definition={item}/>;
         }
         if (item._type === 'story') {
-            return <StoryCard story={item} placeholderImage={placeholderImage} />;
+            return <StoryCard story={item}/>;
         }
         if (item._type === 'representation') {
-            return <RepresentationCard rep={item} placeholderImage={placeholderImage} />;
+            return <RepresentationCard rep={item}/>;
         }
         return null;
     })}
