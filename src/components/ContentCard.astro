@@ -3,8 +3,9 @@ interface Props {
   id?: string;
   href?: string;
   class?: string;
+  "x-show"?: string;
 }
-const { id = "", href, class: className, 'x-show': xShow } = Astro.props;
+const { id = "", href, class: className, 'x-show': xShow = "" } = Astro.props;
 const Tag = href ? 'a' : 'div';
 const isLink = !!href;
 ---

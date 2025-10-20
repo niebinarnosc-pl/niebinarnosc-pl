@@ -33,6 +33,6 @@ const href = isSummary ? `/opowiesci#${story.slug.current}` : undefined;
     {isSummary ? <p>{story.excerpt}</p> : <PortableText value={story.body} />}
   </div>
   <div slot="footer">
-      {isSummary && <button class="btn btn-secondary ml-auto">Czytaj więcej <Icon name="arrow-right"/></button>}
+      {isSummary && <button class="sm:hidden btn btn-secondary ml-auto">Czytaj więcej <Icon name="arrow-right"/></button>}
   </div>
 </ContentCard>
