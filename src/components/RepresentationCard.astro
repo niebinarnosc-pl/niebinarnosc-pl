@@ -1,5 +1,6 @@
 ---
 import ContentCard from './ContentCard.astro';
+import Icon from './Icon.astro';
 import Thumbnail from './Thumbnail.astro';
 
 interface Props {
@@ -15,7 +16,7 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
 <ContentCard
     id={rep.slug.current}
     href={href}
-    x-show={`activeCategory === 'all' || activeCategory === '${rep.category?.slug.current || ''}'`}
+    x-show={!isSummary ? `activeCategory === 'all' || activeCategory === '${rep.category?.slug.current || ''}'` : ''}
 >
     <div slot="thumbnail">
         <Thumbnail image={rep.photo} alt={rep.title} isLightbox={!isSummary} />
@@ -39,5 +40,8 @@ const href = isSummary ? `/reprezentacja#${rep.slug.current}` : undefined;
                 <p>{rep.representationDescription}</p>
             </>
         )}
+    </div>
+    <div slot="footer">
+        {isSummary && <button class="btn btn-secondary ml-auto">Czytaj więcej <Icon name="arrow-right"/></button>}
     </div>
 </ContentCard>

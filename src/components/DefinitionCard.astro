@@ -23,12 +23,13 @@ const footerText = singleDefinition ? "Zobacz inne definicje" : "Zobacz opowieś
     <Thumbnail image={definition.photo} alt={definition.title} isSquare isLightbox={!isSummary} />
   </div>
   <div slot="header">
-    <h3 class="group-hover:text-purple-80 transition-colors">{definition.title}</h3>
+    <h3 class="group-hover:text-purple-80 transition-colors">{definition.title} {definition.titleEn && `(${definition.titleEn.toLowerCase()})`}</h3>
   </div>
   <div slot="body">
-    <PortableText value={isSummary ? definition.excerpt : definition.body} />
+    {isSummary ? <p>{definition.excerpt}</p> : <PortableText value={definition.body} />}
   </div>
   <div slot="footer">
     {!isSummary && <a href={footerLink} class="btn btn-secondary ml-auto">{footerText} <Icon name="arrow-right"/></a>}
+    {isSummary && <button class="btn btn-secondary ml-auto">Czytaj więcej <Icon name="arrow-right"/></button>}
   </div>
 </ContentCard>

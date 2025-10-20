@@ -25,10 +25,10 @@ const isLink = !!href;
     </div>
     <div class="flex-1 flex flex-col gap-6">
       <header class="flex gap-4">
-        <div class="lg:hidden w-[4.5rem]">
+        <div class="lg:hidden w-[4.5rem] shrink-0">
           <slot name="thumbnail" />
         </div>
-        <div class="flex-1 flex flex-col gap-2">
+        <div class="flex-1 flex flex-col gap-2 overflow-hidden">
             <slot name="header" />
         </div>
       </header>

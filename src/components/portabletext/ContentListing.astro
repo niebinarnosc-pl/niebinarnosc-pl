@@ -33,7 +33,7 @@ const remainingItems = await sanityClient.fetch(query, { pinnedIds });
 
 const items = [...pinnedItems, ...remainingItems];
 ---
-<div class="flex flex-col gap-4 sm:gap-8">
+<div class="flex flex-col gap-12 sm:gap-16">
     {items.map(item => {
         if (item._type === 'definition') {
             return <DefinitionCard definition={item}/>;
