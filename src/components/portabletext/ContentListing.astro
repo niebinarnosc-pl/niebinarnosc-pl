@@ -18,21 +18,18 @@ const sortField = sortBy === 'title' ? 'title' : '_createdAt';
 const ordering = `order(${sortField} ${sortOrder})`;
 const pinnedFilter = pinnedIds.length > 0 ? `&& !(_id in $pinnedIds)` : '';
 
-let remainingItems = [];
-if (contentType === 'story') {
-    const query = `*[_type == "story" ${pinnedFilter}] | ${ordering} {
-        ...,
-        photo{ ..., asset-> },
-        "definitions": definitions[]->{title, slug}
-    }`;
-    remainingItems = await sanityClient.fetch(query, { pinnedIds });
-} else if (contentType === 'definition' || contentType === 'representation') {
-    const query = `*[_type == "${contentType}" ${pinnedFilter}] | ${ordering} {
-        ...,
-        photo{ ..., asset-> }
-    }`;
-    remainingItems = await sanityClient.fetch(query, { pinnedIds });
+const typeSpecificFragments: any = {
+    definition: '',
+    story: '"definitions": definitions[]->{title, slug}',
+    representation: 'category->'
 }
+
+const query = `*[_type == "${contentType}" ${pinnedFilter}] | ${ordering} {
+    ...,
+    photo{ ..., asset-> },
+    ${typeSpecificFragments[contentType]}
+}`;
+const remainingItems = await sanityClient.fetch(query, { pinnedIds });
 
 const items = [...pinnedItems, ...remainingItems];
 ---

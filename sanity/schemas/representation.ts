@@ -37,7 +37,7 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: [{type: 'category'}],
+      to: [{type: 'representationCategory'}],
     }),
     defineField({
       name: 'storyDescription',
