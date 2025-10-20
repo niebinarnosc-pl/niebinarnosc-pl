@@ -33,6 +33,9 @@ export default defineType({
       name: 'url',
       title: 'URL',
       type: 'url',
+      validation: Rule => Rule.uri({
+        allowRelative: true
+      }),
       hidden: ({parent}) => parent?.linkType !== 'External',
     }),
   ],
