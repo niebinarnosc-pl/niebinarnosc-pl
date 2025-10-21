@@ -48,7 +48,12 @@ export default defineType({
       name: 'representationDescription',
       title: 'Representation Description',
       type: 'text',
-    })
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

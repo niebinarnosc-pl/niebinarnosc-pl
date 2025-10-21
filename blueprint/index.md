@@ -35,6 +35,7 @@ For detailed guidelines on the blueprint structure, usage, glossary, and the blu
 *   [`styles/`](./styles/index.md): The canonical styles blueprint for the new Astro/Tailwind CSS project.
 *   [`components/`](./components/index.md): The canonical blueprint for components in the new Astro project.
 *   [`cms/`](./cms/index.md): The blueprint for the Sanity CMS content model and configuration.
+*   [`seo/`](./seo/index.md): The blueprint for the Search Engine Optimization strategy and implementation.
 *   [`pages/`](./pages/index.md): The blueprint for the site's page structure and content mapping.
 *   [`issues.md`](./issues.md): Documents project-wide known issues and their resolutions.
 *   [`DEVELOPMENT_PROCESS.md`](./DEVELOPMENT_PROCESS.md): Describes the guidelines and principles for the project's development process, with a special focus on human-AI agent collaboration, workflow, and best practices.

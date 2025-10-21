@@ -38,7 +38,12 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-    })
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

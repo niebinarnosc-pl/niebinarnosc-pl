@@ -1,20 +1,38 @@
 ---
-// Placeholder based on blueprint/old-components/Seo.md
+import { urlFor } from '../lib/image';
+
 interface Props {
-    pageSeo: any;
-    siteSeo: any;
-    siteName: string;
-    canonicalUrl: URL;
+    page?: any; // could be a page, story, definition, etc.
     siteSettings: any;
 }
-const { pageSeo, siteSeo, siteName, canonicalUrl } = Astro.props;
-const title = pageSeo?.title || siteName;
-const description = pageSeo?.description || 'Strona o niebinarności';
+
+const { page, siteSettings } = Astro.props;
+
+const pageSeo = page?.seo;
+const siteSeo = siteSettings?.defaultSeo;
+const siteName = siteSettings?.title || 'niebinarnosc.pl';
+
+// Title
+const baseTitle = pageSeo?.title || page?.title;
+const title = baseTitle ? `${baseTitle} | ${siteName}` : siteName;
+
+// Description
+const description = pageSeo?.description || siteSeo?.description || 'Strona o niebinarności';
+
+// Image
+const ogImageSource = pageSeo?.image || siteSeo?.image || siteSettings?.placeholderImage;
+const ogImageUrl = ogImageSource ? urlFor(ogImageSource).width(1200).height(630).url() : null;
+
+const canonicalUrl = Astro.url;
 ---
 <title>{title}</title>
 <link rel="canonical" href={canonicalUrl.href} />
 <meta name="description" content={description} />
+
+{/* Open Graph */}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl.href} />
 <meta property="og:site_name" content={siteName} />
+<meta property="og:type" content="website" />
+{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}

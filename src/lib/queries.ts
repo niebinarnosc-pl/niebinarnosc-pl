@@ -1,5 +1,6 @@
 export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
     ...,
+    defaultSeo,
     placeholderImage,
     headerNavLinks[]{
         ...,

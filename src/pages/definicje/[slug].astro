@@ -27,7 +27,7 @@ if (!definition) {
     return Astro.redirect('/404');
 }
 ---
-<Layout>
+<Layout page={definition}>
   <header class="flex flex-col gap-4 mb-8">
     <h1 class="text-xl sm:text-3xl text-purple-dark-2">{definition.title}</h1>
   </header>

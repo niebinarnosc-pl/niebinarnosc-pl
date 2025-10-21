@@ -17,17 +17,6 @@ interface Props {
 
 const { page } = Astro.props;
 const siteSettings = await sanityClient.fetch(siteSettingsQuery);
-
-const pageSeo = {
-	id: page?.id,
-    title: page?.seo?.title || page?.heading,
-    description: page?.seo?.description,
-    image: page?.seo?.image,
-};
-
-const siteSeo = siteSettings?.defaultSeo || {};
-
-const siteName = 'niebinarnosc.pl';
 ---
 
 <!doctype html>
@@ -39,13 +28,7 @@ const siteName = 'niebinarnosc.pl';
 		<meta name="generator" content={Astro.generator} />
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/trap@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-		<Seo
-            pageSeo={pageSeo}
-            siteSeo={siteSeo}
-            siteName={siteName}
-            canonicalUrl={Astro.url}
-            siteSettings={siteSettings}
-        />
+		<Seo page={page} siteSettings={siteSettings} />
 	</head>
 	<body
 		class="flex flex-col min-h-screen relative"

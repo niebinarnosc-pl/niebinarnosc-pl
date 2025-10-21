@@ -28,10 +28,10 @@ export default defineType({
       description: 'Default image for content that does not have its own image.',
     }),
     defineField({
-      name: 'ogImage',
-      title: 'Default OpenGraph Image',
-      type: 'image',
-      description: 'Default image for social sharing, if a page does not have its own.',
+      name: 'defaultSeo',
+      title: 'Default SEO Settings',
+      type: 'seo',
+      description: 'Default SEO settings for pages that do not have their own.',
     }),
     defineField({
       name: 'email',

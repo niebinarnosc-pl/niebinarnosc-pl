@@ -21,6 +21,7 @@ import homeNavRow from './sanity/schemas/objects/homeNavRow'
 import alertCardWidget from './sanity/schemas/objects/alertCardWidget'
 import representationHeaderWidget from './sanity/schemas/objects/representationHeaderWidget'
 import contentListing from './sanity/schemas/objects/contentListing'
+import seo from './sanity/schemas/objects/seo'
 
 const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET;
@@ -101,6 +102,7 @@ export default defineConfig({
       alertCardWidget,
       representationHeaderWidget,
       contentListing,
+      seo,
     ],
   },
 })
