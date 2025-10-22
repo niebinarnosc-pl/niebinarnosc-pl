@@ -15,6 +15,7 @@ const { slug } = Astro.params;
 
 const query = `*[_type == "definition" && slug.current == $slug && draft != true][0]{
   ...,
+  "plainBody": pt::text(body),
   "relatedStories": *[_type == "story" && references(^._id) && draft != true] {
     ...,
     "definitions": definitions[]->{title, slug}

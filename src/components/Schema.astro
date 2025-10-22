@@ -1,0 +1,81 @@
+---
+import { urlFor } from '../lib/image';
+
+interface Props {
+    page?: any;
+    title?: string;
+    description?: string;
+    siteSettings: any;
+}
+
+const { page, title: pageTitle, description: pageDescription, siteSettings } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+
+const isHomePage = Astro.url.pathname === '/';
+const isDefinitionPage = page?._type === 'definition';
+
+const pageSeo = page?.seo;
+const siteName = siteSettings?.title || 'niebinarnosc.pl';
+
+const baseTitle = pageSeo?.title || page?.title || pageTitle;
+const title = isHomePage ? baseTitle : (baseTitle ? `${baseTitle} - ${siteName}` : siteName);
+
+const description = pageSeo?.description || pageDescription;
+
+const organization = {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: siteName,
+    url: siteUrl,
+    logo: siteSettings?.logoFull ? urlFor(siteSettings.logoFull).url() : undefined,
+};
+
+const website = {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: siteUrl,
+    name: siteName,
+    publisher: {
+        '@id': organization['@id'],
+    },
+};
+
+let pageSchema: any = {
+    '@type': 'WebPage',
+    '@id': Astro.url.href,
+    url: Astro.url.href,
+    name: title,
+    isPartOf: {
+        '@id': website['@id'],
+    },
+    inLanguage: 'pl-PL',
+};
+if (description) {
+    pageSchema.description = description;
+}
+
+const graph = [organization, website, pageSchema];
+
+if (isDefinitionPage) {
+    const definedTerm = {
+        '@type': 'DefinedTerm',
+        '@id': `${Astro.url.href}#definedterm`,
+        name: page.title,
+        alternateName: page.titleEn,
+        description: page.plainBody,
+        inDefinedTermSet: {
+            '@type': 'DefinedTermSet',
+            name: 'Słownik pojęć niebinarności',
+            url: `${siteUrl}/definicje`,
+        },
+    };
+    pageSchema.mainEntity = {
+        '@id': definedTerm['@id'],
+    };
+    graph.push(definedTerm);
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graph,
+})} />

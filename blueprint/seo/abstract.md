@@ -35,3 +35,11 @@ To control how content appears when shared on platforms like Facebook, Twitter, 
 *   `og:url`: The canonical URL of the page.
 *   `og:site_name`: The name of the website.
 *   `og:type`: Should be set to `website` by default.
+
+### Structured Data (Schema.org)
+
+To provide more context to search engines, the site will generate structured data using the Schema.org vocabulary in JSON-LD format.
+*   **`Organization`**: Represents the website/organization itself, including name and logo.
+*   **`WebSite`**: Represents the website as a whole.
+*   **`WebPage`**: Represents a generic web page. This will be the base for all pages.
+*   **`DefinedTerm`**: For definition pages, this schema will be used to mark up the term being defined, its description, and its English alternative.
