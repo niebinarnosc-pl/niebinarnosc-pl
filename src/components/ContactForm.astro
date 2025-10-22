@@ -20,10 +20,7 @@ const email = siteSettings?.email;
         </div>
         <div class="flex-1" x-data="contactForm()">
             <div x-show="success" style="display: none;" class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-purple-10 text-purple-100">
-                <div>
-                    <p class="font-bold !mb-2">Dziękujemy za wiadomość!</p>
-                    <p class="!mb-0">Odezwiemy się najszybciej jak to możliwe.</p>
-                </div>
+                <p x-text="successMessage" class="!mb-0"></p>
                 <button @click="success = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
                     <Icon name="close" size="1.3em" />
                     <span class="sr-only">Zamknij</span>
@@ -62,7 +59,8 @@ const email = siteSettings?.email;
             submitting: false,
             success: false,
             error: false,
-            errorMessage: 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie później.',
+            successMessage: 'Wysłano wiadomość ;)',
+            errorMessage: 'Wystąpił błąd. Spróbuj ponownie później. Jeśli błąd będzie się powtarzał, skontaktuj się znami na kontakt@niebinarnosc.pl',
             submit(event) {
                 this.submitting = true;
                 this.error = false;
@@ -83,7 +81,7 @@ const email = siteSettings?.email;
                         this.success = true;
                         form.reset();
                     } else {
-                        throw new Error('Form submission failed');
+                        throw new Error(this.errorMessage);
                     }
                 })
                 .catch(() => {
