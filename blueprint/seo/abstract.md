@@ -8,7 +8,7 @@ This document defines the Search Engine Optimization (SEO) content strategy for 
 
 A central configuration will hold site-wide default SEO values.
 *   **Title Template**: Page titles are constructed using the template `{page_title} - {site_name}`. The homepage is an exception and uses only its title.
-*   **Default Social Sharing Image (Open Graph Image)**: A default image (`placeholderImage` in `siteSettings`) is used when a page is shared on social media and does not have its own specific image.
+*   **Default Social Sharing Image (Open Graph Image)**: A default image (`defaultSocialImage` in `siteSettings`) is used when a page is shared on social media and does not have its own specific image.
 *   There is **no** global fallback for meta descriptions. If a page does not have a specific description, the tag is omitted.
 
 ### 2. Per-Content SEO Overrides

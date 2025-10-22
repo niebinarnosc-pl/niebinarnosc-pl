@@ -22,7 +22,7 @@ const title = isHomePage ? baseTitle : (baseTitle ? `${baseTitle} - ${siteName}`
 const description = pageSeo?.description;
 
 // Image
-const ogImageSource = pageSeo?.image || siteSettings?.placeholderImage;
+const ogImageSource = pageSeo?.image || siteSettings?.defaultSocialImage;
 const ogImageUrl = ogImageSource ? urlFor(ogImageSource).width(1200).height(630).url() : null;
 
 const canonicalUrl = Astro.url;

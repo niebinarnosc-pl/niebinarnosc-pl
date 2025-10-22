@@ -28,6 +28,12 @@ export default defineType({
       description: 'Default image for content that does not have its own image.',
     }),
     defineField({
+      name: 'defaultSocialImage',
+      title: 'Default Social Sharing Image',
+      type: 'image',
+      description: 'Default image for social sharing (Open Graph), if a page does not have its own.',
+    }),
+    defineField({
       name: 'email',
       title: 'Contact Email',
       type: 'string',

@@ -16,7 +16,7 @@ A new reusable object schema will be created at `sanity/schemas/objects/seo.ts` 
 
 The `siteSettings` schema holds global SEO-related defaults.
 
-*   The `placeholderImage` field serves as the default social sharing (Open Graph) image for any page that does not define its own.
+*   A dedicated `defaultSocialImage` field serves as the default social sharing (Open Graph) image for any page that does not define its own.
 *   The `title` field serves as the site name for use in page title templates.
 *   There is no schema for a default SEO description.
 
@@ -49,7 +49,7 @@ The `src/components/Seo.astro` component will be the central place for rendering
         *   If no description is provided, the `<meta name="description">` tag is **not rendered**. There is no global fallback.
     3.  **Image**:
         *   It uses `page.seo.image` if available.
-        *   If not, it falls back to `siteSettings.placeholderImage`.
+        *   If not, it falls back to `siteSettings.defaultSocialImage`.
 *   **Output**: It will render `<title>`, `<meta name="description">`, canonical link tag, and all necessary Open Graph tags (`og:title`, `og:description`, `og:image`, etc.).
 
 ### 3. `Layout.astro`
