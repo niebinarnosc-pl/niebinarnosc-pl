@@ -116,6 +116,16 @@ This document lists known issues encountered during the development of the proje
 *   **Status**: Resolved.
 
 ---
+
+## 7. Alpine.js Function Not Defined in Astro Component
+
+*   **Issue Date**: 2025-10-22
+*   **Symptom**: A JavaScript error `... is not defined` occurs in the browser when an Alpine.js `x-data` attribute tries to call a function (e.g., `x-data="myFunction()"`) defined in a `<script>` tag within an `.astro` component.
+*   **Context**: By default, Astro processes and bundles `<script>` tags. This means their contents are scoped and not exposed to the global `window` object. Since Alpine.js looks for `x-data` functions in the global scope, it cannot find functions defined in standard, non-inlined script tags.
+*   **Resolution/Workaround**: Add the `is:inline` directive to the `<script>` tag (e.g., `<script is:inline>`). This directive prevents Astro from bundling the script, causing it to be rendered directly into the HTML as a plain script tag. Functions defined within it are then correctly placed in the global scope, making them accessible to Alpine.js.
+*   **File Affected**: `src/components/ContactForm.astro`
+*   **Status**: Resolved.
+---
 ## Mentioned by
 
 *(This section will be populated if other blueprint files, outside of the parent directory or direct children, reference this document.)*
