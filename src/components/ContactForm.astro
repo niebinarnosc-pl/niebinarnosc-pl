@@ -26,7 +26,7 @@ const email = siteSettings?.email;
 
             <form x-show="!success" name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-3 lg:max-w-[35.25rem] w-full" @submit.prevent="submit">
                 <input type="hidden" name="form-name" value="Kontakt"/>
-                <input type="hidden" name="subject" data-remove-prefix value={`Wiadomość od nieznajomego`}/>
+                <input type="hidden" name="subject" data-remove-prefix />
                 <label class="group flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-40 has-[:focus]:outline has-[:focus]:outline-1 has-[:focus]:outline-purple-100 text-gray-80 has-[:focus]:text-purple-100">
                     <Icon name="email" size="1.3em"/>
                     <input :disabled="submitting" type="email" name="email" placeholder="E-mail, np. nazwa@gmail.com" required class="p-0 m-0 border-none rounded-none w-full focus:outline-none bg-transparent"/>
@@ -56,6 +56,9 @@ const email = siteSettings?.email;
                 this.error = false;
                 const form = event.target;
                 const formData = new FormData(form);
+
+                const email = formData.get('email');
+                formData.set('subject', `Wiadomość od ${email}`);
 
                 fetch(form.action, {
                     method: 'POST',
