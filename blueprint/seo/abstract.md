@@ -6,18 +6,17 @@ This document defines the Search Engine Optimization (SEO) content strategy for 
 
 ### 1. Global SEO Defaults
 
-A central configuration will hold site-wide default SEO values. This ensures that every page has baseline metadata even if not explicitly set.
-*   **Default SEO Title**: A base title for the site.
-*   **Title Template**: A template for constructing page titles, e.g., `{page_title} | {site_name}`.
-*   **Default SEO Description**: A fallback meta description.
-*   **Default Social Sharing Image (Open Graph Image)**: A default image to be used when a page is shared on social media and does not have its own specific image.
+A central configuration will hold site-wide default SEO values.
+*   **Title Template**: Page titles are constructed using the template `{page_title} - {site_name}`. The homepage is an exception and uses only its title.
+*   **Default Social Sharing Image (Open Graph Image)**: A default image (`placeholderImage` in `siteSettings`) is used when a page is shared on social media and does not have its own specific image.
+*   There is **no** global fallback for meta descriptions. If a page does not have a specific description, the tag is omitted.
 
 ### 2. Per-Content SEO Overrides
 
-Every major content type (Pages, Stories, Definitions, Representations) will have an optional set of SEO fields to override the global defaults. This allows content editors to tailor the SEO and social sharing appearance for specific pieces of content.
-*   **SEO Title**: Overrides the default page title.
-*   **SEO Description**: Overrides the default meta description.
-*   **Social Sharing Image**: A specific image for social media sharing.
+Content types that represent their own pages (`page`, `definition`) will have an optional set of SEO fields to override the defaults.
+*   **SEO Title**: Sets or overrides the page title. If not set, the page's main `title` field is used.
+*   **SEO Description**: Sets the meta description. If not provided, no description meta tag will be rendered.
+*   **Social Sharing Image**: A specific image for social media sharing, which overrides the global default.
 
 ## Metadata Requirements
 

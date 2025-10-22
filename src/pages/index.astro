@@ -29,7 +29,7 @@ const news = await sanityClient.fetch(`
 `);
 const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 ---
-<Layout>
+<Layout title="niebinarnosc.pl - polska strona o niebinarności, tworzona przez osoby niebinarne">
   <HomeHeader siteSettings={siteSettings} />
   <HomeNav siteSettings={siteSettings} />
   <section>

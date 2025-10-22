@@ -28,12 +28,6 @@ export default defineType({
       description: 'Default image for content that does not have its own image.',
     }),
     defineField({
-      name: 'defaultSeo',
-      title: 'Default SEO Settings',
-      type: 'seo',
-      description: 'Default SEO settings for pages that do not have their own.',
-    }),
-    defineField({
       name: 'email',
       title: 'Contact Email',
       type: 'string',

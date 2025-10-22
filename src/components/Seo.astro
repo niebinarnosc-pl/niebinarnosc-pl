@@ -2,36 +2,38 @@
 import { urlFor } from '../lib/image';
 
 interface Props {
-    page?: any; // could be a page, story, definition, etc.
+    page?: any; // could be a page or definition
+    title?: string; // for pages without a Sanity document, e.g. 404
     siteSettings: any;
 }
 
-const { page, siteSettings } = Astro.props;
+const { page, title: pageTitle, siteSettings } = Astro.props;
+
+const isHomePage = Astro.url.pathname === '/';
 
 const pageSeo = page?.seo;
-const siteSeo = siteSettings?.defaultSeo;
 const siteName = siteSettings?.title || 'niebinarnosc.pl';
 
 // Title
-const baseTitle = pageSeo?.title || page?.title;
-const title = baseTitle ? `${baseTitle} | ${siteName}` : siteName;
+const baseTitle = pageSeo?.title || page?.title || pageTitle;
+const title = isHomePage ? baseTitle : (baseTitle ? `${baseTitle} - ${siteName}` : siteName);
 
 // Description
-const description = pageSeo?.description || siteSeo?.description || 'Strona o niebinarności';
+const description = pageSeo?.description;
 
 // Image
-const ogImageSource = pageSeo?.image || siteSeo?.image || siteSettings?.placeholderImage;
+const ogImageSource = pageSeo?.image || siteSettings?.placeholderImage;
 const ogImageUrl = ogImageSource ? urlFor(ogImageSource).width(1200).height(630).url() : null;
 
 const canonicalUrl = Astro.url;
 ---
 <title>{title}</title>
 <link rel="canonical" href={canonicalUrl.href} />
-<meta name="description" content={description} />
+{description && <meta name="description" content={description} />}
 
 {/* Open Graph */}
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+{description && <meta property="og:description" content={description} />}
 <meta property="og:url" content={canonicalUrl.href} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:type" content="website" />
