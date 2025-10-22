@@ -10,9 +10,27 @@ This document provides a detailed breakdown of styling patterns for major UI com
 *   **Layout**: `flex justify-between items-start gap-6`.
 *   **Base Styles**: `rounded-xl p-4`.
 *   **Variants**:
-    *   `.alert-success`: `bg-purple-20 text-purple-100`.
+    *   `.alert-success`: `bg-purple-10 text-purple-100` (Note: `purple-10` is often used for a softer background).
     *   `.alert-error`: `bg-[#ffe6e6] text-[#ff2222]`.
-*   **Implementation**: A custom utility can be created for variants.
+*   **Implementation**: These styles are typically applied directly. When used with Alpine.js for dynamic visibility (e.g., for form submission feedback), a close button can be included.
+
+### Example with Close Button (Alpine.js)
+
+```html
+<!-- Assumes x-data is managed by a parent component -->
+<div x-show="successMessage" style="display: none;" 
+     class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-purple-10 text-purple-100">
+    <div>
+        <p class="font-bold !mb-2">Success!</p>
+        <p class="!mb-0">Your message was sent.</p>
+    </div>
+    <button @click="successMessage = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
+        <!-- Assumes an <Icon /> component is available -->
+        <Icon name="close" size="1.3em" />
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+```
 
 ## Buttons
 

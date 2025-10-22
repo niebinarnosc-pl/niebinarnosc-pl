@@ -19,12 +19,26 @@ const email = siteSettings?.email;
             )}
         </div>
         <div class="flex-1" x-data="contactForm()">
-            <div x-show="success" style="display: none;" class="p-4 rounded-xl bg-purple-10 text-purple-100">
-                <p class="font-bold">Dziękujemy za wiadomość!</p>
-                <p>Odezwiemy się najszybciej jak to możliwe.</p>
+            <div x-show="success" style="display: none;" class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-purple-10 text-purple-100">
+                <div>
+                    <p class="font-bold !mb-2">Dziękujemy za wiadomość!</p>
+                    <p class="!mb-0">Odezwiemy się najszybciej jak to możliwe.</p>
+                </div>
+                <button @click="success = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
+                    <Icon name="close" size="1.3em" />
+                    <span class="sr-only">Zamknij</span>
+                </button>
             </div>
 
-            <form x-show="!success" name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-3 lg:max-w-[35.25rem] w-full" @submit.prevent="submit">
+            <div x-show="error" style="display: none;" class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-[#ffe6e6] text-[#ff2222]">
+                <p x-text="errorMessage" class="!mb-0"></p>
+                <button @click="error = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
+                    <Icon name="close" size="1.3em" />
+                    <span class="sr-only">Zamknij</span>
+                </button>
+            </div>
+
+            <form name="Kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-3 lg:max-w-[35.25rem] w-full" @submit.prevent="submit">
                 <input type="hidden" name="form-name" value="Kontakt"/>
                 <input type="hidden" name="subject" data-remove-prefix />
                 <label class="group flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-40 has-[:focus]:outline has-[:focus]:outline-1 has-[:focus]:outline-purple-100 text-gray-80 has-[:focus]:text-purple-100">
@@ -33,8 +47,6 @@ const email = siteSettings?.email;
                 </label>
                 <textarea :disabled="submitting" name="text" placeholder="Tutaj wpisz swoją wiadomość" required class="p-3 bg-white rounded-xl border border-gray-40 h-32 focus:outline focus:outline-1 focus:outline-purple-100"></textarea>
                 <label class="hidden">Nie wypełniaj, jeśli jesteś niebinarna_y:<input name="bot-field"/></label>
-
-                <div x-show="error" style="display: none;" class="p-3 rounded-xl bg-[#ffe6e6] text-[#ff2222]" x-text="errorMessage"></div>
 
                 <button :disabled="submitting" class="btn btn-primary ml-auto" type="submit">
                     <span x-show="submitting" style="display: none;">Wysyłanie...</span>
@@ -54,6 +66,7 @@ const email = siteSettings?.email;
             submit(event) {
                 this.submitting = true;
                 this.error = false;
+                this.success = false;
                 const form = event.target;
                 const formData = new FormData(form);
 
