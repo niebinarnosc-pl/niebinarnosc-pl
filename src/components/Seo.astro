@@ -4,10 +4,11 @@ import { urlFor } from '../lib/image';
 interface Props {
     page?: any; // could be a page or definition
     title?: string; // for pages without a Sanity document, e.g. 404
+    description?: string;
     siteSettings: any;
 }
 
-const { page, title: pageTitle, siteSettings } = Astro.props;
+const { page, title: pageTitle, description: pageDescription, siteSettings } = Astro.props;
 
 const isHomePage = Astro.url.pathname === '/';
 
@@ -19,7 +20,7 @@ const baseTitle = pageSeo?.title || page?.title || pageTitle;
 const title = isHomePage ? baseTitle : (baseTitle ? `${baseTitle} - ${siteName}` : siteName);
 
 // Description
-const description = pageSeo?.description;
+const description = pageSeo?.description || pageDescription;
 
 // Image
 const ogImageSource = pageSeo?.image || siteSettings?.defaultSocialImage;

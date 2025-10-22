@@ -14,9 +14,10 @@ import { siteSettingsQuery } from '../lib/queries';
 interface Props {
     page?: any;
     title?: string;
+	description?: string;
 }
 
-const { page, title } = Astro.props;
+const { page, title, description } = Astro.props;
 const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 ---
 
@@ -29,7 +30,7 @@ const siteSettings = await sanityClient.fetch(siteSettingsQuery);
 		<meta name="generator" content={Astro.generator} />
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/trap@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-		<Seo page={page} title={title} siteSettings={siteSettings} />
+		<Seo page={page} title={title} description={description} siteSettings={siteSettings} />
 	</head>
 	<body
 		class="flex flex-col min-h-screen relative"
