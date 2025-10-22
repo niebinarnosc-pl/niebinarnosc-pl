@@ -19,17 +19,17 @@ const email = siteSettings?.email;
             )}
         </div>
         <div class="flex-1" x-data="contactForm()">
-            <div x-show="success" style="display: none;" class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-purple-10 text-purple-100">
-                <p x-text="successMessage" class="!mb-0"></p>
-                <button @click="success = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
-                    <Icon name="close" size="1.3em" />
-                    <span class="sr-only">Zamknij</span>
-                </button>
-            </div>
-
-            <div x-show="error" style="display: none;" class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-[#ffe6e6] text-[#ff2222]">
-                <p x-text="errorMessage" class="!mb-0"></p>
-                <button @click="error = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
+            <div 
+                x-show="alert.show" 
+                style="display: none;" 
+                class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4"
+                :class="{
+                    'bg-purple-10 text-purple-100': alert.type === 'success',
+                    'bg-[#ffe6e6] text-[#ff2222]': alert.type === 'error'
+                }"
+            >
+                <p x-text="alert.message" class="!mb-0"></p>
+                <button @click="alert.show = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
                     <Icon name="close" size="1.3em" />
                     <span class="sr-only">Zamknij</span>
                 </button>
@@ -57,14 +57,16 @@ const email = siteSettings?.email;
     function contactForm() {
         return {
             submitting: false,
-            success: false,
-            error: false,
+            alert: {
+                show: false,
+                type: 'success',
+                message: '',
+            },
             successMessage: 'Wysłano wiadomość ;)',
             errorMessage: 'Wystąpił błąd. Spróbuj ponownie później. Jeśli błąd będzie się powtarzał, skontaktuj się znami na kontakt@niebinarnosc.pl',
             submit(event) {
                 this.submitting = true;
-                this.error = false;
-                this.success = false;
+                this.alert.show = false;
                 const form = event.target;
                 const formData = new FormData(form);
 
@@ -78,14 +80,14 @@ const email = siteSettings?.email;
                 })
                 .then(response => {
                     if (response.ok) {
-                        this.success = true;
+                        this.alert = { show: true, type: 'success', message: this.successMessage };
                         form.reset();
                     } else {
-                        throw new Error(this.errorMessage);
+                        throw new Error();
                     }
                 })
                 .catch(() => {
-                    this.error = true;
+                    this.alert = { show: true, type: 'error', message: this.errorMessage };
                 })
                 .finally(() => {
                     this.submitting = false;

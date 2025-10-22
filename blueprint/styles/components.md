@@ -16,15 +16,21 @@ This document provides a detailed breakdown of styling patterns for major UI com
 
 ### Example with Close Button (Alpine.js)
 
+This example shows a dynamic alert that can display success or error states.
+
 ```html
-<!-- Assumes x-data is managed by a parent component -->
-<div x-show="successMessage" style="display: none;" 
-     class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4 bg-purple-10 text-purple-100">
-    <div>
-        <p class="font-bold !mb-2">Success!</p>
-        <p class="!mb-0">Your message was sent.</p>
-    </div>
-    <button @click="successMessage = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
+<!-- Assumes an `alert` object in x-data like { show: boolean, type: 'success'|'error', message: string } -->
+<div 
+    x-show="alert.show" 
+    style="display: none;" 
+    class="flex justify-between items-start gap-6 rounded-xl p-4 mb-4"
+    :class="{
+        'bg-purple-10 text-purple-100': alert.type === 'success',
+        'bg-[#ffe6e6] text-[#ff2222]': alert.type === 'error'
+    }"
+>
+    <p x-text="alert.message" class="!mb-0"></p>
+    <button @click="alert.show = false" type="button" class="bg-transparent border-none p-0 cursor-pointer hover:underline">
         <!-- Assumes an <Icon /> component is available -->
         <Icon name="close" size="1.3em" />
         <span class="sr-only">Close</span>
