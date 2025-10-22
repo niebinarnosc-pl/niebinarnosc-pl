@@ -27,6 +27,62 @@ const ogImageSource = pageSeo?.image || siteSettings?.defaultSocialImage;
 const ogImageUrl = ogImageSource ? urlFor(ogImageSource).width(1200).height(630).url() : null;
 
 const canonicalUrl = Astro.url;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+const isDefinitionPage = page?._type === 'definition';
+
+// Schema.org
+const organization = {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: siteName,
+    url: siteUrl,
+    logo: siteSettings?.logoFull ? urlFor(siteSettings.logoFull).url() : undefined,
+};
+
+const website = {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: siteUrl,
+    name: siteName,
+    publisher: {
+        '@id': organization['@id'],
+    },
+};
+
+let pageSchema: any = {
+    '@type': 'WebPage',
+    '@id': canonicalUrl.href,
+    url: canonicalUrl.href,
+    name: title,
+    isPartOf: {
+        '@id': website['@id'],
+    },
+    inLanguage: 'pl-PL',
+};
+if (description) {
+    pageSchema.description = description;
+}
+
+const graph = [organization, website, pageSchema];
+
+if (isDefinitionPage) {
+    const definedTerm = {
+        '@type': 'DefinedTerm',
+        '@id': `${canonicalUrl.href}#definedterm`,
+        name: page.title,
+        alternateName: page.titleEn,
+        description: page.plainBody,
+        inDefinedTermSet: {
+            '@type': 'DefinedTermSet',
+            name: 'Słownik pojęć niebinarności',
+            url: `${siteUrl}/definicje`,
+        },
+    };
+    pageSchema.mainEntity = {
+        '@id': definedTerm['@id'],
+    };
+    graph.push(definedTerm);
+}
 ---
 <title>{title}</title>
 <link rel="canonical" href={canonicalUrl.href} />
@@ -39,3 +95,9 @@ const canonicalUrl = Astro.url;
 <meta property="og:site_name" content={siteName} />
 <meta property="og:type" content="website" />
 {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+{/* Schema.org */}
+<script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graph,
+})} />

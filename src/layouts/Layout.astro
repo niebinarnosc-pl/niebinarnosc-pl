@@ -7,7 +7,6 @@ import '@fontsource/noto-sans/800.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Seo from '../components/Seo.astro';
-import Schema from '../components/Schema.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { sanityClient } from 'sanity:client';
 import { siteSettingsQuery } from '../lib/queries';
@@ -32,7 +31,6 @@ const siteSettings = await sanityClient.fetch(siteSettingsQuery);
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/trap@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 		<Seo page={page} title={title} description={description} siteSettings={siteSettings} />
-		<Schema page={page} title={title} description={description} siteSettings={siteSettings} />
 	</head>
 	<body
 		class="flex flex-col min-h-screen relative"
